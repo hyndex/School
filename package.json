@@ -1,0 +1,19 @@
+{
+  "name": "react-school",
+  "version": "1.0.0",
+  "description": "FrontEnd of the school management project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "author": "Chinmoy Bhuyan",
+  "license": "ISC",
+  "dependencies": {
+    "mdbreact": "^4.21.0",
+    "next": "^9.0.7",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1"
+  }
+}
