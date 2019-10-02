@@ -1,5 +1,5 @@
 ///Admin , Staff , Student , Depertment , Placement
-const AdminNavMenu=[
+export const AdminNavMenu=[
     {
         groupname:"BulkImport",
         menus:[
@@ -64,7 +64,7 @@ const AdminNavMenu=[
                                           
 ]
     
-const StaffNavMenu=[
+export const StaffNavMenu=[
     {
         groupname:"BulkImport",
         menus:[
@@ -102,7 +102,7 @@ const StaffNavMenu=[
     }
 ]
 
-const StudentNavMenu=[
+export const StudentNavMenu=[
     {
         groupname:"Reports",
         menus:[
@@ -133,7 +133,7 @@ const StudentNavMenu=[
     }
 ]
 
-const DepertmentNavMenu=[
+export const DepertmentNavMenu=[
     {
         groupname:"BulkImport",
         menus:[
@@ -172,7 +172,7 @@ const DepertmentNavMenu=[
     },
 ]
 
-const PlacementNavMenu=[
+export const PlacementNavMenu=[
     {
         groupname:"Acitities",
         menus:[

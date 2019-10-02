@@ -106,23 +106,85 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _endpoints_NavBarEndPoints__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../endpoints/NavBarEndPoints */ "./endpoints/NavBarEndPoints.js");
-/* harmony import */ var _endpoints_NavBarEndPoints__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_endpoints_NavBarEndPoints__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "react-router-dom");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_router_dom__WEBPACK_IMPORTED_MODULE_2__);
 var _jsxFileName = "C:\\Users\\diki\\Desktop\\react-school\\components\\Sidebar.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-
 class SideBar extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
+  constructor() {
+    super();
+    this.state = {
+      role: 'admin',
+      menu: _endpoints_NavBarEndPoints__WEBPACK_IMPORTED_MODULE_1__["AdminNavMenu"]
+    };
+  }
+
+  createSubMenu(items) {
+    var sub_menu_items = [];
+    items.map((item, index) => {
+      sub_menu_items.push(__jsx("li", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 22
+        },
+        __self: this
+      }, __jsx("a", {
+        href: item.url,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 23
+        },
+        __self: this
+      }, item.name)));
+    });
+    return sub_menu_items;
+  }
+
   render() {
+    var menu_items = [];
+    _endpoints_NavBarEndPoints__WEBPACK_IMPORTED_MODULE_1__["AdminNavMenu"].map((item, index) => {
+      menu_items.push(__jsx("li", {
+        id: index,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35
+        },
+        __self: this
+      }, __jsx("a", {
+        href: "#",
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 36
+        },
+        __self: this
+      }, item.groupname), __jsx("ul", {
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 39
+        },
+        __self: this
+      }, this.createSubMenu(item.menus))));
+    });
+    console.log(menu_items);
     return __jsx("div", {
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 14
+        lineNumber: 47
       },
       __self: this
-    }, "this is sidebar");
+    }, __jsx("nav", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 48
+      },
+      __self: this
+    }, __jsx("ul", {
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 49
+      },
+      __self: this
+    }, menu_items)));
   }
 
 }
@@ -133,9 +195,16 @@ class SideBar extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
 /*!**************************************!*\
   !*** ./endpoints/NavBarEndPoints.js ***!
   \**************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: AdminNavMenu, StaffNavMenu, StudentNavMenu, DepertmentNavMenu, PlacementNavMenu */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AdminNavMenu", function() { return AdminNavMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StaffNavMenu", function() { return StaffNavMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StudentNavMenu", function() { return StudentNavMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DepertmentNavMenu", function() { return DepertmentNavMenu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PlacementNavMenu", function() { return PlacementNavMenu; });
 ///Admin , Staff , Student , Depertment , Placement
 const AdminNavMenu = [{
   groupname: "BulkImport",
@@ -452,13 +521,21 @@ class dashboard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         lineNumber: 20
       },
       __self: this
+    }), __jsx("link", {
+      rel: "stylesheet",
+      href: "./static/SideBar.css",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 21
+      },
+      __self: this
     }), __jsx("script", {
       src: "https://code.jquery.com/jquery-3.3.1.slim.min.js",
       integrity: "sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo",
       crossorigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 21
+        lineNumber: 22
       },
       __self: this
     }), __jsx("script", {
@@ -467,7 +544,7 @@ class dashboard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       crossorigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 22
+        lineNumber: 23
       },
       __self: this
     }), __jsx("script", {
@@ -476,7 +553,7 @@ class dashboard extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       crossorigin: "anonymous",
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 23
+        lineNumber: 24
       },
       __self: this
     }));
@@ -506,17 +583,6 @@ module.exports = __webpack_require__(/*! C:\Users\diki\Desktop\react-school\page
 /***/ (function(module, exports) {
 
 module.exports = require("react");
-
-/***/ }),
-
-/***/ "react-router-dom":
-/*!***********************************!*\
-  !*** external "react-router-dom" ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-dom");
 
 /***/ })
 
