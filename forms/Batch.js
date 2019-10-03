@@ -3,7 +3,7 @@ import Select from '../endpoints/select'
 
 
 const BatchForm = ()=>{
-    return(<form>
+    return(<div>
         <div className="form-group row">
             <label for="start" className="col-4 col-form-label">Start Date</label> 
             <div className="col-8">
@@ -41,7 +41,8 @@ const BatchForm = ()=>{
             <button name="submit" type="submit" className="btn btn-primary">Submit</button>
             </div>
         </div>
-    </form>)
+    </div>
+    )
 }
 
 export default BatchForm

@@ -3,12 +3,27 @@ import { MDBDataTable } from 'mdbreact';
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
-import TableGen from '../components/Tablegen'
+import Post from '../components/Post'
+import AdmissionFrom from '../forms/Admisson'
+import BatchFrom from '../forms/Batch'
+import Department from '../forms/Department'
+import DepartmentAllocationFrom from '../forms/DepartmentAllocation'
+import DesignationForm from '../forms/Designation'
+import ExamBrowserFrom from '../forms/ExamBrowser'
+import ExamNameFrom from '../forms/ExamName'
+import ExamTypeFrom from '../forms/ExamType'
+import RoleForm from '../forms/Role'
+import SemesterForm from '../forms/Semester'
+import StaffForm from '../forms/Staff'
+import SubjectTypeForm from '../forms/SubjectType'
+import Year from '../forms/Year'
+
 
 export default class App extends React.Component{
     render(){
         return(
             <div>
+                <h1>{this.props.info.username}</h1>
                 <div className="container-fluid">
                         <div className="row">
                             <div className="col">
@@ -22,6 +37,7 @@ export default class App extends React.Component{
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
+                                    <Post postform={AdmissionFrom()}/>
                                     <MDBDataTable striped bordered hover data={data} />
                                 </div>
                             </div>

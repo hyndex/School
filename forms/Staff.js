@@ -2,7 +2,7 @@ import React from 'react'
 
 const StaffForm = () => {
     return (
-        <form>
+        <div>
             <div className="form-group row">
                 <label for="name" className="col-3 col-form-label">Name</label>
                 <div className="col-9">
@@ -91,7 +91,7 @@ const StaffForm = () => {
                     <button name="submit" type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </div>
-        </form>
+        </div>
     )
 }
 

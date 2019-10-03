@@ -46,7 +46,22 @@ export default class SideBar extends React.Component{
         return menu_items
     }
     render(){
-        var menu_items=this.createMenu(AdminNavMenu)
+        var menu = StudentNavMenu
+        switch(this.props.role){
+            case 'admin': menu=AdminNavMenu;
+            break;
+            case 'staff':  menu=StaffNavMenu;
+            break;
+            case 'student':  menu=StudentNavMenu;
+            break;
+            case 'depertment':  menu=DepertmentNavMenu;
+            break;
+            case 'placement':  menu=PlacementNavMenu;
+            break;
+            default:  menu=AdminNavMenu;
+            break;
+        }
+        var menu_items=this.createMenu(menu)
         console.log(menu_items)
         return(
             <div>

@@ -4,7 +4,7 @@ import Select from '../endpoints/select'
 
 const ExamBrowserFrom = () => {
     return (
-        <form>
+        <div>
             <div className="form-group row">
                 <label for="examname" className="col-4 col-form-label">Exam Name</label>
                 <div className="col-8">
@@ -31,7 +31,7 @@ const ExamBrowserFrom = () => {
                     <button name="submit" type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </div>
-        </form>
+        </div>
     )
 
 

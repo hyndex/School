@@ -4,7 +4,7 @@ import Select from '../endpoints/select'
 
 const DesignationForm = () => {
     return (
-        <form>
+        <div>
             <div className="form-group row">
                 <label for="Designation" className="col-4 col-form-label">Designation</label>
                 <div className="col-8">
@@ -16,7 +16,7 @@ const DesignationForm = () => {
                     <button name="submit" type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </div>
-        </form>
+        </div>
     )
 }
 export default DesignationForm

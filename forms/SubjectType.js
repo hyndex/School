@@ -1,8 +1,8 @@
 import React from 'react'
 
-const StaffForm = ()=>{
+const SubjectTypeForm = ()=>{
 return (
-    <form>
+    <div>
     <div className="form-group row">
         <label for="subtype" className="col-4 col-form-label">Add Subject Type</label> 
         <div className="col-8">
@@ -14,7 +14,7 @@ return (
         <button name="submit" type="submit" className="btn btn-primary">Submit</button>
         </div>
     </div>
-    </form>
+    </div>
 )}
 
-export default StaffForm
+export default SubjectTypeForm

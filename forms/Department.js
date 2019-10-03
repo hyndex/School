@@ -3,7 +3,7 @@ import Select from '../endpoints/select'
 
 const DepartmentForm = () => {
     return (
-        <form>
+        <div>
             <div className="form-group row">
                 <label for="Department" className="col-4 col-form-label">Department Name</label>
                 <div className="col-8">
@@ -36,7 +36,7 @@ const DepartmentForm = () => {
                     <button name="submit" type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </div>
-        </form>
+        </div>
     )
 }
 

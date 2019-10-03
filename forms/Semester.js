@@ -4,7 +4,7 @@ import Select from '../endpoints/select'
 
 const SemesterForm = ()=>{
 return (
-    <form>
+    <div>
         <div className="form-group row">
             <label for="Semester" className="col-4 col-form-label">Semester</label> 
             <div className="col-8">
@@ -22,7 +22,7 @@ return (
             <button name="submit" type="submit" className="btn btn-primary">Submit</button>
             </div>
         </div>
-    </form>
+    </div>
 
 )}
 

@@ -2,7 +2,7 @@ import React from 'react'
 
 const YearForm = () => {
   return (
-    <form>
+    <div>
       <div className="form-group row">
         <label for="year" className="col-4 col-form-label">Add Year</label>
         <div className="col-8">
@@ -14,7 +14,7 @@ const YearForm = () => {
           <button name="submit" type="submit" className="btn btn-primary">Submit</button>
         </div>
       </div>
-    </form>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import Select from '../endpoints/select'
 
 const RoleForm = () => {
     return (
-        <form>
+        <div>
             <div className="form-group row">
                 <label for="role" className="col-4 col-form-label">Add Staff Type</label>
                 <div className="col-8">
@@ -16,7 +16,7 @@ const RoleForm = () => {
                     <button name="submit" type="submit" className="btn btn-primary">Submit</button>
                 </div>
             </div>
-        </form>
+        </div>
     )
 }
 

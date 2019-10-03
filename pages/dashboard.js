@@ -11,7 +11,6 @@ export default class dashboard extends React.Component {
             role:'admin',
             logged: false,
             Token: '9988776655544332211',
-            menu:'AdminNavMenu',
             section:''
         }
     }
