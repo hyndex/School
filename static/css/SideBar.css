@@ -1,5 +1,5 @@
 nav ul {
-    float: left;
+    float: bottom;
 }
 nav ul ul {
     display: none;
@@ -11,5 +11,5 @@ nav ul li:hover > ul {
     position: absolute;
     display: block;
     top: 0;
-    left: 100%;
+    bottom: 100%;
 }

@@ -5,7 +5,7 @@ import {
     StudentNavMenu,
     DepertmentNavMenu,
     PlacementNavMenu
-} from '../endpoints/NavBarEndPoints'
+} from '../endpoints/SideBarEndPoints'
 
 export default class SideBar extends React.Component{
     constructor(){
@@ -14,12 +14,13 @@ export default class SideBar extends React.Component{
             role:'admin',
             menu:AdminNavMenu
         }
+        this.createMenu=this.createMenu.bind(this)
     }
     createSubMenu(items){
         var sub_menu_items=[]
         items.map((item,index)=>{
             sub_menu_items.push(
-                <li>
+                <li key={index}>
                     <a href={item.url}>
                     {item.name}
                     </a>
@@ -28,11 +29,11 @@ export default class SideBar extends React.Component{
         })
         return sub_menu_items
     }
-    render(){
+    createMenu(menu){
         var menu_items=[]
-        AdminNavMenu.map((item,index)=>{
+        menu.map((item,index)=>{
             menu_items.push(
-                <li id={index}>
+                <li key={index}>
                     <a href="#">
                         {item.groupname}
                     </a>
@@ -42,6 +43,10 @@ export default class SideBar extends React.Component{
                 </li>
             )
         })
+        return menu_items
+    }
+    render(){
+        var menu_items=this.createMenu(AdminNavMenu)
         console.log(menu_items)
         return(
             <div>
