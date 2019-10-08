@@ -8,7 +8,7 @@ export default class dashboard extends React.Component {
         this.state = {
             username: "dikibhuyan",
             password: "qwertyuiop",
-            role:'admin',
+            role:'student',
             logged: false,
             Token: '9988776655544332211',
             section:''
