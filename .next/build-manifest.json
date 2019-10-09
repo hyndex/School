@@ -4,11 +4,11 @@
     "static/development/dll/dll_d001615c188baf391cd0.js.map"
   ],
   "pages": {
-    "/Dashboard": [
+    "/": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/Login": [
+    "/Admission": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
@@ -17,6 +17,14 @@
       "static/runtime/main.js"
     ],
     "/_error": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/index": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/next/dist/pages/_error": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

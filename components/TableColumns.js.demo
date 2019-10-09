@@ -1,0 +1,255 @@
+import React from 'react'
+
+const AdmissionColumn = (){
+    name: String,
+    address: {
+        doorNo: String,
+        street: String,
+        landmark: String,
+        post:String,
+        city: String,
+        state: String,
+        country: String,
+        pincode: String,
+        mobile1: String,
+        mobile2: String,
+    },
+    gender: String,
+    fatherName: String,
+    dob: Date,
+    sslcMark: Number,
+    hscMark: Number,
+    community: String,
+    admissionNumber: String,
+    registerNumber: String,
+    rollNum: String,
+    category: String,
+    aadharNum: String,
+    religion: String,
+    batch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Batch',
+    },
+    userAccount: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    }
+}
+
+const BatchColumn = (){
+    start: Date,
+    end: Date,
+    batchShortcode: String,
+    isActive: {
+        type: Boolean,
+        default: false,
+    }
+}
+
+const DepartmentColumn = (){
+    code:  String,
+    name: String,
+    shortName: String,
+    isActive: {
+        type: Boolean,
+        default: false,
+    },
+}
+
+const DesignationColumn = (){
+    type: String,
+}
+
+const SubjectColumn = (){
+    code: String,
+    name: String,
+    subjecttype:  {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subjecttype',
+    },
+    semester: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Semester',
+    },
+    department: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Department',
+    }
+}
+
+const StaffColumn = (){
+    name: String,
+    id: String,
+    gender: String,
+    dateOfJoining: Date,
+    qualification:String,
+    designation: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Designation',
+    },
+    staffType: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'StaffType',
+    },
+    address: {
+        doorNo: String,
+        street: String,
+        landmark: String,
+        post:String,
+        city: String,
+        state: String,
+        country: String,
+        pincode: String,
+        mobile1: String,
+        mobile2: String,
+    },
+    subjects: [{
+        subject: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Subject',
+        },
+        class: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Class',
+        }
+    }],
+    userAccount: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+    },
+}
+
+const SemisterColumn = (){
+    semester: String,
+    year: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Year',
+    }
+}
+
+const CategoryColumn = (){
+    category: String,
+}
+
+const ClassColumn = (){
+    semester: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Semester',
+    },
+    department: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Department',
+    },
+    batch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Batch',
+    },
+    category:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Category'
+    },
+    staff: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Staff',
+    },
+    classname:{
+        type:String
+    }
+}
+
+const ExamColumn = (){
+    name: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Examname',
+    },
+    type:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Examtype',
+    },
+    class: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Class',
+    },
+    exam: [{datetime: Date,
+    description: String,
+    subject: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject',
+    }}],
+}
+
+const ExamNameColumn = (){
+    name: String,
+}
+
+const ExamTypeColumn = (){
+    type: String,
+}
+
+const MarksColumn = (){
+    exam: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Exam',
+    },
+    student: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Student',
+    },
+    marks: [{
+        subject: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Subject',
+        },
+        im: {
+            type: Number,
+            alias: 'internalMarks',
+            default: 0,
+        },
+        em: {
+            type: Number,
+            alias: 'externalMarks',
+            default: 0,
+        },
+    }],
+}
+
+const SubjectTypeColumn = (){
+    type: String,
+}
+
+const TimeTableColumn = (){
+    day: {
+        type: String,
+        enum: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+    },
+    hour: {
+        type: Number,
+        min: 1,
+        max: 7,
+    },
+    class: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Class',
+    },
+    subject: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Subject',
+    },
+}
+
+const UserColumn = (){
+    pwdhash: {// bcrypt hash
+        type: String,
+    },
+    email: {
+        type: String,
+        match: [emailRegex, 'Must be a valid email'],
+        required: true,
+        unique: true,
+    },
+}
+
+const YearColumn = (){
+    year: String,
+}
+

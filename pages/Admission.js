@@ -1,6 +1,11 @@
 import React from 'react'
 import AdmissionFrom from '../forms/Admisson'
-require('dotenv').config()
+import { MDBDataTable } from 'mdbreact';
+import SideBar from '../components/Sidebar'
+import NavBar from '../components/Navbar'
+import data from '../demo/tabledata'
+import Post from '../components/Post'
+// require('dotenv').config()
 
 export default class Admisson extends React.Component {
     constructor() {
@@ -8,39 +13,41 @@ export default class Admisson extends React.Component {
         this.state = {
             username: "dikibhuyan",
             role:'student',
-            logged: true
+            logged: true,  
+            
+            
         }
     }
-    async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/admission/', {
-            method: 'GET',
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded",
-                'Accept': 'application/json',
-            }
-        })
-            .then(response => response.json())
-            .then(data => this.setState({
-                fields_data: data
-            }))
-    }
+    // async componentDidMount() {
+    //     await fetch('http://'+SERVER_URL+'/admission/', {
+    //         method: 'GET',
+    //         headers: {
+    //             "Content-type": "application/x-www-form-urlencoded",
+    //             'Accept': 'application/json',
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => this.setState({
+    //             fields_data: data
+    //         }))
+    // }
     render() {
         return (
             <div>
                 <div className="container-fluid">
                         <div className="row">
                             <div className="col">
-                            <NavBar username={this.props.info.username}/>
+                            <NavBar username={this.state.username}/>
                             </div>
                         </div>
                         <div className="row my-3">
-                            <SideBar role={this.props.info.role}/>
+                            <SideBar role={this.state.role}/>
                             <div className="row card card-body mx-4">
                                 <div id='Body'>
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={AdmissionFrom()}/>
+                                    <Post postform={<AdmissionFrom/>}/>
                                     <MDBDataTable striped bordered hover data={data} />
                                 </div>
                             </div>
