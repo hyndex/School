@@ -4,11 +4,15 @@
     "static/development/dll/dll_d001615c188baf391cd0.js.map"
   ],
   "pages": {
-    "/": [
+    "/Department": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/Admission": [
+    "/DepartmentAllocation": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
+    "/Designation": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
@@ -17,10 +21,6 @@
       "static/runtime/main.js"
     ],
     "/_error": [
-      "static/runtime/webpack.js",
-      "static/runtime/main.js"
-    ],
-    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
