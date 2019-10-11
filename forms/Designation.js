@@ -34,7 +34,7 @@ export default class DesignationForm extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/depertment/', {
+        fetch('http://' + SERVER_URL + '/designation/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

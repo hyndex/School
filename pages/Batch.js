@@ -59,3 +59,4 @@ export default class Batch extends React.Component {
             )
     }
 }
+//clickEvent?: ()=>

@@ -40,7 +40,7 @@ export default class DepartmentAllocationFrom extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/depertment/', {
+        fetch('http://' + SERVER_URL + '/depertmentallocation/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -59,11 +59,7 @@ export default class DepartmentAllocationFrom extends React.Component {
                     <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
                         <select id='Batch_id' name='Batch_id' key='Batch_id' onChange={this.handleChange} required='required' className="custom-select">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="rabbit1">Rabbit</option>
-                            <option value="rabbit2">Rabbit</option>
-                            <option value="rabbit3">Rabbit</option>
-                            <option value="rabbit4">Rabbit</option>
+                        {Select('batch')}
                         </select>
                     </div>
                 </div>
@@ -71,23 +67,7 @@ export default class DepartmentAllocationFrom extends React.Component {
                     <label htmlFor="Department" className="col-4 col-form-label">Department</label>
                     <div className="col-8">
                         <select id='Department_id' name='Department_id' key='Department_id' onChange={this.handleChange} required='required' className="custom-select">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="rabbit1">Rabbit</option>
-                            <option value="rabbit2">Rabbit</option>
-                            <option value="rabbit3">Rabbit</option>
-                            <option value="rabbit4">Rabbit</option>
-                        </select>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="Department" className="col-4 col-form-label">Department</label>
-                    <div className="col-8">
-                        <select id='Department_id' name='Department_id' key='Department_id' onChange={this.handleChange} required='required' className="custom-select">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="rabbit1">Rabbit</option>
-                            <option value="rabbit2">Rabbit</option>
-                            <option value="rabbit3">Rabbit</option>
-                            <option value="rabbit4">Rabbit</option>
+                        {Select('department')}
                         </select>
                     </div>
                 </div>
@@ -96,11 +76,7 @@ export default class DepartmentAllocationFrom extends React.Component {
                     <div className="col-8">
 
                         <select id='Category_id' name='Category_id' key='Category_id' onChange={this.handleChange} required='required' className="custom-select">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="rabbit1">Rabbit</option>
-                            <option value="rabbit2">Rabbit</option>
-                            <option value="rabbit3">Rabbit</option>
-                            <option value="rabbit4">Rabbit</option>
+                        {Select('category')}
                         </select>
                     </div>
                 </div>
@@ -108,11 +84,7 @@ export default class DepartmentAllocationFrom extends React.Component {
                     <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
                     <div className="col-8">
                         <select id='ClassIC' name='ClassIC' key='ClassIC' onChange={this.handleChange} required='required' className="custom-select">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="rabbit1">Rabbit</option>
-                            <option value="rabbit2">Rabbit</option>
-                            <option value="rabbit3">Rabbit</option>
-                            <option value="rabbit4">Rabbit</option>
+                        {Select('classic')}
                         </select>
                     </div>
                 </div>

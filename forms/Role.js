@@ -34,7 +34,7 @@ export default class RoleForm extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/depertment/', {
+        fetch('http://' + SERVER_URL + '/stafftype/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {

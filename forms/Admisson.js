@@ -86,7 +86,7 @@ export default class AdmissionForm extends React.Component {
       client_id: this.state.post_data.client,
     }
     console.log(JSON.stringify(data))
-    fetch('http://'+SERVER_URL+'/depertment/', {
+    fetch('http://'+SERVER_URL+'/admission/', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -191,11 +191,7 @@ export default class AdmissionForm extends React.Component {
           <label htmlFor="Category" className="col-4 col-form-label">Category</label>
           <div className="col-8">
             <select id='category_id' name='category_id' key='category_id' onChange={this.handleChange} required='required' className="custom-select">
-              <option value="rabbit">Rabbit</option>
-              <option value="rabbit1">Rabbit</option>
-              <option value="rabbit2">Rabbit</option>
-              <option value="rabbit3">Rabbit</option>
-              <option value="rabbit4">Rabbit</option>
+              {Select('category')}
             </select>
           </div>
         </div>
@@ -203,11 +199,7 @@ export default class AdmissionForm extends React.Component {
           <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
           <div className="col-8">
             <select id='batch_id' name='batch_id' key='batch_id' onChange={this.handleChange} required='required' className="custom-select">
-              <option value="rabbit">Rabbit</option>
-              <option value="rabbit1">Rabbit</option>
-              <option value="rabbit2">Rabbit</option>
-              <option value="rabbit3">Rabbit</option>
-              <option value="rabbit4">Rabbit</option>
+              {Select('batch')}
             </select>
           </div>
         </div>
@@ -215,11 +207,7 @@ export default class AdmissionForm extends React.Component {
           <label htmlFor="Department" className="col-4 col-form-label">Department</label>
           <div className="col-8">
             <select id='dept_id' name='dept_id' key='dept_id' onChange={this.handleChange} required='required' className="custom-select">
-              <option value="rabbit">Rabbit</option>
-              <option value="rabbit1">Rabbit</option>
-              <option value="rabbit2">Rabbit</option>
-              <option value="rabbit3">Rabbit</option>
-              <option value="rabbit4">Rabbit</option>
+            {Select('department')}
             </select>
           </div>
         </div>

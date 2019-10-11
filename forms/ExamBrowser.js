@@ -36,7 +36,7 @@ export default class ExamBrowserFrom extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/depertment/', {
+        fetch('http://' + SERVER_URL + '/exambrowser/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -54,8 +54,7 @@ export default class ExamBrowserFrom extends React.Component {
                     <label htmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
                         <select id="examname" name="examname" key='examname' onChange={this.handleChange} className="custom-select" required="required">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="fish">Fish</option>
+                        {Select('examname')}
                         </select>
                     </div>
                 </div>
@@ -63,8 +62,7 @@ export default class ExamBrowserFrom extends React.Component {
                     <label htmlFor="examtype" className="col-4 col-form-label">Exam type</label>
                     <div className="col-8">
                         <select id="examtype" name="examtype" key='examtype' onChange={this.handleChange} className="custom-select" required="required">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="fish">Fish</option>
+                        {Select('examtype')}
                         </select>
                     </div>
                 </div>
@@ -72,8 +70,7 @@ export default class ExamBrowserFrom extends React.Component {
                     <label htmlFor="class" className="col-4 col-form-label">Class</label>
                     <div className="col-8">
                         <select id="class" name="class" key='class' onChange={this.handleChange} className="custom-select" required="required">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="fish">Fish</option>
+                        {Select('class')}
                         </select>
                     </div>
                 </div>

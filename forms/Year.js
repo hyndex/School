@@ -27,7 +27,7 @@ export default class YearForm extends React.Component {
       client_id: this.state.post_data.client,
     }
     console.log(JSON.stringify(data))
-    fetch('http://' + SERVER_URL + '/depertment/', {
+    fetch('http://' + SERVER_URL + '/year/', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {

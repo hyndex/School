@@ -34,7 +34,7 @@ export default class SemesterForm extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/depertment/', {
+        fetch('http://' + SERVER_URL + '/semester/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -57,10 +57,8 @@ export default class SemesterForm extends React.Component {
                 <div class="form-group row">
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
-                        {Select('Year', 'Year', 'required')}
                         <select id="year" name="year" key='year' onChange={this.handleChange} className="custom-select" required="required">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="fish">Fish</option>
+                        {Select('year')}
                         </select>
                     </div>
                 </div>

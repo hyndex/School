@@ -41,7 +41,7 @@ export default class StaffForm extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/depertment/', {
+        fetch('http://' + SERVER_URL + '/staff/', {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -124,11 +124,7 @@ export default class StaffForm extends React.Component {
                     <label htmlfor="Stafftype" class="col-4 col-form-label">Staff Type</label>
                     <div class="col-8">
                         <select id='role' name='role' key='role' onChange={this.handleChange} required='required' className="custom-select">
-                            <option value="rabbit">Rabbit</option>
-                            <option value="rabbit1">Rabbit</option>
-                            <option value="rabbit2">Rabbit</option>
-                            <option value="rabbit3">Rabbit</option>
-                            <option value="rabbit4">Rabbit</option>
+                        {Select('role')}
                         </select>
                     </div>
                 </div>
