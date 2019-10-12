@@ -13,7 +13,7 @@ export default class RoleForm extends React.Component {
             },
             post_data:
             {
-                role: '',
+                stafftype: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -51,7 +51,7 @@ export default class RoleForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="role" className="col-4 col-form-label">Add Staff Type</label>
                     <div className="col-8">
-                        <input id="role" name="role" key='role' onChange={this.handleChange} placeholder="Role" type="text" required="required" className="form-control" />
+                        <input id="stafftype" name="stafftype" key='stafftype' onChange={this.handleChange} placeholder="Role" type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

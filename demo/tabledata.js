@@ -1,4 +1,7 @@
 import React from 'react'
+function handleClick(params){
+  console.log(params)
+}
 const data = {
     columns: [
       {
@@ -46,7 +49,7 @@ const data = {
         age: '61',
         date: '2011/04/25',
         salary: '$320',
-        clickEvent: () => console.log('id')
+        clickEvent: () => handleClick('sss')
         
       },
       {
@@ -56,6 +59,7 @@ const data = {
         age: '63',
         date: '2011/07/25',
         salary: '$170',
+        clickEvent: () => handleClick
       },
       {
         name: 'Ashton Cox',
@@ -64,6 +68,7 @@ const data = {
         age: '66',
         date: '2009/01/12',
         salary: '$86',
+        clickEvent: () => handleClick
       },
       {
         name: 'Cedric Kelly',
@@ -72,6 +77,7 @@ const data = {
         age: '22',
         date: '2012/03/29',
         salary: '$433',
+        clickEvent: () => handleClick
       },
       
     ]

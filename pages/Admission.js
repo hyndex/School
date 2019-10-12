@@ -5,7 +5,8 @@ import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
-// require('dotenv').config()
+import ReactTable from 'react-table'
+import {AdmissionColumns} from '../components/Columns'
 
 export default class Admisson extends React.Component {
     constructor() {
@@ -14,9 +15,12 @@ export default class Admisson extends React.Component {
             username: "dikibhuyan",
             role:'student',
             logged: true,  
-            
+            data:[]
             
         }
+    }
+    handleClick(params){
+        console.log(params)
     }
     // async componentDidMount() {
     //     await fetch('http://'+SERVER_URL+'/admission/', {
@@ -31,6 +35,16 @@ export default class Admisson extends React.Component {
     //             fields_data: data
     //         }))
     // }
+    async componentDidMount() {
+        await fetch('http://jsonplaceholder.typicode.com/posts', {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            // .then(data => console.log(data))
+            .then(data => this.setState({
+                data: data
+            }))
+    }
     render() {
         return (
             <div>
@@ -48,13 +62,23 @@ export default class Admisson extends React.Component {
                                         Create
                                     </button>
                                     <Post postform={<AdmissionFrom/>}/>
-                                    <MDBDataTable striped bordered hover data={data} />
+                                    <ReactTable
+                                    columns={AdmissionColumns}
+                                    data={this.state.data}
+                                    filterable
+                                    defaultPageSize={7}
+                                    noDataText={'Please wait....'}
+                                    // showPaginationTop
+                                    >
+
+                                    </ReactTable>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <link rel="stylesheet" href="./static/css/bootstrap.min.css"/>
                 <link rel="stylesheet" href="./static/css/SideBar.css"/>
+                <link rel="stylesheet" href="./static/css/react-table.css"/>
                 <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
                 <script src="./static/js/popper.min.js"></script>
                 <script src="./static/js/bootstrap.min.js"></script>
