@@ -1,10 +1,13 @@
 import React from 'react'
 import DepartmentAllocationFrom from '../forms/DepartmentAllocation'
-import { MDBDataTable } from 'mdbreact';
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
+import ReactTable from 'react-table'
+import {DepartmentAllocationColumns} from '../components/Columns'
+import SERVER_URL from '../endpoints/Server'
+
 
 export default class DepartmentAllocation extends React.Component {
     constructor() {
@@ -45,13 +48,23 @@ export default class DepartmentAllocation extends React.Component {
                                         Create
                                     </button>
                                     <Post postform={<DepartmentAllocationFrom/>}/>
-                                    <MDBDataTable striped bordered hover data={data} />
+                                    <ReactTable
+                                    columns={DepartmentAllocationColumns}
+                                    data={this.state.data}
+                                    filterable
+                                    defaultPageSize={7}
+                                    noDataText={'Please wait....'}
+                                    // showPaginationTop
+                                    >
+
+                                    </ReactTable>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <link rel="stylesheet" href="./static/css/bootstrap.min.css"/>
                 <link rel="stylesheet" href="./static/css/SideBar.css"/>
+                <link rel="stylesheet" href="./static/css/react-table.css"/>
                 <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
                 <script src="./static/js/popper.min.js"></script>
                 <script src="./static/js/bootstrap.min.js"></script>

@@ -1,4 +1,5 @@
 import React from 'react'
+import Select from '../endpoints/select'
 
 export default class StaffForm extends React.Component {
     constructor() {

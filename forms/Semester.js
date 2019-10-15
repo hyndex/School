@@ -72,5 +72,3 @@ export default class SemesterForm extends React.Component {
         )
     }
 }
-
-export default SemesterForm
