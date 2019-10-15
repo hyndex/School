@@ -1,3 +1,3 @@
 import React from 'react'
-const SERVER_URL = '1.1.1.1'
+const SERVER_URL = 'localhost:3000'
 export default SERVER_URL

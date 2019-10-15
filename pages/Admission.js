@@ -1,12 +1,12 @@
 import React from 'react'
 import AdmissionFrom from '../forms/Admisson'
-import { MDBDataTable } from 'mdbreact';
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
 import ReactTable from 'react-table'
 import {AdmissionColumns} from '../components/Columns'
+import SERVER_URL from '../endpoints/Server'
 
 export default class Admisson extends React.Component {
     constructor() {
@@ -48,6 +48,7 @@ export default class Admisson extends React.Component {
     render() {
         return (
             <div>
+                <h1>{SERVER_URL}</h1>
                 <div className="container-fluid">
                         <div className="row">
                             <div className="col">

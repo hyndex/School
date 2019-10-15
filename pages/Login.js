@@ -4,6 +4,7 @@ import React from 'react'
 // import UpdateUser from '../Actions/UserAction'
 // import UpdatePermission from '../Actions/PermissionAction'
 // import Cookies from 'universal-cookie';
+import SERVER_URL from '../endpoints/Server'
 
 
 
@@ -14,9 +15,10 @@ export default class Login extends React.Component {
             username: "",
             password: "",
             logged: false,
-            Token: ''
+            AutoLog=false
         }
-        this.handleChange=this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.Login = this.Login.bind(this)
     }
 
     handleChange(event) {
@@ -25,10 +27,76 @@ export default class Login extends React.Component {
         })
         console.log(this.state)
     }
-    Login(){
-        return true
+
+    // Login(){
+    //     return true
+    // }
+    Login() {
+        fetch('http://' + SERVER_URL + '/login/', {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        }).then(async (res) => {
+            try {
+                const data = await res.json()
+                const cookies = new Cookies();
+                logged = false
+                if (data.status == 200) {
+                    logged = true
+                }
+                cookies.set('logged', logged);
+                console.log(cookies.get('logged'));
+                store.dispatch(UpdateUser(cookies.get('logged')))
+                this.setState({ logged: cookies.get('logged') })
+            } catch (error) { console.error(error) }
+        }).catch(err => { console.error(err) })
+    }
+    AutoLog() {
+        fetch('http://' + SERVER_URL + '/users/', {
+            method: 'GET',
+            body: JSON.stringify(this.state),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        }).then(async (res) => {
+            try {
+                const data = await res.json()
+                const cookies = new Cookies();
+                logged = false
+                if (data.status == 200) {
+                    logged = true
+                }
+                cookies.set('logged', logged);
+                console.log(cookies.get('logged'));
+                store.dispatch(UpdateUser(cookies.get('logged')))
+                this.setState({ logged: cookies.get('logged') })
+                this.setState({ AutoLog: true })
+            } catch (error) { console.error(error) }
+        }).catch(err => { console.error(err) })
     }
     render() {
+        if(this.state.AutoLog==false){
+            AutoLog()
+        }
+        
+
+        if (this.state.logged == false || new Cookies().get('logged') != true) {
+            var cookies = new Cookies();
+            const logged = cookies.get('logged')
+            this.setState({ logged: logged })
+            this.setState({ tried: 1 })
+            store.dispatch(UpdateUser(logged))
+        }
+        if (this.state.logged == true) {
+            return (
+                window.location.replace("./Admission")
+
+            );
+        }
         return (
             <html>
                 <head>

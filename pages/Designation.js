@@ -1,11 +1,13 @@
 import React from 'react'
 import DesignationFrom from '../forms/Designation'
-import { MDBDataTable } from 'mdbreact';
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
+import ReactTable from 'react-table'
+import {DesignationColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
+
 
 export default class Designation extends React.Component {
     constructor() {
@@ -16,19 +18,19 @@ export default class Designation extends React.Component {
             logged: true
         }
     }
-    async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/designation/', {
-            method: 'GET',
-            headers: {
-                "Content-type": "application/x-www-form-urlencoded",
-                'Accept': 'application/json',
-            }
-        })
-            .then(response => response.json())
-            .then(data => this.setState({
-                fields_data: data
-            }))
-    }
+    // async componentDidMount() {
+    //     await fetch('http://'+SERVER_URL+'/designation/', {
+    //         method: 'GET',
+    //         headers: {
+    //             "Content-type": "application/x-www-form-urlencoded",
+    //             'Accept': 'application/json',
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => this.setState({
+    //             fields_data: data
+    //         }))
+    // }
     render() {
         return (
             <div>
@@ -46,13 +48,23 @@ export default class Designation extends React.Component {
                                         Create
                                     </button>
                                     <Post postform={<DesignationFrom/>}/>
-                                    <MDBDataTable striped bordered hover data={data} />
+                                    <ReactTable
+                                    columns={DesignationColumns}
+                                    data={this.state.data}
+                                    filterable
+                                    defaultPageSize={7}
+                                    noDataText={'Please wait....'}
+                                    // showPaginationTop
+                                    >
+
+                                    </ReactTable>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <link rel="stylesheet" href="./static/css/bootstrap.min.css"/>
                 <link rel="stylesheet" href="./static/css/SideBar.css"/>
+                <link rel="stylesheet" href="./static/css/react-table.css"/>
                 <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
                 <script src="./static/js/popper.min.js"></script>
                 <script src="./static/js/bootstrap.min.js"></script>
