@@ -1,15 +1,25 @@
-nav ul {
-    float: bottom;
+#sidebar > ul, #sidebar > ul > li > ul {
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px;
+    margin-left: 20px;
 }
-nav ul ul {
-    display: none;
+
+#sidebar > ul > li > ul > li{
+    padding-left: 10px;
 }
-nav ul li {
-    position: relative;
+
+#sidebar a:hover {
+    text-decoration: none;
 }
-nav ul li:hover > ul {
-    position: absolute;
-    display: block;
-    top: 0;
-    bottom: 100%;
+
+#sidebar li{
+    padding: 5px;
+}
+
+#sidebar a{
+    color: #555;
+}
+#sidebar a:hover{
+    color: #000;
 }

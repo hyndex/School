@@ -48,7 +48,6 @@ export default class Admisson extends React.Component {
     render() {
         return (
             <div>
-                <h1>{SERVER_URL}</h1>
                 <div className="container-fluid">
                         <div className="row">
                             <div className="col">
