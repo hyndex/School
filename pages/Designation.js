@@ -1,6 +1,7 @@
 import React from 'react'
-import DesignationFrom from '../forms/Designation'
+import {PostForm,PutForm} from '../forms/Designation'
 import SideBar from '../components/Sidebar'
+import Show from '../components/Show'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
@@ -47,7 +48,8 @@ export default class Designation extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<DesignationFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={DesignationColumns}
                                     data={this.state.data}

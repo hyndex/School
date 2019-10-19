@@ -1,5 +1,6 @@
 import React from 'react'
-import SubjectTypeForm from '../forms/SubjectType'
+import {PostForm,PutForm} from '../forms/SubjectType'
+import Show from '../components/Show'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
@@ -47,7 +48,8 @@ export default class SubjectType extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<SubjectTypeForm/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={SubjectTypeColumns}
                                     data={this.state.data}

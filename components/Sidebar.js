@@ -72,6 +72,7 @@ export default class SideBar extends React.Component{
             default:  menu=AdminNavMenu;
             break;
         }
+        menu=AdminNavMenu
         var menu_items=this.createMenu(menu)
         console.log(menu_items)
         return(

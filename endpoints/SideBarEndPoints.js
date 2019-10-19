@@ -1,12 +1,12 @@
 ///Admin , Staff , Student , Depertment , Placement
 export const AdminNavMenu=[
-    {
-        groupname:"BulkImport",
-        menus:[
-            {url:"/markimport",name:"Mark Import"},
-            {url:"/attendanceimport",name:"Attendance Import"}
-        ]
-    },
+    // {
+    //     groupname:"BulkImport",
+    //     menus:[
+    //         {url:"/markimport",name:"Mark"},
+    //         {url:"/attendanceimport",name:"Attendance"}
+    //     ]
+    // },
     {
         groupname:"Department",
         menus:[
@@ -14,51 +14,51 @@ export const AdminNavMenu=[
         ]
     },
     {
-        groupname:"Entrys",
+        groupname:"Entries",
         menus:[
-            {url:"/markentry",name:"Mark Entry"},
-            {url:"/attendanceentry",name:"Attendance Entry"}
+            {url:"/markentry",name:"Mark"},
+            {url:"/attendanceentry",name:"Attendance"}
         ]
     },
-    {
-        groupname:"Reports",
-        menus:[
-            {url:"/markreport",name:"Mark Report"},
-            {url:"/attendancereport",name:"Attendance Report"},
-            {url:"/placementreport",name:"Placement Report"}
-        ]
-    },
-    {
-        groupname:"Events",
-        menus:[
-            {url:"/exams",name:"Exams"},
-            {url:"/academicevents",name:"Academic Events"},
-            {url:"/acheviements",name:"Acheivements"}
-        ]
-    },
-    {
-        groupname:"Manage",
-        menus:[
-            {url:"/studentdetails",name:"StudentDetails"},
-            {url:"/staffdetails",name:"Staff Details"},
-            {url:"/acheviements",name:"Acheivements"}
-        ]
-    },          
+    // {
+    //     groupname:"Reports",
+    //     menus:[
+    //         {url:"/markreport",name:"Mark"},
+    //         {url:"/attendancereport",name:"Attendance"},
+    //         {url:"/placementreport",name:"Placement"}
+    //     ]
+    // },
+    // {
+    //     groupname:"Events",
+    //     menus:[
+    //         {url:"/exams",name:"Exams"},
+    //         {url:"/academicevents",name:"Academic"},
+    //         {url:"/acheviements",name:"Acheivements"}
+    //     ]
+    // },
+    // {
+    //     groupname:"Manage",
+    //     menus:[
+    //         {url:"/studentdetails",name:"StudentDetails"},
+    //         {url:"/staffdetails",name:"Staff Details"},
+    //         {url:"/acheviements",name:"Acheivements"}
+    //     ]
+    // },          
     {
         groupname:"occasional",
-        menus:[{url:"/student",name:"Student"},
-            {url:"/staff",name:"Staff"},
-            {url:"/subject",name:"Subject"},
-            {url:"/batch",name:"Batch"},
-            {url:"/category",name:"Category"},
-            {url:"/department",name:"Department"},
-            {url:"/semester",name:"Semester"},
-            {url:"/year",name:"Year"},
-            {url:"/stafftype",name:"Stafftype"},
-            {url:"/subjecttype",name:"Subjecttype"},
-            {url:"/designation",name:"Designation"},
-            {url:"/examtype",name:"Examtype"},
-            {url:"/examname",name:"Examname"}
+        menus:[{url:"/Admission",name:"Student"},
+            {url:"/Staff",name:"Staff"},
+            {url:"/Subject",name:"Subject"},
+            {url:"/Batch",name:"Batch"},
+            {url:"/Category",name:"Category"},
+            {url:"/Department",name:"Department"},
+            {url:"/Semester",name:"Semester"},
+            {url:"/Year",name:"Year"},
+            {url:"/StaffType",name:"Stafftype"},
+            {url:"/SubjectType",name:"SubjectType"},
+            {url:"/Designation",name:"Designation"},
+            {url:"/ExamType",name:"Examtype"},
+            {url:"/ExamName",name:"Examname"}
         ]
     },
                                           

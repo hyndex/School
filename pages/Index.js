@@ -1,26 +1,29 @@
 import React from 'react'
-import {PostFrom ,PutForm} from '../forms/Department'
+import AdmissionFrom from '../forms/Admisson'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
-import Show from '../components/Show'
 import ReactTable from 'react-table'
-import {DepartmentColumns} from '../components/Columns'
+import {AdmissionColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
 
-
-export default class Department extends React.Component {
+export default class Admisson extends React.Component {
     constructor() {
         super()
         this.state = {
             username: "dikibhuyan",
             role:'student',
-            logged: true
+            logged: true,  
+            data:[]
+            
         }
     }
+    handleClick(params){
+        console.log(params)
+    }
     // async componentDidMount() {
-    //     await fetch('http://'+SERVER_URL+'/department/', {
+    //     await fetch('http://'+SERVER_URL+'/admission/', {
     //         method: 'GET',
     //         headers: {
     //             "Content-type": "application/x-www-form-urlencoded",
@@ -32,6 +35,16 @@ export default class Department extends React.Component {
     //             fields_data: data
     //         }))
     // }
+    async componentDidMount() {
+        await fetch('http://jsonplaceholder.typicode.com/posts', {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            // .then(data => console.log(data))
+            .then(data => this.setState({
+                data: data
+            }))
+    }
     render() {
         return (
             <div>
@@ -48,10 +61,9 @@ export default class Department extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<PostFrom />}/>
-                                    <Show editform={<PutForm />}/>
+                                    <Post postform={<AdmissionFrom/>}/>
                                     <ReactTable
-                                    columns={DepartmentColumns}
+                                    columns={AdmissionColumns}
                                     data={this.state.data}
                                     filterable
                                     defaultPageSize={7}

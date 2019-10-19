@@ -1,11 +1,12 @@
 import React from 'react'
-import RoleFrom from '../forms/Role'
+import { PostForm, PutForm } from '../forms/Role'
+import Show from '../components/Show'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
 import ReactTable from 'react-table'
-import {StaffTypeColumns} from '../components/Columns'
+import { StaffTypeColumns } from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
 
 
@@ -14,7 +15,7 @@ export default class Role extends React.Component {
         super()
         this.state = {
             username: "dikibhuyan",
-            role:'student',
+            role: 'student',
             logged: true
         }
     }
@@ -35,40 +36,41 @@ export default class Role extends React.Component {
         return (
             <div>
                 <div className="container-fluid">
-                        <div className="row">
-                            <div className="col">
-                            <NavBar username={this.state.username}/>
-                            </div>
+                    <div className="row">
+                        <div className="col">
+                            <NavBar username={this.state.username} />
                         </div>
-                        <div className="row my-3">
-                            <SideBar role={this.state.role}/>
-                            <div className="row card card-body mx-4">
-                                <div id='Body'>
-                                    <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
-                                        Create
+                    </div>
+                    <div className="row my-3">
+                        <SideBar role={this.state.role} />
+                        <div className="row card card-body mx-4">
+                            <div id='Body'>
+                                <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
+                                    Create
                                     </button>
-                                    <Post postform={<RoleFrom/>}/>
-                                    <ReactTable
+                                <Post postform={<PostForm />} />
+                                <Show editform={<PutForm />} />
+                                <ReactTable
                                     columns={StaffTypeColumns}
                                     data={this.state.data}
                                     filterable
                                     defaultPageSize={7}
                                     noDataText={'Please wait....'}
-                                    // showPaginationTop
-                                    >
+                                // showPaginationTop
+                                >
 
-                                    </ReactTable>
-                                </div>
+                                </ReactTable>
                             </div>
                         </div>
                     </div>
-                <link rel="stylesheet" href="./static/css/bootstrap.min.css"/>
-                <link rel="stylesheet" href="./static/css/SideBar.css"/>
-                <link rel="stylesheet" href="./static/css/react-table.css"/>
+                </div>
+                <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
+                <link rel="stylesheet" href="./static/css/SideBar.css" />
+                <link rel="stylesheet" href="./static/css/react-table.css" />
                 <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
                 <script src="./static/js/popper.min.js"></script>
                 <script src="./static/js/bootstrap.min.js"></script>
             </div>
-            )
+        )
     }
 }

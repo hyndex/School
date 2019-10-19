@@ -1,9 +1,10 @@
 import React from 'react'
-import DepartmentAllocationFrom from '../forms/DepartmentAllocation'
+import {PostFrom,PutFrom} from '../forms/DepartmentAllocation'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
+import Show from '../components/Show'
 import ReactTable from 'react-table'
 import {DepartmentAllocationColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
@@ -47,7 +48,8 @@ export default class DepartmentAllocation extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<DepartmentAllocationFrom/>}/>
+                                    <Post postform={<PostFrom/>}/>
+                                    <Show editform={<PutFrom />} />
                                     <ReactTable
                                     columns={DepartmentAllocationColumns}
                                     data={this.state.data}

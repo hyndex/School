@@ -249,3 +249,22 @@ export const YearColumns=[
         accessor:'year',
     },
 ]
+
+export const SubjectColumns=[
+    {
+        Header:'Id',
+        accessor:'id',
+    },
+    {
+        Header:'code',
+        accessor:'code',
+    },
+    {
+        Header:'name',
+        accessor:'name',
+    },
+    {
+        Header:'subject type',
+        accessor:'subjecttype',
+    },
+]

@@ -1,5 +1,6 @@
 import React from 'react'
-import ExamBrowserForm from '../forms/ExamBrowser'
+import {PostForm,PutForm} from '../forms/ExamBrowser'
+import Show from '../components/Show'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
@@ -47,7 +48,8 @@ export default class ExamBrowser extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<ExamBrowserForm/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={ExamBrowserColumns}
                                     data={this.state.data}

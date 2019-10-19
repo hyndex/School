@@ -1,6 +1,7 @@
 import React from 'react'
-import ExamNameFrom from '../forms/ExamName'
+import {PostForm,PutForm} from '../forms/ExamName'
 import SideBar from '../components/Sidebar'
+import Show from '../components/Show'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
@@ -47,7 +48,8 @@ export default class ExamName extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<ExamNameFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={ExamNameColumns}
                                     data={this.state.data}

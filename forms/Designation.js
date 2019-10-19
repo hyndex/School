@@ -2,15 +2,10 @@ import React from 'react'
 import Select from '../endpoints/select'
 
 
-export default class DesignationForm extends React.Component {
+export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            pre_load: {
-                batch: '',
-                category: '',
-                depertment: ''
-            },
             post_data:
             {
                 designation: '',
@@ -57,6 +52,63 @@ export default class DesignationForm extends React.Component {
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+/////////////////////////////////////////////////
+// Update
+/////////////////////////////////////////////////
+export class PutForm extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            put_data:
+            {
+                designation: '',
+            },
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+    Update = (e) => {
+        // e.preventDefault()
+        const data = this.state.put_data
+        console.log(JSON.stringify(data))
+        fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+    }
+    handleChange(e) {
+        const { put_data } = { ...this.state };
+        const currentState = put_data;
+        const { name, value } = e.target;
+        currentState[name] = value;
+
+        this.setState({ put_data: currentState })
+
+        console.log('PUT STATE=>', this.state.put_data)
+    }
+    render() {
+        return (
+            <div>
+                <div className="form-group row">
+                    <label htmlFor="Designation" className="col-4 col-form-label">Designation</label>
+                    <div className="col-8">
+                        <input id="designation" name="designation" key='designation' value={this.state.put_data.designation} onChange={this.handleChange} placeholder="Designation" type="text" required="required" className="form-control" />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <div className="offset-4 col-8">
+                        <button name="submit" type="submit" onClick={this.Update} className="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>

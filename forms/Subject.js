@@ -7,12 +7,13 @@ export class PostForm extends React.Component {
         super()
         this.state = {
             pre_load: {
-                year: '',
+                subjecttype: '',
             },
             post_data:
             {
-                year: '',
-                semester: '',
+                code: '',
+                name: '',
+                subjecttype: '',
 
             },
         }
@@ -49,16 +50,22 @@ export class PostForm extends React.Component {
         return (
             <div>
                 <div className="form-group row">
-                    <label htmlFor="Semester" className="col-4 col-form-label">Semester</label>
+                    <label htmlFor="code" className="col-4 col-form-label">Code</label>
                     <div className="col-8">
-                        <input id="semester" name="semester" key='semester' placeholder="Semester" onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="code" name="code" key ='code' placeholder="Code" onChange={this.handleChange} type="text" required="required" className="form-control" />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="name" className="col-4 col-form-label">Name</label>
+                    <div className="col-8">
+                        <input id="name" name="name" key ='name' placeholder="Name" onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
-                        <select id="year" name="year" key='year' onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('year')}
+                        <select id="subjecttype" name="subjecttype" key='subjecttype' onChange={this.handleChange} className="custom-select" required="required">
+                        {Select('subjecttype')}
                         </select>
                     </div>
                 </div>
@@ -73,17 +80,19 @@ export class PostForm extends React.Component {
     }
 }
 
+
 export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
             pre_load: {
-                year: '',
+                subjecttype: '',
             },
-            post_data:
+            put_data:
             {
-                year: '',
-                semester: '',
+                code: '',
+                name: '',
+                subjecttype: '',
 
             },
         }
@@ -118,16 +127,22 @@ export class PutForm extends React.Component {
         return (
             <div>
                 <div className="form-group row">
-                    <label htmlFor="Semester" className="col-4 col-form-label">Semester</label>
+                    <label htmlFor="code" className="col-4 col-form-label">Code</label>
                     <div className="col-8">
-                        <input id="semester" name="semester" key='semester' value={this.state.put_data.semester} placeholder="Semester" onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="code" name="code" key ='code' placeholder="Code" value={this.state.put_data.code} onChange={this.handleChange} type="text" required="required" className="form-control" />
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="name" className="col-4 col-form-label">Name</label>
+                    <div className="col-8">
+                        <input id="name" name="name" key ='name' placeholder="Name" value={this.state.put_data.name} onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
-                        <select id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('year')}
+                        <select id="subjecttype" name="subjecttype" key='subjecttype' value={this.state.put_data.subjecttype} onChange={this.handleChange} className="custom-select" required="required">
+                        {Select('subjecttype')}
                         </select>
                     </div>
                 </div>

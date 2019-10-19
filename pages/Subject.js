@@ -1,16 +1,16 @@
 import React from 'react'
-import {PostFrom ,PutForm} from '../forms/Department'
+import {PostForm,PutForm} from '../forms/Subject'
+import Show from '../components/Show'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
-import Show from '../components/Show'
 import ReactTable from 'react-table'
-import {DepartmentColumns} from '../components/Columns'
+import {SubjectColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
 
 
-export default class Department extends React.Component {
+export default class Role extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -20,7 +20,7 @@ export default class Department extends React.Component {
         }
     }
     // async componentDidMount() {
-    //     await fetch('http://'+SERVER_URL+'/department/', {
+    //     await fetch('http://'+SERVER_URL+'/role/', {
     //         method: 'GET',
     //         headers: {
     //             "Content-type": "application/x-www-form-urlencoded",
@@ -48,10 +48,10 @@ export default class Department extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<PostFrom />}/>
-                                    <Show editform={<PutForm />}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
-                                    columns={DepartmentColumns}
+                                    columns={SubjectColumns}
                                     data={this.state.data}
                                     filterable
                                     defaultPageSize={7}

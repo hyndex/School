@@ -1,10 +1,9 @@
 import React from 'react'
-import BatchFrom from '../forms/Batch'
-import { MDBDataTable } from 'mdbreact';
+import {PostForm,PutForm} from '../forms/Batch'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
-import data from '../demo/tabledata'
 import Post from '../components/Post'
+import Show from '../components/Show'
 import ReactTable from 'react-table'
 import {BatchColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
@@ -49,7 +48,8 @@ export default class Batch extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<BatchFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>}/>
                                     <ReactTable
                                     columns={BatchColumns}
                                     data={this.state.data}

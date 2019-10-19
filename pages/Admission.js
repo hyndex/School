@@ -1,12 +1,15 @@
 import React from 'react'
-import AdmissionFrom from '../forms/Admisson'
+import {AdmissionColumns} from '../components/Columns'
+import {PostForm,PutForm} from '../forms/Admisson'
 import SideBar from '../components/Sidebar'
+import Show from '../components/Show'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
 import Post from '../components/Post'
 import ReactTable from 'react-table'
-import {AdmissionColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
+
+
 
 export default class Admisson extends React.Component {
     constructor() {
@@ -45,6 +48,17 @@ export default class Admisson extends React.Component {
                 data: data
             }))
     }
+    Delete(e) {
+        fetch('http://'+SERVER_URL+'/admission/' + e.target.id, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+    }
     render() {
         return (
             <div>
@@ -61,7 +75,8 @@ export default class Admisson extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<AdmissionFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={AdmissionColumns}
                                     data={this.state.data}

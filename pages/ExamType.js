@@ -1,5 +1,6 @@
 import React from 'react'
-import ExamTypeFrom from '../forms/ExamType'
+import {PostForm,PutForm} from '../forms/ExamType'
+import Show from '../components/Show'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
@@ -11,7 +12,7 @@ import SERVER_URL from '../endpoints/Server'
 
 export default class ExamType extends React.Component {
     constructor() {
-        super()
+        super() 
         this.state = {
             username: "dikibhuyan",
             role:'student',
@@ -47,7 +48,8 @@ export default class ExamType extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<ExamTypeFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={ExamTypeColumns}
                                     data={this.state.data}

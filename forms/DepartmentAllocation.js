@@ -2,9 +2,7 @@ import React from 'react'
 import Select from '../endpoints/select'
 import SERVER_URL from '../endpoints/Server'
 
-
-
-export default class DepartmentAllocationFrom extends React.Component {
+export class PostFrom extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -15,10 +13,10 @@ export default class DepartmentAllocationFrom extends React.Component {
             },
             post_data:
             {
-                Batch_id: '',
-                Semister_id: '',
-                Department_id: '',
-                Category_id: '',
+                batch: '',
+                semister: '',
+                department: '',
+                category: '',
                 ClassIC: '',
             },
         }
@@ -58,7 +56,7 @@ export default class DepartmentAllocationFrom extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
-                        <select id='Batch_id' name='Batch_id' key='Batch_id' onChange={this.handleChange} required='required' className="custom-select">
+                        <select id='batch' name='batch' key='batch' onChange={this.handleChange} required='required' className="custom-select">
                         {Select('batch')}
                         </select>
                     </div>
@@ -66,16 +64,16 @@ export default class DepartmentAllocationFrom extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Department" className="col-4 col-form-label">Department</label>
                     <div className="col-8">
-                        <select id='Department_id' name='Department_id' key='Department_id' onChange={this.handleChange} required='required' className="custom-select">
+                        <select id='department' name='department' key='department' onChange={this.handleChange} required='required' className="custom-select">
                         {Select('department')}
                         </select>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="Category" className="col-4 col-form-label">Category</label>
+                    <label htmlFor="category" className="col-4 col-form-label">category</label>
                     <div className="col-8">
 
-                        <select id='Category_id' name='Category_id' key='Category_id' onChange={this.handleChange} required='required' className="custom-select">
+                        <select id='category' name='category' key='category' onChange={this.handleChange} required='required' className="custom-select">
                         {Select('category')}
                         </select>
                     </div>
@@ -97,3 +95,101 @@ export default class DepartmentAllocationFrom extends React.Component {
         )
     }
 }
+
+/////////////////////////////////////////////////
+// Update
+/////////////////////////////////////////////////
+
+
+export class PutFrom extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            pre_load: {
+                batch: '',
+                category: '',
+                depertment: ''
+            },
+            put_data:
+            {
+                batch: '',
+                semister: '',
+                department: '',
+                category: '',
+                classic: '',
+            },
+        }
+        this.handleChange = this.handleChange.bind(this)
+    }
+    Update = (e) => {
+        // e.preventDefault()
+        const data = this.state.put_data
+        console.log(JSON.stringify(data))
+        fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: {
+            "Content-type": "application/json",
+            'Accept': 'application/json',
+          }
+        })
+          .then(response => response.status)
+          .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+      }
+      handleChange(e) {
+        const { put_data } = { ...this.state };
+        const currentState = put_data;
+        const { name, value } = e.target;
+        currentState[name] = value;
+    
+        this.setState({ put_data: currentState })
+    
+        console.log('PUT STATE=>', this.state.put_data)
+      }
+    render() {
+        return (
+            <div>
+                
+                <div className="form-group row">
+                    <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
+                    <div className="col-8">
+                        <select id='batch' name='batch' key='batch' value={this.state.put_data.batch} onChange={this.handleChange} required='required' className="custom-select">
+                        {Select('batch')}
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="Department" className="col-4 col-form-label">Department</label>
+                    <div className="col-8">
+                        <select id='department' name='department' key='department' value={this.state.put_data.department} onChange={this.handleChange} required='required' className="custom-select">
+                        {Select('department')}
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="category" className="col-4 col-form-label">category</label>
+                    <div className="col-8">
+
+                        <select id='category' name='category' key='category' value={this.state.put_data.category} onChange={this.handleChange} required='required' className="custom-select">
+                        {Select('category')}
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
+                    <div className="col-8">
+                        <select id='classic' name='classic' key='classic' value={this.state.put_data.classic} onChange={this.handleChange} required='required' className="custom-select">
+                        {Select('classic')}
+                        </select>
+                    </div>
+                </div>
+                <div className="form-group row">
+                    <div className="offset-4 col-8">
+                        <button name="submit" type="submit" onClick={this.Update} className="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
+

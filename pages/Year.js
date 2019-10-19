@@ -1,8 +1,8 @@
 import React from 'react'
-import YearFrom from '../forms/Year'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
-import data from '../demo/tabledata'
+import Show from '../components/Show'
+import {PostForm,PutForm} from '../forms/Year'
 import Post from '../components/Post'
 import ReactTable from 'react-table'
 import {YearColumns} from '../components/Columns'
@@ -47,7 +47,8 @@ export default class Year extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<YearFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={YearColumns}
                                     data={this.state.data}

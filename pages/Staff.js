@@ -1,5 +1,6 @@
 import React from 'react'
-import StaffFrom from '../forms/Staff'
+import {PostForm,PutForm} from '../forms/Staff'
+import Show from '../components/Show'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import data from '../demo/tabledata'
@@ -47,7 +48,8 @@ export default class Staff extends React.Component {
                                     <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                         Create
                                     </button>
-                                    <Post postform={<StaffFrom/>}/>
+                                    <Post postform={<PostForm/>}/>
+                                    <Show editform={<PutForm/>} />
                                     <ReactTable
                                     columns={StaffColumns}
                                     data={this.state.data}
