@@ -121,6 +121,17 @@ export class PutForm extends React.Component {
             .then(response => response.status)
             .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
     }
+    Delete(e) {
+        fetch('http://' + SERVER_URL + '/admission/' + e.target.id, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+    }
     handleChange(e) {
         const { put_data } = { ...this.state };
         const currentState = put_data;

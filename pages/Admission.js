@@ -2,10 +2,9 @@ import React from 'react'
 import {AdmissionColumns} from '../components/Columns'
 import {PostForm,PutForm} from '../forms/Admisson'
 import SideBar from '../components/Sidebar'
-import Show from '../components/Show'
 import NavBar from '../components/Navbar'
-import data from '../demo/tabledata'
 import Post from '../components/Post'
+import Show from '../components/Show'
 import ReactTable from 'react-table'
 import SERVER_URL from '../endpoints/Server'
 
@@ -18,46 +17,25 @@ export default class Admisson extends React.Component {
             username: "dikibhuyan",
             role:'student',
             logged: true,  
-            data:[]
+            fields_data:'',
             
         }
     }
     handleClick(params){
         console.log(params)
     }
-    // async componentDidMount() {
-    //     await fetch('http://'+SERVER_URL+'/admission/', {
-    //         method: 'GET',
-    //         headers: {
-    //             "Content-type": "application/x-www-form-urlencoded",
-    //             'Accept': 'application/json',
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => this.setState({
-    //             fields_data: data
-    //         }))
-    // }
     async componentDidMount() {
-        await fetch('http://jsonplaceholder.typicode.com/posts', {
+        await fetch('http://'+SERVER_URL+'/admission/', {
             method: 'GET',
-        })
-            .then(response => response.json())
-            // .then(data => console.log(data))
-            .then(data => this.setState({
-                data: data
-            }))
-    }
-    Delete(e) {
-        fetch('http://'+SERVER_URL+'/admission/' + e.target.id, {
-            method: 'DELETE',
             headers: {
-                "Content-type": "application/json",
+                "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',
             }
         })
-            .then(response => response.status)
-            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+            .then(response => response.json())
+            .then(data => this.setState({
+                fields_data: data
+            }))
     }
     render() {
         return (

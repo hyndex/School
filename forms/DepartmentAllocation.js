@@ -52,12 +52,12 @@ export class PostFrom extends React.Component {
     render() {
         return (
             <div>
-                
+
                 <div className="form-group row">
                     <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
                         <select id='batch' name='batch' key='batch' onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('batch')}
+                            {Select('batch')}
                         </select>
                     </div>
                 </div>
@@ -65,7 +65,7 @@ export class PostFrom extends React.Component {
                     <label htmlFor="Department" className="col-4 col-form-label">Department</label>
                     <div className="col-8">
                         <select id='department' name='department' key='department' onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('department')}
+                            {Select('department')}
                         </select>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ export class PostFrom extends React.Component {
                     <div className="col-8">
 
                         <select id='category' name='category' key='category' onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('category')}
+                            {Select('category')}
                         </select>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ export class PostFrom extends React.Component {
                     <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
                     <div className="col-8">
                         <select id='ClassIC' name='ClassIC' key='ClassIC' onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('classic')}
+                            {Select('classic')}
                         </select>
                     </div>
                 </div>
@@ -125,36 +125,47 @@ export class PutFrom extends React.Component {
         // e.preventDefault()
         const data = this.state.put_data
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
-          method: 'PUT',
-          body: JSON.stringify(data),
-          headers: {
-            "Content-type": "application/json",
-            'Accept': 'application/json',
-          }
+        fetch('http://' + SERVER_URL + '/departmentallocation/' + this.state.id + '/', {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
         })
-          .then(response => response.status)
-          .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
-      }
-      handleChange(e) {
+            .then(response => response.status)
+            .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+    }
+    Delete(e) {
+        fetch('http://' + SERVER_URL + '/departmentallocation/' + e.target.id, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+    }
+    handleChange(e) {
         const { put_data } = { ...this.state };
         const currentState = put_data;
         const { name, value } = e.target;
         currentState[name] = value;
-    
+
         this.setState({ put_data: currentState })
-    
+
         console.log('PUT STATE=>', this.state.put_data)
-      }
+    }
     render() {
         return (
             <div>
-                
+
                 <div className="form-group row">
                     <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
                         <select id='batch' name='batch' key='batch' value={this.state.put_data.batch} onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('batch')}
+                            {Select('batch')}
                         </select>
                     </div>
                 </div>
@@ -162,7 +173,7 @@ export class PutFrom extends React.Component {
                     <label htmlFor="Department" className="col-4 col-form-label">Department</label>
                     <div className="col-8">
                         <select id='department' name='department' key='department' value={this.state.put_data.department} onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('department')}
+                            {Select('department')}
                         </select>
                     </div>
                 </div>
@@ -171,7 +182,7 @@ export class PutFrom extends React.Component {
                     <div className="col-8">
 
                         <select id='category' name='category' key='category' value={this.state.put_data.category} onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('category')}
+                            {Select('category')}
                         </select>
                     </div>
                 </div>
@@ -179,7 +190,7 @@ export class PutFrom extends React.Component {
                     <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
                     <div className="col-8">
                         <select id='classic' name='classic' key='classic' value={this.state.put_data.classic} onChange={this.handleChange} required='required' className="custom-select">
-                        {Select('classic')}
+                            {Select('classic')}
                         </select>
                     </div>
                 </div>

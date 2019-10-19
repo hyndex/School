@@ -93,7 +93,7 @@ export class PutForm extends React.Component {
         // e.preventDefault()
         const data = this.state.put_data
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/semester/' + this.state.id + '/', {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: {
@@ -103,6 +103,17 @@ export class PutForm extends React.Component {
         })
             .then(response => response.status)
             .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+    }
+    Delete(e) {
+        fetch('http://' + SERVER_URL + '/semester/' + e.target.id, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
     }
     handleChange(e) {
         const { put_data } = { ...this.state };

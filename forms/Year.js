@@ -83,6 +83,17 @@ export class PutForm extends React.Component {
       .then(response => response.status)
       .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
   }
+  Delete(e) {
+    fetch('http://' + SERVER_URL + '/year/' + e.target.id, {
+      method: 'DELETE',
+      headers: {
+        "Content-type": "application/json",
+        'Accept': 'application/json',
+      }
+    })
+      .then(response => response.status)
+      .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+  }
   handleChange(e) {
     const { put_data } = { ...this.state };
     const currentState = put_data;
@@ -99,7 +110,7 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlfor="year" className="col-4 col-form-label">Add Year</label>
           <div className="col-8">
-            <input id="year" name="year" key='year'value={this.state.put_data.year} onChange={this.handleChange} placeholder="Year" type="text" required="required" className="form-control" />
+            <input id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} placeholder="Year" type="text" required="required" className="form-control" />
           </div>
         </div>
         <div className="form-group row">

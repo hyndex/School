@@ -115,26 +115,37 @@ export class PutForm extends React.Component {
         const data = this.state.put_data
         console.log(JSON.stringify(data))
         fetch('http://' + SERVER_URL + '/batch/' + this.state.id + '/', {
-          method: 'PUT',
-          body: JSON.stringify(data),
-          headers: {
-            "Content-type": "application/json",
-            'Accept': 'application/json',
-          }
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
         })
-          .then(response => response.status)
-          .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
-      }
-      handleChange(e) {
+            .then(response => response.status)
+            .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+    }
+    Delete(e) {
+        fetch('http://' + SERVER_URL + '/batch/' + e.target.id, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.status)
+            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+    }
+    handleChange(e) {
         const { put_data } = { ...this.state };
         const currentState = put_data;
         const { name, value } = e.target;
         currentState[name] = value;
-    
+
         this.setState({ put_data: currentState })
-    
+
         console.log('PUT STATE=>', this.state.put_data)
-      }
+    }
     render() {
         return (
             <div>

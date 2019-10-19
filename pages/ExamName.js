@@ -1,12 +1,11 @@
 import React from 'react'
+import {ExamNameColumns} from '../components/Columns'
 import {PostForm,PutForm} from '../forms/ExamName'
 import SideBar from '../components/Sidebar'
-import Show from '../components/Show'
 import NavBar from '../components/Navbar'
-import data from '../demo/tabledata'
 import Post from '../components/Post'
+import Show from '../components/Show'
 import ReactTable from 'react-table'
-import {ExamNameColumns} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
 
 
@@ -16,22 +15,23 @@ export default class ExamName extends React.Component {
         this.state = {
             username: "dikibhuyan",
             role:'student',
-            logged: true
+            logged: true,
+            fields_data:'',
         }
     }
-    // async componentDidMount() {
-    //     await fetch('http://'+SERVER_URL+'/examname/', {
-    //         method: 'GET',
-    //         headers: {
-    //             "Content-type": "application/x-www-form-urlencoded",
-    //             'Accept': 'application/json',
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => this.setState({
-    //             fields_data: data
-    //         }))
-    // }
+    async componentDidMount() {
+        await fetch('http://'+SERVER_URL+'/examname/', {
+            method: 'GET',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then(data => this.setState({
+                fields_data: data
+            }))
+    }
     render() {
         return (
             <div>
