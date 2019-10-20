@@ -13,15 +13,20 @@
   "dependencies": {
     "@material-ui/icons": "^4.4.3",
     "dotenv": "^8.1.0",
+    "isomorphic-unfetch": "^3.0.0",
     "material-ui": "^0.20.2",
     "mdbreact": "^4.21.0",
-    "next": "^9.0.7",
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1",
+    "next": "^9.1.1",
+    "react": "^16.10.2",
+    "react-csv": "^1.1.1",
+    "react-dom": "^16.10.2",
+    "react-redux": "^7.1.1",
     "react-table": "^6.10.3",
+    "redux": "^4.0.4",
     "universal-cookie": "^4.0.2"
   },
   "devDependencies": {
-    "css-loader": "^3.2.0"
+    "css-loader": "^3.2.0",
+    "redux-devtools": "^3.5.0"
   }
 }

@@ -268,3 +268,73 @@ export const SubjectColumns=[
         accessor:'subjecttype',
     },
 ]
+
+export const RankReportColumns=[
+    {
+        Header:'Id',
+        accessor:'id',
+    },
+    {
+        Header:'Roll No.',
+        accessor:'roll',
+    },
+    {
+        Header:'Name',
+        accessor:'name',
+    },
+    {
+        Header:'BEEE',
+        accessor:'beee',
+    },
+    {
+        Header:'OS',
+        accessor:'os',
+    },
+    {
+        Header:'CP',
+        accessor:'cp',
+    },
+    {
+        Header:'Total',
+        accessor:'total',
+    },
+    {
+        Header:'Rank',
+        accessor:'rank',
+    },
+]
+
+export const AttendenceReportColumns=[
+    {
+        Header:'Id',
+        accessor:'id',
+    },
+    {
+        Header:'Roll No.',
+        accessor:'roll',
+    },
+    {
+        Header:'Name',
+        accessor:'name',
+    },
+    {
+        Header:'Working Days',
+        accessor:'workingdays',
+    },
+    {
+        Header:'T. Hours',
+        accessor:'totalhour',
+    },
+    {
+        Header:'P. Hours',
+        accessor:'hourspresent',
+    },
+    {
+        Header:'Overall',
+        accessor:'overall',
+    },
+    {
+        Header:'Remark',
+        accessor:'remark',
+    },
+]

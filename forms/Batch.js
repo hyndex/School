@@ -1,5 +1,4 @@
 import React from 'react'
-import Select from '../endpoints/select'
 import SERVER_URL from '../endpoints/Server'
 
 
@@ -100,6 +99,7 @@ export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
+            id:'',
             put_data:
             {
                 start: '',

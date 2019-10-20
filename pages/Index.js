@@ -1,88 +1,92 @@
 import React from 'react'
-import AdmissionFrom from '../forms/Admisson'
-import SideBar from '../components/Sidebar'
-import NavBar from '../components/Navbar'
-import data from '../demo/tabledata'
-import Post from '../components/Post'
-import ReactTable from 'react-table'
-import {AdmissionColumns} from '../components/Columns'
+import ReactDom from 'react-dom'
+import fetch from 'isomorphic-unfetch'
+import store from '../Reducers/Reducer'
+import UpdateUser from '../Actions/UserAction'
+import Cookies from 'universal-cookie';
 import SERVER_URL from '../endpoints/Server'
 
-export default class Admisson extends React.Component {
+
+
+export default class Login extends React.Component {
     constructor() {
         super()
         this.state = {
-            username: "dikibhuyan",
-            role:'student',
-            logged: true,  
-            data:[]
-            
+            username: "",
+            password: "",
+            logged: false,
+            AutoLog: false
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.Login = this.Login.bind(this)
     }
-    handleClick(params){
-        console.log(params)
-    }
-    // async componentDidMount() {
-    //     await fetch('http://'+SERVER_URL+'/admission/', {
-    //         method: 'GET',
-    //         headers: {
-    //             "Content-type": "application/x-www-form-urlencoded",
-    //             'Accept': 'application/json',
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => this.setState({
-    //             fields_data: data
-    //         }))
-    // }
-    async componentDidMount() {
-        await fetch('http://jsonplaceholder.typicode.com/posts', {
-            method: 'GET',
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
         })
-            .then(response => response.json())
-            // .then(data => console.log(data))
-            .then(data => this.setState({
-                data: data
-            }))
+        console.log(this.state)
     }
+
+    // Login(){
+    //     return true
+    // }
+    Login() {
+        fetch('http://' + SERVER_URL + '/login/', {
+            method: 'POST',
+            body: JSON.stringify(this.state),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        }).then(async (res) => {
+            try {
+                const data = await res.json()
+                const cookies = new Cookies();
+                logged = false
+                if (data.status == 200) {
+                    logged = true
+                }
+                cookies.set('logged', logged);
+                console.log(cookies.get('logged'));
+                store.dispatch(UpdateUser(cookies.get('logged')))
+                this.setState({ logged: cookies.get('logged') })
+            } catch (error) { console.error(error) }
+        }).catch(err => { console.error(err) })
+    }
+    AutoLog() {
+        fetch('http://' + SERVER_URL + '/users/', {
+            method: 'GET',
+            body: JSON.stringify(this.state),
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        }).then(async (res) => {
+            try {
+                const data = await res.json()
+                const cookies = new Cookies();
+                logged = false
+                if (data.status == 200) {
+                    logged = true
+                }
+                cookies.set('logged', logged);
+                console.log(cookies.get('logged'));
+                store.dispatch(UpdateUser(cookies.get('logged')))
+                this.setState({ logged: cookies.get('logged') })
+                this.setState({ AutoLog: true })
+            } catch (error) { console.error(error) }
+        }).catch(err => { console.error(err) })
+    }
+    componentDidMount() {
+            window.location.replace("./Admission");
+      }
+    
     render() {
         return (
             <div>
-                <div className="container-fluid">
-                        <div className="row">
-                            <div className="col">
-                            <NavBar username={this.state.username}/>
-                            </div>
-                        </div>
-                        <div className="row my-3">
-                            <SideBar role={this.state.role}/>
-                            <div className="row card card-body mx-4">
-                                <div id='Body'>
-                                    <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
-                                        Create
-                                    </button>
-                                    <Post postform={<AdmissionFrom/>}/>
-                                    <ReactTable
-                                    columns={AdmissionColumns}
-                                    data={this.state.data}
-                                    filterable
-                                    defaultPageSize={7}
-                                    noDataText={'Please wait....'}
-                                    // showPaginationTop
-                                    >
-
-                                    </ReactTable>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <link rel="stylesheet" href="./static/css/bootstrap.min.css"/>
-                <link rel="stylesheet" href="./static/css/SideBar.css"/>
-                <link rel="stylesheet" href="./static/css/react-table.css"/>
-                <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
-                <script src="./static/js/popper.min.js"></script>
-                <script src="./static/js/bootstrap.min.js"></script>
+               
             </div>
-            )
+        )
     }
 }

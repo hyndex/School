@@ -1,7 +1,7 @@
 import React from 'react'
 import Select from '../endpoints/select'
 
-export default class PostForm extends React.Component {
+export class PostForm extends React.Component {
   constructor() {
     super()
     this.state = {

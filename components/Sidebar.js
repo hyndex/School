@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 import {
     AdminNavMenu,
     StaffNavMenu,
@@ -7,31 +8,33 @@ import {
     PlacementNavMenu
 } from '../endpoints/SideBarEndPoints'
 
-export default class SideBar extends React.Component{
-    constructor(){
+export default class SideBar extends React.Component {
+    constructor() {
         super()
-        this.state={
-            role:'admin',
-            menu:AdminNavMenu,
+        this.state = {
+            role: 'admin',
+            menu: AdminNavMenu,
             expanded: null,
         }
-        this.createMenu=this.createMenu.bind(this)
+        this.createMenu = this.createMenu.bind(this)
     }
-    createSubMenu(items){
-        var sub_menu_items=[]
-        items.map((item,index)=>{
+    createSubMenu(items) {
+        var sub_menu_items = []
+        items.map((item, index) => {
             sub_menu_items.push(
                 <li key={index}>
-                    <a href={item.url}>
-                    {item.name}
-                    </a>
+                    <Link href={item.url}>
+                        <a>
+                            {item.name}
+                        </a>
+                    </Link>
                 </li>
             )
         })
         return sub_menu_items
     }
-    createMenu(menu){
-        var menu_items=[]
+    createMenu(menu) {
+        var menu_items = []
         menu.map((item, index) => {
             var expand = (e) => {
                 e.preventDefault();
@@ -56,30 +59,30 @@ export default class SideBar extends React.Component{
         })
         return menu_items
     }
-    render(){
+    render() {
         var menu = StudentNavMenu
-        switch(this.props.role){
-            case 'admin': menu=AdminNavMenu;
-            break;
-            case 'staff':  menu=StaffNavMenu;
-            break;
-            case 'student':  menu=StudentNavMenu;
-            break;
-            case 'depertment':  menu=DepertmentNavMenu;
-            break;
-            case 'placement':  menu=PlacementNavMenu;
-            break;
-            default:  menu=AdminNavMenu;
-            break;
+        switch (this.props.role) {
+            case 'admin': menu = AdminNavMenu;
+                break;
+            case 'staff': menu = StaffNavMenu;
+                break;
+            case 'student': menu = StudentNavMenu;
+                break;
+            case 'depertment': menu = DepertmentNavMenu;
+                break;
+            case 'placement': menu = PlacementNavMenu;
+                break;
+            default: menu = AdminNavMenu;
+                break;
         }
-        menu=AdminNavMenu
-        var menu_items=this.createMenu(menu)
+        menu = AdminNavMenu
+        var menu_items = this.createMenu(menu)
         console.log(menu_items)
-        return(
+        return (
             <div>
                 <nav id="sidebar">
                     <ul>
-                        {menu_items}                       
+                        {menu_items}
                     </ul>
                 </nav>
 

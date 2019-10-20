@@ -1,12 +1,8 @@
 import React from 'react'
-import {AdmissionColumns} from '../components/Columns'
 import {PostForm,PutForm} from '../forms/Admisson'
-import SideBar from '../components/Sidebar'
-import NavBar from '../components/Navbar'
-import Post from '../components/Post'
-import Show from '../components/Show'
-import ReactTable from 'react-table'
+import {AdmissionColumns as Column} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
+import App from '../components/App';
 
 
 
@@ -14,11 +10,7 @@ export default class Admisson extends React.Component {
     constructor() {
         super()
         this.state = {
-            username: "dikibhuyan",
-            role:'student',
-            logged: true,  
-            fields_data:'',
-            
+            fields_data:[],
         }
     }
     handleClick(params){
@@ -37,44 +29,11 @@ export default class Admisson extends React.Component {
                 fields_data: data
             }))
     }
+    
     render() {
         return (
             <div>
-                <div className="container-fluid">
-                        <div className="row">
-                            <div className="col">
-                            <NavBar username={this.state.username}/>
-                            </div>
-                        </div>
-                        <div className="row my-3">
-                            <SideBar role={this.state.role}/>
-                            <div className="row card card-body mx-4">
-                                <div id='Body'>
-                                    <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
-                                        Create
-                                    </button>
-                                    <Post postform={<PostForm/>}/>
-                                    <Show editform={<PutForm/>} />
-                                    <ReactTable
-                                    columns={AdmissionColumns}
-                                    data={this.state.data}
-                                    filterable
-                                    defaultPageSize={7}
-                                    noDataText={'Please wait....'}
-                                    // showPaginationTop
-                                    >
-
-                                    </ReactTable>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <link rel="stylesheet" href="./static/css/bootstrap.min.css"/>
-                <link rel="stylesheet" href="./static/css/SideBar.css"/>
-                <link rel="stylesheet" href="./static/css/react-table.css"/>
-                <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
-                <script src="./static/js/popper.min.js"></script>
-                <script src="./static/js/bootstrap.min.js"></script>
+                <App PostForm={PostForm} PostForm={PutForm} Column={Column} fields_data={this.fields_data}/>
             </div>
             )
     }

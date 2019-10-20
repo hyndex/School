@@ -2,7 +2,7 @@ import React from 'react'
 import Select from '../endpoints/select'
 import SERVER_URL from '../endpoints/Server'
 
-export class PostFrom extends React.Component {
+export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -101,7 +101,7 @@ export class PostFrom extends React.Component {
 /////////////////////////////////////////////////
 
 
-export class PutFrom extends React.Component {
+export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
