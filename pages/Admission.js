@@ -16,9 +16,10 @@ export default class Admisson extends React.Component {
     handleClick(params){
         console.log(params)
     }
-    async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/admission/', {
+    componentDidMount() {
+        fetch('http://'+SERVER_URL+'/api/admission/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

@@ -13,8 +13,9 @@ export default class Year extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/year/', {
+        await fetch('http://'+SERVER_URL+'/api/year/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

@@ -12,8 +12,9 @@ export default class Staff extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/staff/', {
+        await fetch('http://'+SERVER_URL+'/api/staff/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

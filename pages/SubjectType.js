@@ -15,8 +15,9 @@ export default class SubjectType extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/subjecttype/', {
+        await fetch('http://'+SERVER_URL+'/api/subjecttype/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

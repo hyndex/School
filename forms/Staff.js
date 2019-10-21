@@ -5,6 +5,7 @@ export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
+            id:'',
             post_data:
             {
                 role: '',
@@ -41,6 +42,7 @@ export class PostForm extends React.Component {
         console.log(JSON.stringify(data))
         fetch('http://' + SERVER_URL + '/staff/', {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify(data),
             headers: {
                 "Content-type": "application/json",
@@ -181,8 +183,9 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/staff/' + e.target.id, {
+        fetch('http://' + SERVER_URL + '/staff/' + this.state.id, {
             method: 'DELETE',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',

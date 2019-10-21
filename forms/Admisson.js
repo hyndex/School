@@ -45,6 +45,7 @@ export class PostForm extends React.Component {
     }
     console.log(JSON.stringify(data))
     fetch('http://' + SERVER_URL + '/admission/', {
+      credentials: 'include',
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -238,6 +239,7 @@ export class PutForm extends React.Component {
     const data = this.state.put_data
     console.log(JSON.stringify(data))
     fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
+      credentials: 'include',
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
@@ -249,8 +251,9 @@ export class PutForm extends React.Component {
       .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
   }
   Delete(e) {
-    fetch('http://' + SERVER_URL + '/admission/' + e.target.id, {
+    fetch('http://' + SERVER_URL + '/admission/' + this.state.id, {
       method: 'DELETE',
+      credentials: 'include',
       headers: {
         "Content-type": "application/json",
         'Accept': 'application/json',

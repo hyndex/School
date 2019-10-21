@@ -13,8 +13,9 @@ export default class Batch extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/batch/', {
+        await fetch('http://'+SERVER_URL+'/api/batch/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

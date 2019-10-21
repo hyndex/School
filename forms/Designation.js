@@ -1,5 +1,4 @@
 import React from 'react'
-import Select from '../endpoints/select'
 
 
 export class PostForm extends React.Component {
@@ -31,6 +30,7 @@ export class PostForm extends React.Component {
         console.log(JSON.stringify(data))
         fetch('http://' + SERVER_URL + '/designation/', {
             method: 'POST',
+            credentials: 'include',
             body: JSON.stringify(data),
             headers: {
                 "Content-type": "application/json",
@@ -65,6 +65,7 @@ export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
+            id:'',
             put_data:
             {
                 designation: '',
@@ -78,6 +79,7 @@ export class PutForm extends React.Component {
         console.log(JSON.stringify(data))
         fetch('http://' + SERVER_URL + '/designation/' + this.state.id + '/', {
             method: 'PUT',
+            credentials: 'include',
             body: JSON.stringify(data),
             headers: {
                 "Content-type": "application/json",
@@ -88,8 +90,9 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/designation/' + e.target.id, {
+        fetch('http://' + SERVER_URL + '/designation/' + this.state.id, {
             method: 'DELETE',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',

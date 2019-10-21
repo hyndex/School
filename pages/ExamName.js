@@ -20,8 +20,9 @@ export default class ExamName extends React.Component {
         if (cookies.get('logged') != true) {
             window.location.replace("./Login");
         }
-        await fetch('http://'+SERVER_URL+'/examname/', {
+        await fetch('http://'+SERVER_URL+'/api/examname/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

@@ -12,8 +12,9 @@ export default class Role extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/subject/', {
+        await fetch('http://'+SERVER_URL+'/api/subject/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

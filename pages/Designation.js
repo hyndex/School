@@ -15,8 +15,9 @@ export default class Designation extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/designation/', {
+        await fetch('http://'+SERVER_URL+'/api/designation/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

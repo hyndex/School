@@ -12,8 +12,9 @@ export default class DepartmentAllocation extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/departmentallocation/', {
+        await fetch('http://'+SERVER_URL+'/api/departmentallocation/', {
             method: 'GET',
+            credentials: 'include',
             headers: {
                 "Content-type": "application/x-www-form-urlencoded",
                 'Accept': 'application/json',

@@ -14,9 +14,6 @@ export default class Login extends React.Component {
         this.state = {
             username: "",
             password: "",
-            logged: false,
-            AutoLog: false,
-            status:404
         }
         this.handleChange = this.handleChange.bind(this)
         this.Login = this.Login.bind(this)
@@ -28,68 +25,29 @@ export default class Login extends React.Component {
         })
         console.log(this.state)
     }
-    Login() {
-        
-        fetch('http://' + SERVER_URL + '/auth/login', {
+
+    // Login(){
+    //     return true
+    // }
+    Register() {
+        fetch('http://' + SERVER_URL+'/api/auth/login', {
             method: 'POST',
-            credentials: 'include',
-            body: JSON.stringify({"email":this.state.username,"password":this.state.password}),
+            body: JSON.stringify(this.state),
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
             }
         }).then(async (res) => {
             try {
-                this.setState({status:res.status})
-            } catch (error) { console.error(error) }
-            return res
-        }).then(()=>{
-                var cookies = new Cookies();
-                var logged = false
-                console.log('response',this.state.status)
-                if (this.state.status == 200) {
+                const data = await res.json()
+                if (data.status == 200) {
                     logged = true
                 }
-                console.log(this.state.status)
-                cookies.set('logged', logged);
-                console.log(cookies.get('logged'));
-                store.dispatch(UpdateUser(cookies.get('logged')))
-                this.setState({ logged: cookies.get('logged') })
-            })
-        .catch(err => { console.error(err) })
-    }
-    AutoLog() {
-        fetch('http://' + SERVER_URL + '/api/staff/', {
-            method: 'GET',
-            credentials: 'include',
-            headers: {
-                "Content-type": "application/json",
-                'Accept': 'application/json',
-            }
-        }).then(async (res) => {
-            try {
-                const cookies = new Cookies();
-                var logged = true
-                if (await res.status == '401') {
-                    logged = false
-                }
-                cookies.set('logged', logged);
-                store.dispatch(UpdateUser(cookies.get('logged')))
-                this.setState({ logged: logged })
-                this.setState({ AutoLog: true })
             } catch (error) { console.error(error) }
         }).catch(err => { console.error(err) })
     }
-    componentDidMount() {
-        if (this.state.AutoLog == false) {
-            this.AutoLog()
-        }
-    }
+    
     render() {
-        if(this.state.logged==true){
-            window.location.replace("./Admission");
-        }
-        console.log(this.state)
         return (
             <div>
                 <div className="container margin-centre card w-25 my-5">
@@ -107,10 +65,11 @@ export default class Login extends React.Component {
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                 <label className="form-check-label" htmlFor=    "exampleCheck1">Check me out</label>
                             </div>
-                            <button type="button" className="btn btn-primary" onClick={this.Login}>Submit</button>
+                            <button type="button" className="btn btn-primary" onClick={this.Register}>SignUp</button>
                         </form>
                     </div>
                 </div>
+                
                 <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
                 <link rel="stylesheet" href="./static/css/SideBar.css" />
                 <link rel="stylesheet" href="./static/css/react-table.css" />
