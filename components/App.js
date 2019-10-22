@@ -50,6 +50,7 @@ export default class App extends React.Component {
         // if(this.state.Logged == true){
         //     window.location.replace("./Admission");
         // }
+        console.log('APP: ',this.props.fields_data)
         return (
             <div>
                 <div className="container-fluid">
@@ -71,7 +72,7 @@ export default class App extends React.Component {
                                     columns={this.props.Column}
                                     data={this.props.fields_data}
                                     filterable
-                                    defaultPageSize={7}
+                                    defaultPageSize={10}
                                     noDataText={'Please wait....'}
                                 // showPaginationTop
                                 >

@@ -1,10 +1,7 @@
 import React from 'react'
-import ReactDom from 'react-dom'
 import fetch from 'isomorphic-unfetch'
-import store from '../Reducers/Reducer'
-import UpdateUser from '../Actions/UserAction'
-import Cookies from 'universal-cookie';
 import SERVER_URL from '../endpoints/Server'
+import App from '../components/App';
 
 
 

@@ -32,7 +32,7 @@ export class PostForm extends React.Component {
             client_id: this.state.post_data.client,
         }
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/batch/', {
+        fetch('http://' + SERVER_URL + '/api/batch/', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(data),
@@ -115,7 +115,7 @@ export class PutForm extends React.Component {
         // e.preventDefault()
         const data = this.state.put_data
         console.log(JSON.stringify(data))
-        fetch('http://' + SERVER_URL + '/batch/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/batch/' + this.state.id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(data),
@@ -128,7 +128,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/batch/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/batch/' + this.state.id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {

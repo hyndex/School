@@ -1,6 +1,8 @@
 import React from 'react'
+import SERVER_URL from '../endpoints/Server'
 
-export class postForm extends React.Component {
+
+export class PostForm extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -21,16 +23,13 @@ export class postForm extends React.Component {
 
     console.log('POST STATE=>', this.state.post_data)
   }
-  Create = () => {
-    const data = {
-      name: this.state.post_data.name,
-      client_id: this.state.post_data.client,
-    }
-    console.log(JSON.stringify(data))
-    fetch('http://' + SERVER_URL + '/year/', {
+  Create = (e) => {
+    e.preventDefault()
+    console.log('Post Data',JSON.stringify(this.post_data))
+    fetch('http://' + SERVER_URL + '/api/year/', {
       method: 'POST',
       credentials: 'include',
-      body: JSON.stringify(data),
+      body: JSON.stringify(JSON.stringify(this.post_data)),
       headers: {
         "Content-type": "application/json",
         'Accept': 'application/json',
@@ -43,7 +42,7 @@ export class postForm extends React.Component {
     return (
       <div>
         <div className="form-group row">
-          <label htmlfor="year" className="col-4 col-form-label">Add Year</label>
+          <label htmlFor="year" className="col-4 col-form-label">Add Year</label>
           <div className="col-8">
             <input id="year" name="year" key='year' onChange={this.handleChange} placeholder="Year" type="text" required="required" className="form-control" />
           </div>
@@ -71,10 +70,10 @@ export class PutForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   Update = (e) => {
-    // e.preventDefault()
+    e.preventDefault()
     const data = this.state.put_data
     console.log(JSON.stringify(data))
-    fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
+    fetch('http://' + SERVER_URL + '/api/admission/' + this.state.id + '/', {
       method: 'PUT',
       credentials: 'include',
       body: JSON.stringify(data),
@@ -87,7 +86,7 @@ export class PutForm extends React.Component {
       .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
   }
   Delete(e) {
-    fetch('http://' + SERVER_URL + '/year/' + this.state.id, {
+    fetch('http://' + SERVER_URL + '/api/year/' + this.state.id, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -112,9 +111,9 @@ export class PutForm extends React.Component {
     return (
       <div>
         <div className="form-group row">
-          <label htmlfor="year" className="col-4 col-form-label">Add Year</label>
+          <label htmlFor="year" className="col-4 col-form-label">Add Year</label>
           <div className="col-8">
-            <input id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} placeholder="Year" type="text" required="required" className="form-control" />
+            <input id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} placeholder="Year" type="year" required="required" className="form-control" />
           </div>
         </div>
         <div className="form-group row">

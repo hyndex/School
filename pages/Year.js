@@ -2,7 +2,8 @@ import React from 'react'
 import {YearColumns as Column} from '../components/Columns'
 import {PostForm,PutForm} from '../forms/Year'
 import SERVER_URL from '../endpoints/Server'
-import Cookies from 'universal-cookie';
+import App from '../components/App';
+
 
 
 export default class Year extends React.Component {
@@ -17,7 +18,7 @@ export default class Year extends React.Component {
             method: 'GET',
             credentials: 'include',
             headers: {
-                "Content-type": "application/x-www-form-urlencoded",
+                "Content-type": "application/json",
                 'Accept': 'application/json',
             }
         })
@@ -27,9 +28,10 @@ export default class Year extends React.Component {
             }))
     }
     render() {
+        console.log('API Data :- ',this.state.fields_data)
         return (
             <div>
-                <App PostForm={PostForm} PostForm={PutForm} Column={Column} fields_data={this.fields_data}/>
+                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.fields_data}/>
             </div>
             )
     }

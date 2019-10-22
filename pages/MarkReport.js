@@ -24,9 +24,9 @@ export default class Year extends React.Component {
     }
     async componentDidMount() {
         const cookies = new Cookies();
-        if (cookies.get('logged') != true) {
-            window.location.replace("./Login");
-        }
+        // if (cookies.get('logged') != true) {
+        //     window.location.replace("./Login");
+        // }
         await fetch('http://' + SERVER_URL+'/api/year/', {
             method: 'GET',
             credentials: 'include',

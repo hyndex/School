@@ -1,8 +1,9 @@
 import React from 'react'
-import {PostForm,PutForm} from '../forms/Admisson'
+import {PostForm,PutForm} from '../forms/Student'
 import {AdmissionColumns as Column} from '../components/Columns'
 import SERVER_URL from '../endpoints/Server'
 import App from '../components/App';
+
 
 
 
@@ -17,7 +18,7 @@ export default class Admisson extends React.Component {
         console.log(params)
     }
     componentDidMount() {
-        fetch('http://'+SERVER_URL+'/api/admission/', {
+        fetch('http://'+SERVER_URL+'/api/student/', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -34,7 +35,7 @@ export default class Admisson extends React.Component {
     render() {
         return (
             <div>
-                <App PostForm={PostForm} PostForm={PutForm} Column={Column} fields_data={this.fields_data}/>
+                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.fields_data}/>
             </div>
             )
     }

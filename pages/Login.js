@@ -86,8 +86,8 @@ export default class Login extends React.Component {
         }
     }
     render() {
-        if(this.state.logged==true){
-            window.location.replace("./Admission");
+        if(this.state.logged == true){
+            window.location.replace("./Student");
         }
         console.log(this.state)
         return (

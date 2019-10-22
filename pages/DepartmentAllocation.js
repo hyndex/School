@@ -2,6 +2,8 @@ import React from 'react'
 import {DepartmentAllocationColumns as Column} from '../components/Columns'
 import {PostForm,PutForm} from '../forms/DepartmentAllocation'
 import SERVER_URL from '../endpoints/Server'
+import App from '../components/App';
+
 
 
 export default class DepartmentAllocation extends React.Component {
@@ -28,7 +30,7 @@ export default class DepartmentAllocation extends React.Component {
     render() {
         return (
             <div>
-                <App PostForm={PostForm} PostForm={PutForm} Column={Column} fields_data={this.fields_data}/>
+                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.fields_data}/>
             </div>
             )
     }

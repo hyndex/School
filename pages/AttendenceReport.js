@@ -10,7 +10,7 @@ import SERVER_URL from '../endpoints/Server'
 import Cookies from 'universal-cookie';
 
 
-export default class Year extends React.Component {
+export default class AttendenceReport extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -23,10 +23,10 @@ export default class Year extends React.Component {
         this.download = this.download.bind(this)
     }
     async componentDidMount() {
-        const cookies = new Cookies();
-        if (cookies.get('logged') != true) {
-            window.location.replace("./Login");
-        }
+        // const cookies = new Cookies();
+        // if (cookies.get('logged') != true) {
+        //     window.location.replace("./Login");
+        // }
         await fetch('http://' + SERVER_URL+'/api/year/', {
             method: 'GET',
             credentials: 'include',
@@ -41,6 +41,7 @@ export default class Year extends React.Component {
             }))
     }
     download(event) {
+        var columns=AttendenceReportColumns
         const currentRecords = this.reactTable.getResolvedState().sortedData;
         var data_to_download = []
         for (var index = 0; index < currentRecords.length; index++) {
@@ -56,6 +57,7 @@ export default class Year extends React.Component {
         })
     }
     render() {
+        
         return (
             <div>
                 <div className="container-fluid">

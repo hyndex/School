@@ -5,6 +5,7 @@ import store from '../Reducers/Reducer'
 import UpdateUser from '../Actions/UserAction'
 import Cookies from 'universal-cookie';
 import SERVER_URL from '../endpoints/Server'
+import App from '../components/App';
 
 
 
@@ -79,7 +80,7 @@ export default class Login extends React.Component {
         }).catch(err => { console.error(err) })
     }
     componentDidMount() {
-            window.location.replace("./Admission");
+            window.location.replace("./Student");
       }
     
     render() {

@@ -1,5 +1,7 @@
 import React from 'react'
 import Select from '../endpoints/select'
+import SERVER_URL from '../endpoints/Server'
+
 
 export class PostForm extends React.Component {
   constructor() {
@@ -44,7 +46,7 @@ export class PostForm extends React.Component {
       client_id: this.state.post_data.client,
     }
     console.log(JSON.stringify(data))
-    fetch('http://' + SERVER_URL + '/admission/', {
+    fetch('http://' + SERVER_URL + '/api/student', {
       credentials: 'include',
       method: 'POST',
       body: JSON.stringify(data),
@@ -78,7 +80,7 @@ export class PostForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="DOB" className="col-3 col-form-label">Date of Birth</label>
           <div className="col-9">
-            <input id="dob" name="dob" key='dob' onChange={this.handleChange} type="text" className="form-control" required="required" />
+            <input id="dob" name="dob" key='dob' onChange={this.handleChange} type="date" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
@@ -238,7 +240,7 @@ export class PutForm extends React.Component {
     // e.preventDefault()
     const data = this.state.put_data
     console.log(JSON.stringify(data))
-    fetch('http://' + SERVER_URL + '/admission/' + this.state.id + '/', {
+    fetch('http://' + SERVER_URL + '/api/student/' + this.state.id + '/', {
       credentials: 'include',
       method: 'PUT',
       body: JSON.stringify(data),
@@ -251,7 +253,7 @@ export class PutForm extends React.Component {
       .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
   }
   Delete(e) {
-    fetch('http://' + SERVER_URL + '/admission/' + this.state.id, {
+    fetch('http://' + SERVER_URL + '/student/' + this.state.id, {
       method: 'DELETE',
       credentials: 'include',
       headers: {
@@ -284,7 +286,7 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="DOB" className="col-3 col-form-label">Date of Birth</label>
           <div className="col-9">
-            <input id="dob" name="dob" key='dob' value={this.state.put_data.dob} onChange={this.handleChange} type="text" className="form-control" required="required" />
+            <input id="dob" name="dob" key='dob' value={this.state.put_data.dob} onChange={this.handleChange} type="date" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">

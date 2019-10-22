@@ -3,6 +3,7 @@ import {ExamNameColumns as Column} from '../components/Columns'
 import {PostForm,PutForm} from '../forms/ExamName'
 import SERVER_URL from '../endpoints/Server'
 import Cookies from 'universal-cookie';
+import App from '../components/App';
 
 
 export default class ExamName extends React.Component {
@@ -36,7 +37,7 @@ export default class ExamName extends React.Component {
     render() {
         return (
             <div>
-                <App PostForm={PostForm} PostForm={PutForm} Column={Column} fields_data={this.fields_data}/>
+                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.fields_data}/>
             </div>
             )
     }
