@@ -242,11 +242,11 @@ export const SubjectTypeColumns=[
 export const YearColumns=[
     {
         Header:'Id',
-        accessor:'_id',
+        accessor:"_id",
     },
     {
         Header:'Year',
-        accessor:'year',
+        accessor:"year",
     },
 ]
 

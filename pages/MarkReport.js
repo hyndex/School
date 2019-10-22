@@ -41,6 +41,7 @@ export default class Year extends React.Component {
             }))
     }
     download(event) {
+        var columns=AttendenceReportColumns
         const currentRecords = this.reactTable.getResolvedState().sortedData;
         var data_to_download = []
         for (var index = 0; index < currentRecords.length; index++) {

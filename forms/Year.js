@@ -25,18 +25,18 @@ export class PostForm extends React.Component {
   }
   Create = (e) => {
     e.preventDefault()
-    console.log('Post Data',JSON.stringify(this.post_data))
+    console.log('Post Data',JSON.stringify(this.state.post_data))
     fetch('http://' + SERVER_URL + '/api/year/', {
       method: 'POST',
       credentials: 'include',
-      body: JSON.stringify(JSON.stringify(this.post_data)),
+      body: JSON.stringify(this.state.post_data),
       headers: {
         "Content-type": "application/json",
         'Accept': 'application/json',
       }
     })
       .then(response => response.status)
-      .then(async (data) => await (data == 200) ? alert('Successful') : alert('Not Successful'))
+      .then(async (data) => await (data == 201) ? alert('Successful') : alert('Not Successful'))
   }
   render() {
     return (
@@ -71,19 +71,17 @@ export class PutForm extends React.Component {
   }
   Update = (e) => {
     e.preventDefault()
-    const data = this.state.put_data
-    console.log(JSON.stringify(data))
     fetch('http://' + SERVER_URL + '/api/admission/' + this.state.id + '/', {
       method: 'PUT',
       credentials: 'include',
-      body: JSON.stringify(data),
+      body: JSON.stringify(this.state.put_data),
       headers: {
         "Content-type": "application/json",
         'Accept': 'application/json',
       }
     })
       .then(response => response.status)
-      .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+      .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
   }
   Delete(e) {
     fetch('http://' + SERVER_URL + '/api/year/' + this.state.id, {

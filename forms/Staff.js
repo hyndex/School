@@ -37,22 +37,17 @@ export class PostForm extends React.Component {
         console.log('POST STATE=>', this.state.post_data)
     }
     Create = () => {
-        const data = {
-            name: this.state.post_data.name,
-            client_id: this.state.post_data.client,
-        }
-        console.log(JSON.stringify(data))
         fetch('http://' + SERVER_URL + '/api/staff/', {
             method: 'POST',
             credentials: 'include',
-            body: JSON.stringify(data),
+            body: JSON.stringify(this.state.post_data),
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 200) ? alert('Successful') : alert('Not Successful'))
+            .then(async (data) => await (data == 201) ? alert('Successful') : alert('Not Successful'))
     }
     render() {
         return (
@@ -170,19 +165,17 @@ export class PutForm extends React.Component {
         this.handleChange = this.handleChange.bind(this)
     }
     Update = (e) => {
-        // e.preventDefault()
-        const data = this.state.put_data
-        console.log(JSON.stringify(data))
+        e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/staff/' + this.state.id + '/', {
             method: 'PUT',
-            body: JSON.stringify(data),
+            body: JSON.stringify(this.state.put_data),
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 200) ? alert('Successful') : alert('You can not update a sample'))
+            .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
         fetch('http://' + SERVER_URL + '/api/staff/' + this.state.id, {

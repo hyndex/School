@@ -86,7 +86,7 @@ export default class Login extends React.Component {
         }
     }
     render() {
-        if(this.state.logged == true){
+        if(new Cookies().get('logged') == 'true'){
             window.location.replace("./Student");
         }
         console.log(this.state)

@@ -50,7 +50,7 @@ export default class App extends React.Component {
         // if(this.state.Logged == true){
         //     window.location.replace("./Admission");
         // }
-        console.log('APP: ',this.props.fields_data)
+        console.log('APP data : ',this.props.fields_data)
         return (
             <div>
                 <div className="container-fluid">
@@ -68,6 +68,7 @@ export default class App extends React.Component {
                                     </button>
                                 <Post postform={<this.props.PostForm />} />
                                 <Show editform={<this.props.PutForm />} />
+                                {console.log(this.props.Column)}
                                 <ReactTable
                                     columns={this.props.Column}
                                     data={this.props.fields_data}

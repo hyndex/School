@@ -28,10 +28,9 @@ export default class Year extends React.Component {
             }))
     }
     render() {
-        console.log('API Data :- ',this.state.fields_data)
         return (
             <div>
-                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.fields_data}/>
+                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }
