@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 
 export default class Navbar extends React.Component {
@@ -20,13 +21,15 @@ export default class Navbar extends React.Component {
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Settings
+                                Reports
                         </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a className="dropdown-item" href="#">Change Password</a>
-                                <a className="dropdown-item" href="#">Refresh Permission</a>
-                                <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="#">logOut</a>
+                            <Link href='/AttendenceReport' key='1'><a className="dropdown-item">Attendence</a></Link>
+                            <Link href='/DepartmentAllocation' key='2'><a className="dropdown-item">Department</a></Link>
+                            <Link href='/FailListReport' key='3'><a className="dropdown-item">Fail-List</a></Link>
+                            <Link href='/MarkReport' key='4'><a className="dropdown-item">Mark</a></Link>
+                            <Link href='/PlacementReport' key='5'><a className="dropdown-item">Placement</a></Link>
+                            <Link href='/RankReport' key='6'><a className="dropdown-item">Rank</a></Link>
                             </div>
                         </li>
                         <li className="nav-item">

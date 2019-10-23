@@ -1,91 +1,76 @@
 import React from 'react'
 import Link from 'next/link'
-import {
-    AdminNavMenu,
-    StaffNavMenu,
-    StudentNavMenu,
-    DepertmentNavMenu,
-    PlacementNavMenu
-} from '../endpoints/SideBarEndPoints'
+import {withRouter} from 'next/router';
+import store from '../Reducers/Reducer'
+import UpdateNav from '../Actions/NavAction'
 
-export default class SideBar extends React.Component {
-    constructor() {
+
+
+export default class Sidebar extends React.Component{
+    constructor()
+    {
         super()
-        this.state = {
-            role: 'admin',
-            menu: AdminNavMenu,
-            expanded: null,
+        var test_options=[
+            ['Student','./Student',true],
+            ['Batch','./Batch',true],
+            ['Department','./Department',true],
+            ['ExamBrowser','./ExamBrowser',true],
+            ['ExamName','./ExamName',true],
+            ['ExamType','./ExamType',true],
+            ['Register','./Register',true],
+            ['Semester','./Semester',true],
+            ['Staff','./Staff',true],
+            ['Subject','./Subject',true],
+            ['SubjectType','./SubjectType',true],
+            ['Year','./Year',true],
+            
+        ]
+        
+        this.state={
+            options:test_options,
+            current:store.getState().nav.payload.Nav
         }
-        this.createMenu = this.createMenu.bind(this)
     }
-    createSubMenu(items) {
-        var sub_menu_items = []
-        items.map((item, index) => {
-            sub_menu_items.push(
-                <li key={index}>
-                    <Link href={item.url}>
-                        <a>
-                            {item.name}
-                        </a>
+
+    Clicked(arr){
+        // console.log('clicked')
+        console.log(arr)
+        store.dispatch(UpdateNav(arr))
+    }
+    
+    render(){
+        var option_table=[]
+        for (var arr in this.state.options) {
+            const field = this.state.options[arr][0]
+            const option_link = this.state.options[arr][1]
+            const view = this.state.options[arr][2]
+            const index= arr
+            var active=''
+            if (arr==this.state.current){
+                active='table-active'
+            }
+            
+            if(view){
+                option_table.push(
+                    <Link href={option_link} key={arr}>
+                    <tr className={active} key={arr} onClick={()=>this.Clicked(index)}>
+                        <td>
+                           {field}
+                        </td>
+                    </tr>
                     </Link>
-                </li>
-            )
-        })
-        return sub_menu_items
-    }
-    createMenu(menu) {
-        var menu_items = []
-        menu.map((item, index) => {
-            var expand = (e) => {
-                e.preventDefault();
-                if (index == this.state.expanded) var newIndex = null;
-                else var newIndex = index;
+                )
+            }
+            
 
-                this.setState({ expanded: newIndex });
-            };
-            var subMenu = (
-                <ul className="border-left">
-                    {this.createSubMenu(item.menus)}
-                </ul>
-            );
-            menu_items.push(
-                <li key={index} className="pb-3 border-bottom">
-                    <a href="#" index={index} onClick={expand}>
-                        {item.groupname}
-                    </a>
-                    {this.state.expanded == index ? subMenu : ''}
-                </li>
-            )
-        })
-        return menu_items
-    }
-    render() {
-        var menu = StudentNavMenu
-        switch (this.props.role) {
-            case 'admin': menu = AdminNavMenu;
-                break;
-            case 'staff': menu = StaffNavMenu;
-                break;
-            case 'student': menu = StudentNavMenu;
-                break;
-            case 'depertment': menu = DepertmentNavMenu;
-                break;
-            case 'placement': menu = PlacementNavMenu;
-                break;
-            default: menu = AdminNavMenu;
-                break;
         }
-        menu = AdminNavMenu
-        var menu_items = this.createMenu(menu)
-        console.log(menu_items)
-        return (
-            <div>
-                <nav id="sidebar">
-                    <ul>
-                        {menu_items}
-                    </ul>
-                </nav>
-
+        return(
+            <div className="col-2 my-4">
+                <table className="table table-hover">
+                <tbody>
+                    {option_table}
+                </tbody>
+                </table>
             </div>
         )
     }

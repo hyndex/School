@@ -23,7 +23,6 @@ export default class App extends React.Component {
         console.log(params)
     }
     async componentDidMount() {
-        const cookies = new Cookies();
         fetch('http://' + SERVER_URL + '/api/staff/', {
             method: 'GET',
             credentials: 'include',
@@ -59,7 +58,7 @@ export default class App extends React.Component {
                             <NavBar username={this.state.username} />
                         </div>
                     </div>
-                    <div className="row my-3">
+                    <div className="row my-4">
                         <SideBar role={this.state.role} />
                         <div className="row card card-body mx-4">
                             <div id='Body'>
