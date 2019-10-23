@@ -31,16 +31,16 @@ export default class App extends React.Component {
                 'Accept': 'application/json',
             }
         })
-        .then(response => {
-            if(!response.ok) throw new Error(response.status);
-            return response
-        })
-        .catch((err) => {
-            console.log('ERRRRRR',err.message)
-            if(err.message == '401'){
-                window.location.replace("./Login");
-            }
-        })
+            .then(response => {
+                if (!response.ok) throw new Error(response.status);
+                return response
+            })
+            .catch((err) => {
+                console.log('ERRRRRR', err.message)
+                if (err.message == '401') {
+                    window.location.replace("./Login");
+                }
+            })
 
     }
 
@@ -49,7 +49,7 @@ export default class App extends React.Component {
         // if(this.state.Logged == true){
         //     window.location.replace("./Admission");
         // }
-        console.log('APP data : ',this.props.fields_data)
+        console.log('APP data : ', this.props.fields_data)
         return (
             <div>
                 <div className="container-fluid">
@@ -64,7 +64,7 @@ export default class App extends React.Component {
                             <div id='Body'>
                                 <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
                                     Create
-                                    </button>
+                                        </button>
                                 <Post postform={<this.props.PostForm />} />
                                 <Show editform={<this.props.PutForm />} />
                                 {console.log(this.props.Column)}

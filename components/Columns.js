@@ -4,10 +4,6 @@ const columns=[
         accessor:'userId',
     },
     {
-        Header:'Id',
-        accessor:'id',
-    },
-    {
         Header:'Title',
         accessor:'title',
         sortable:false,
@@ -22,12 +18,8 @@ const columns=[
 export default columns
 export const AdmissionColumns=[
     {
-        Header:'Id',
-        accessor:'userId',
-    },
-    {
         Header:'Name',
-        accessor:'id',
+        accessor:'name',
     },
     {
         Header:'Gender',
@@ -86,10 +78,7 @@ export const BatchColumns=[
     }
 ]
 export const DepartmentColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'Department',
         accessor:'department',
@@ -104,10 +93,7 @@ export const DepartmentColumns=[
     },
 ]
 export const DepartmentAllocationColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'Batch',
         accessor:'batch',
@@ -160,10 +146,7 @@ export const ExamBrowserColumns=[
 ]
 
 export const ExamNameColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'Exam Name',
         accessor:'examname',
@@ -229,10 +212,7 @@ export const StaffColumns=[
 ]
 
 export const SubjectTypeColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'Subject Type',
         accessor:'subjecttype',
@@ -251,10 +231,7 @@ export const YearColumns=[
 ]
 
 export const SubjectColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'code',
         accessor:'code',
@@ -270,10 +247,7 @@ export const SubjectColumns=[
 ]
 
 export const RankReportColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'Roll No.',
         accessor:'roll',
@@ -305,10 +279,7 @@ export const RankReportColumns=[
 ]
 
 export const AttendenceReportColumns=[
-    {
-        Header:'Id',
-        accessor:'id',
-    },
+    
     {
         Header:'Roll No.',
         accessor:'roll',
