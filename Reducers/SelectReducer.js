@@ -1,6 +1,6 @@
 import {UPDATE_SELECT} from '../Actions/SelectAction'
 
-export default function NavReducer(state='',{type,payload})
+export default function SelectReducer(state='',{type,payload})
     {
         if(type === UPDATE_SELECT){
             return {

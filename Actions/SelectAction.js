@@ -1,6 +1,6 @@
-export const UPDATE_SELECT='ChangeSelect'
+export const UPDATE_SELECT='SelectChange'
 
-export default function UpdateUser(newSelect){
+export default function UpdateSelect(newSelect){
     return {
         type:UPDATE_SELECT,
         payload:{

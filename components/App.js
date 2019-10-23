@@ -6,6 +6,7 @@ import Show from '../components/Show'
 import ReactTable from 'react-table'
 import Cookies from 'universal-cookie';
 import store from '../Reducers/Reducer'
+import UpdateSelect from '../Actions/SelectAction'
 import SERVER_URL from '../endpoints/Server'
 
 
@@ -82,6 +83,7 @@ export default class App extends React.Component {
                                                 this.setState({
                                                   selected: rowInfo.index
                                                 })
+                                                store.dispatch(UpdateSelect(rowInfo))
                                               },
                                               style: {
                                                 background: rowInfo.index === this.state.selected ? '#00afec' : 'white',
