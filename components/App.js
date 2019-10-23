@@ -17,6 +17,7 @@ export default class App extends React.Component {
             username: "dikibhuyan",
             role: 'student',
             logged: true,
+            selected: null
         }
     }
     handleClick(params) {
@@ -49,7 +50,7 @@ export default class App extends React.Component {
         // if(this.state.Logged == true){
         //     window.location.replace("./Admission");
         // }
-        console.log('APP data : ', this.props.fields_data)
+        // console.log('APP data : ', this.props.fields_data)
         return (
             <div>
                 <div className="container-fluid">
@@ -74,6 +75,24 @@ export default class App extends React.Component {
                                     filterable
                                     defaultPageSize={10}
                                     noDataText={'Please wait....'}
+                                    getTrProps={(state, rowInfo) =>{
+                                        if (rowInfo && rowInfo.row) {
+                                            return {
+                                              onClick: (e) => {
+                                                this.setState({
+                                                  selected: rowInfo.index
+                                                })
+                                              },
+                                              style: {
+                                                background: rowInfo.index === this.state.selected ? '#00afec' : 'white',
+                                                color: rowInfo.index === this.state.selected ? 'white' : 'black'
+                                              }
+                                            }
+                                          }else{
+                                            return {}
+                                          }
+                                    }
+                                }
                                 // showPaginationTop
                                 >
 
