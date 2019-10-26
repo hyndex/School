@@ -85,6 +85,9 @@ export class PutForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
+    componentDidMount(){
+        this.setState({id:this.props.select._id})
+      }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/department/' + this.state.id + '/', {
@@ -122,6 +125,7 @@ export class PutForm extends React.Component {
         console.log('PUT STATE=>', this.state.put_data)
     }
     render() {
+
         return (
             <div>
                 <div className="form-group row">

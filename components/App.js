@@ -8,6 +8,7 @@ import Cookies from 'universal-cookie';
 import store from '../Reducers/Reducer'
 import UpdateSelect from '../Actions/SelectAction'
 import SERVER_URL from '../endpoints/Server'
+import SelectOption from '../endpoints/select'
 
 
 
@@ -18,11 +19,17 @@ export default class App extends React.Component {
             username: "dikibhuyan",
             role: 'student',
             logged: true,
-            selected: null
+            selected: null,
         }
+        this.handleClose = this.handleClose.bind(this)
     }
     handleClick(params) {
         console.log(params)
+    }
+    handleClose() {
+        this.setState({
+            selected: null
+        })
     }
     async componentDidMount() {
         fetch('http://' + SERVER_URL + '/api/staff/', {
@@ -54,6 +61,7 @@ export default class App extends React.Component {
         // console.log('APP data : ', this.props.fields_data)
         return (
             <div>
+                <SelectOption />
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col">
@@ -64,41 +72,61 @@ export default class App extends React.Component {
                         <SideBar role={this.state.role} />
                         <div className="row card card-body mx-4">
                             <div id='Body'>
-                                <button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
-                                    Create
-                                        </button>
-                                <Post postform={<this.props.PostForm />} />
-                                <Show editform={<this.props.PutForm />} />
-                                {console.log(this.props.Column)}
-                                <ReactTable
-                                    columns={this.props.Column}
-                                    data={this.props.fields_data}
-                                    filterable
-                                    defaultPageSize={10}
-                                    noDataText={'Please wait....'}
-                                    getTrProps={(state, rowInfo) =>{
-                                        if (rowInfo && rowInfo.row) {
-                                            return {
-                                              onClick: (e) => {
-                                                this.setState({
-                                                  selected: rowInfo.index
-                                                })
-                                                store.dispatch(UpdateSelect(rowInfo))
-                                              },
-                                              style: {
-                                                background: rowInfo.index === this.state.selected ? '#00afec' : 'white',
-                                                color: rowInfo.index === this.state.selected ? 'white' : 'black'
-                                              }
-                                            }
-                                          }else{
-                                            return {}
-                                          }
-                                    }
+                                {
+                                    (this.state.selected == null) ?
+                                        (<button type="button" className="btn btn-primary my-2" data-toggle="modal" data-target="#postform">
+                                            Create
+                                        </button>)
+                                        :
+                                        <div></div>
                                 }
-                                // showPaginationTop
-                                >
+                                <Post postform={<this.props.PostForm />} />
 
-                                </ReactTable>
+                                {
+                                    (this.state.selected == null) ?
+                                        (<ReactTable
+                                            columns={this.props.Column}
+                                            data={this.props.fields_data}
+                                            filterable
+                                            defaultPageSize={10}
+                                            noDataText={'Please wait....'}
+                                            getTrProps={(state, rowInfo) => {
+                                                if (rowInfo && rowInfo.row) {
+                                                    return {
+                                                        onClick: (e) => {
+                                                            this.setState({
+                                                                selected: rowInfo.index,
+                                                            })
+                                                            store.dispatch(UpdateSelect(rowInfo))
+                                                        },
+                                                        style: {
+                                                            background: rowInfo.index === this.state.selected ? '#00afec' : 'white',
+                                                            color: rowInfo.index === this.state.selected ? 'white' : 'black'
+                                                        }
+                                                    }
+                                                } else {
+                                                    return {}
+                                                }
+                                            }
+                                            }
+                                        // showPaginationTop
+                                        >
+
+                                        </ReactTable>)
+                                        :
+
+                                        <div>
+                                            <button onClick={this.handleClose} type="button" className="btn btn-danger my-2">Cancel</button>
+                                            <this.props.PutForm
+                                                select={store.getState().select.payload.select.original}
+                                                option={store.getState().option.payload.option}
+                                            />
+                                        </div>
+                                }
+                                {
+                                    // console.log("STORE=>", store.getState().select.payload.select.original)
+                                }
+
                             </div>
                         </div>
                     </div>

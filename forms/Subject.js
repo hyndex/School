@@ -82,7 +82,7 @@ export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id:'',
+            id: '',
             pre_load: {
                 subjecttype: '',
             },
@@ -96,6 +96,9 @@ export class PutForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
+    componentDidMount(){
+        this.setState({id:this.props.select._id})
+      }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/subject/' + this.state.id + '/', {
@@ -134,6 +137,9 @@ export class PutForm extends React.Component {
     render() {
         return (
             <div>
+                <div>
+                    <button name="Delete" type="submit" onClick={this.Delete} className="btn btn-danger">Delete</button>
+                </div>
                 <div className="form-group row">
                     <label htmlFor="code" className="col-4 col-form-label">Code</label>
                     <div className="col-8">

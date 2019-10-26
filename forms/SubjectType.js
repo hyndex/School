@@ -6,7 +6,7 @@ export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id:'',
+            id: '',
             post_data:
             {
                 subjecttype: '',
@@ -37,6 +37,9 @@ export class PostForm extends React.Component {
             .then(response => response.status)
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('Not Successful'))
     }
+    componentDidMount(){
+        this.setState({id:this.props.select._id})
+      }
     render() {
         return (
             <div>
@@ -106,6 +109,9 @@ export default class PutForm extends React.Component {
     render() {
         return (
             <div>
+                <div>
+                    <button name="Delete" type="submit" onClick={this.Delete} className="btn btn-danger">Delete</button>
+                </div>
                 <div className="form-group row">
                     <label htmlfor="subtype" className="col-4 col-form-label">Add Subject Type</label>
                     <div className="col-8">

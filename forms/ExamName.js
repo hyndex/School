@@ -66,6 +66,9 @@ export class PutForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
+    componentDidMount(){
+        this.setState({id:this.props.select._id})
+      }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/examname/' + this.state.id + '/', {

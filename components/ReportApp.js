@@ -1,0 +1,110 @@
+import React from 'react'
+import SideBar from '../components/Sidebar'
+import NavBar from '../components/Navbar'
+import Show from '../components/Show'
+import ReactTable from 'react-table'
+import Cookies from 'universal-cookie';
+import store from '../Reducers/Reducer'
+import UpdateSelect from '../Actions/SelectAction'
+import SERVER_URL from '../endpoints/Server'
+
+
+
+export default class App extends React.Component {
+    constructor() {
+        super()
+        this.state = {
+            username: "dikibhuyan",
+            role: 'student',
+            logged: true,
+            selected: null
+        }
+    }
+    handleClick(params) {
+        console.log(params)
+    }
+    async componentDidMount() {
+        fetch('http://' + SERVER_URL + '/api/staff/', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                "Content-type": "application/json",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => {
+                if (!response.ok) throw new Error(response.status);
+                return response
+            })
+            .catch((err) => {
+                console.log('ERRRRRR', err.message)
+                if (err.message == '401') {
+                    window.location.replace("./Login");
+                }
+            })
+
+    }
+
+    render() {
+        console.log(this.state)
+        // if(this.state.Logged == true){
+        //     window.location.replace("./Admission");
+        // }
+        // console.log('APP data : ', this.props.fields_data)
+        return (
+            <div>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col">
+                            <NavBar username={this.state.username} />
+                        </div>
+                    </div>
+                    <div className="row my-4">
+                        <SideBar role={this.state.role} />
+                        <div className="row card card-body mx-4">
+                            <div id='Body'>
+								<Show editform={<this.props.PutForm />} />
+                                {console.log(this.props.Column)}
+                                <ReactTable
+                                    columns={this.props.Column}
+                                    data={this.props.fields_data}
+                                    filterable
+                                    defaultPageSize={10}
+                                    noDataText={'Please wait....'}
+                                    getTrProps={(state, rowInfo) =>{
+                                        if (rowInfo && rowInfo.row) {
+                                            return {
+                                              onClick: (e) => {
+                                                this.setState({
+                                                  selected: rowInfo.index
+                                                })
+                                                store.dispatch(UpdateSelect(rowInfo))
+                                              },
+                                              style: {
+                                                background: rowInfo.index === this.state.selected ? '#00afec' : 'white',
+                                                color: rowInfo.index === this.state.selected ? 'white' : 'black'
+                                              }
+                                            }
+                                          }else{
+                                            return {}
+                                          }
+                                    }
+                                }
+                                // showPaginationTop
+                                >
+
+                                </ReactTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
+                <link rel="stylesheet" href="./static/css/SideBar.css" />
+                <link rel="stylesheet" href="./static/css/react-table.css" />
+                <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
+                <script src="./static/js/popper.min.js"></script>
+                <script src="./static/js/bootstrap.min.js"></script>
+            </div>
+        )
+    }
+}

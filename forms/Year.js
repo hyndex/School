@@ -25,7 +25,7 @@ export class PostForm extends React.Component {
   }
   Create = (e) => {
     e.preventDefault()
-    console.log('Post Data',JSON.stringify(this.state.post_data))
+    console.log('Post Data', JSON.stringify(this.state.post_data))
     fetch('http://' + SERVER_URL + '/api/year/', {
       method: 'POST',
       credentials: 'include',
@@ -61,7 +61,7 @@ export class PutForm extends React.Component {
   constructor() {
     super()
     this.state = {
-      id:'',
+      id: null,
       put_data:
       {
         year: '',
@@ -105,10 +105,16 @@ export class PutForm extends React.Component {
 
     console.log('PUT STATE=>', this.state.put_data)
   }
+  componentDidMount(){
+    this.setState({id:this.props.select._id})
+  }
   render() {
     return (
       <div>
-        <div className="form-group row">
+        <div>
+          <button name="Delete" type="submit" onClick={this.Delete} className="btn btn-danger">Delete</button>
+        </div>
+        <div className="form-group row my-5">
           <label htmlFor="year" className="col-4 col-form-label">Add Year</label>
           <div className="col-8">
             <input id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} placeholder="Year" type="year" required="required" className="form-control" />

@@ -26,6 +26,9 @@ export class PostForm extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
     }
+    componentDidMount(){
+        this.setState({id:this.props.select._id})
+      }
     handleChange(e) {
         const { post_data } = { ...this.state };
         const currentState = post_data;
