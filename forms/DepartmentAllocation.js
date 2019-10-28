@@ -17,7 +17,6 @@ export class PostForm extends React.Component {
                 semister: '',
                 department: '',
                 category: '',
-                ClassIC: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -76,17 +75,6 @@ export class PostForm extends React.Component {
                         </select>
                     </div>
                 </div>
-                {/*
-                <div className="form-group row">
-                    <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
-                    <div className="col-8">
-                        <select id='ClassIC' name='ClassIC' key='ClassIC' onChange={this.handleChange} required='required' className="custom-select">
-                            {Select('classic')}
-                            {this.props.option.category}
-                        </select>
-                    </div>
-                </div>
-                */}
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
