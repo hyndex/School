@@ -58,12 +58,12 @@ export const AdmissionColumns=[
     },
     {
         Header:'Roll No.',
-        accessor:'roll',
+        accessor:'rollNum',
         sortable:false,
     },
     {
         Header:'Register No.',
-        accessor:'registerno',
+        accessor:'registerNumber',
         sortable:false,
     },
 ]
@@ -250,7 +250,7 @@ export const RankReportColumns=[
     
     {
         Header:'Roll No.',
-        accessor:'roll',
+        accessor:'rollNum',
     },
     {
         Header:'Name',
@@ -282,7 +282,7 @@ export const AttendenceReportColumns=[
     
     {
         Header:'Roll No.',
-        accessor:'roll',
+        accessor:'rollNum',
     },
     {
         Header:'Name',
@@ -314,7 +314,7 @@ export const FailListReportColumns=[
     
     {
         Header:'RollNo',
-        accessor:'roll',
+        accessor:'rollNum',
     },
     {
         Header:'Reg.No',
@@ -345,7 +345,7 @@ export const PlacementReportColumns=[
     
     {
         Header:'Roll No.',
-        accessor:'roll',
+        accessor:'rollNum',
     },
     {
         Header:'Name',
@@ -390,7 +390,7 @@ export const MarkReportColumns=[
     
     {
         Header:'Roll No.',
-        accessor:'roll',
+        accessor:'rollNum',
     },
     {
         Header:'Name',
