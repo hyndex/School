@@ -13,6 +13,8 @@ export class PostForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Create = this.Create.bind(this)
+
     }
     handleChange(e) {
         const { post_data } = { ...this.state };
@@ -37,9 +39,9 @@ export class PostForm extends React.Component {
             .then(response => response.status)
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('Not Successful'))
     }
-    componentDidMount(){
-        this.setState({id:this.props.select._id})
-      }
+    componentDidMount() {
+        this.setState({ id: this.props.select._id })
+    }
     render() {
         return (
             <div>
@@ -69,6 +71,8 @@ export default class PutForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Delete = this.Delete.bind(this)
+        this.Update = this.Update.bind(this)
     }
     Update = (e) => {
         e.preventDefault()

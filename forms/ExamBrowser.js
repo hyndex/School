@@ -8,9 +8,9 @@ export class PostForm extends React.Component {
         super()
         this.state = {
             pre_load: {
-                batch: '',
-                category: '',
-                depertment: ''
+                examname: '',
+                examtype: '',
+                class: ''
             },
             post_data:
             {
@@ -20,6 +20,7 @@ export class PostForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Create = this.Create.bind(this)
     }
     handleChange(e) {
         const { post_data } = { ...this.state };
@@ -51,7 +52,7 @@ export class PostForm extends React.Component {
                     <label htmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
                         <select id="examname" name="examname" key='examname' onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('examname')}
+                            {this.props.option.examname}
                         </select>
                     </div>
                 </div>
@@ -59,7 +60,7 @@ export class PostForm extends React.Component {
                     <label htmlFor="examtype" className="col-4 col-form-label">Exam type</label>
                     <div className="col-8">
                         <select id="examtype" name="examtype" key='examtype' onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('examtype')}
+                            {this.props.option.examtype}
                         </select>
                     </div>
                 </div>
@@ -67,7 +68,7 @@ export class PostForm extends React.Component {
                     <label htmlFor="class" className="col-4 col-form-label">Class</label>
                     <div className="col-8">
                         <select id="class" name="class" key='class' onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('class')}
+                            {this.props.option.class}
                         </select>
                     </div>
                 </div>
@@ -89,11 +90,11 @@ export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id:'',
+            id: '',
             pre_load: {
-                batch: '',
-                category: '',
-                depertment: ''
+                examname: '',
+                examtype: '',
+                class: '',
             },
             put_data:
             {
@@ -103,10 +104,12 @@ export class PutForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Delete = this.Delete.bind(this)
+        this.Update = this.Update.bind(this)
     }
-    componentDidMount(){
-        this.setState({id:this.props.select._id})
-      }
+    componentDidMount() {
+        this.setState({ id: this.props.select._id })
+    }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/admission/' + this.state.id + '/', {
@@ -150,7 +153,7 @@ export class PutForm extends React.Component {
                     <label htmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
                         <select id="examname" name="examname" key='examname' value={this.state.put_data.examname} onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('examname')}
+                        {this.props.option.examname}
                         </select>
                     </div>
                 </div>
@@ -158,7 +161,7 @@ export class PutForm extends React.Component {
                     <label htmlFor="examtype" className="col-4 col-form-label">Exam type</label>
                     <div className="col-8">
                         <select id="examtype" name="examtype" key='examtype' value={this.state.put_data.examtype} onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('examtype')}
+                        {this.props.option.examtype}
                         </select>
                     </div>
                 </div>
@@ -166,7 +169,7 @@ export class PutForm extends React.Component {
                     <label htmlFor="class" className="col-4 col-form-label">Class</label>
                     <div className="col-8">
                         <select id="class" name="class" key='class' value={this.state.put_data.class} onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('class')}
+                            {this.props.option.class}
                         </select>
                     </div>
                 </div>

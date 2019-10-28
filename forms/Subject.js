@@ -19,6 +19,8 @@ export class PostForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Create = this.Create.bind(this)
+
     }
     handleChange(e) {
         const { post_data } = { ...this.state };
@@ -62,7 +64,7 @@ export class PostForm extends React.Component {
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
                         <select id="subjecttype" name="subjecttype" key='subjecttype' onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('subjecttype')}
+                            {this.props.option.subjecttype}
                         </select>
                     </div>
                 </div>
@@ -94,11 +96,13 @@ export class PutForm extends React.Component {
 
             },
         }
+        this.Delete = this.Delete.bind(this)
+        this.Update = this.Update.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
-    componentDidMount(){
-        this.setState({id:this.props.select._id})
-      }
+    componentDidMount() {
+        this.setState({ id: this.props.select._id })
+    }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/subject/' + this.state.id + '/', {
@@ -156,7 +160,7 @@ export class PutForm extends React.Component {
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
                         <select id="subjecttype" name="subjecttype" key='subjecttype' value={this.state.put_data.subjecttype} onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('subjecttype')}
+                            {this.props.option.subjecttype}
                         </select>
                     </div>
                 </div>

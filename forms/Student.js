@@ -10,7 +10,7 @@ export class PostForm extends React.Component {
       pre_load: {
         batch: '',
         category: '',
-        depertment: ''
+        // department: ''
       },
       post_data:
       {
@@ -31,7 +31,7 @@ export class PostForm extends React.Component {
         admissionNumber: '',
         registerNumber: '',
         rollNum: '',
-        category_id: '',
+        category: '',
         aadharNum: '',
         religion: '',
         batch: '',
@@ -39,6 +39,8 @@ export class PostForm extends React.Component {
       },
     }
     this.handleChange = this.handleChange.bind(this)
+    this.Create = this.Create.bind(this)
+
   }
   Create = () => {
     fetch('http://' + SERVER_URL + '/api/student', {
@@ -146,8 +148,8 @@ export class PostForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="Category" className="col-4 col-form-label">Category</label>
           <div className="col-8">
-            <select id='category_id' name='category_id' key='category_id' onChange={this.handleChange} required='required' className="custom-select">
-              {Select('category')}
+            <select id='category' name='category' key='category' onChange={this.handleChange} required='required' className="custom-select">
+              {this.props.option.category}
             </select>
           </div>
         </div>
@@ -155,7 +157,7 @@ export class PostForm extends React.Component {
           <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
           <div className="col-8">
             <select id='batch' name='batch' key='batch' onChange={this.handleChange} required='required' className="custom-select">
-              {Select('batch')}
+              {this.props.option.batch}
             </select>
           </div>
         </div>
@@ -200,7 +202,7 @@ export class PutForm extends React.Component {
       pre_load: {
         batch: '',
         category: '',
-        depertment: ''
+        // depertment: ''
       },
       put_data:
       {
@@ -230,6 +232,8 @@ export class PutForm extends React.Component {
       },
     }
     this.handleChange = this.handleChange.bind(this)
+    this.Delete = this.Delete.bind(this)
+    this.Update = this.Update.bind(this)
   }
   componentDidMount(){
     this.setState({id:this.props.select._id})
@@ -354,7 +358,7 @@ export class PutForm extends React.Component {
           <label htmlFor="Category" className="col-4 col-form-label">Category</label>
           <div className="col-8">
             <select id='category_id' name='category_id' key='category_id' value={this.state.put_data.category_id} onChange={this.handleChange} required='required' className="custom-select">
-              {Select('category')}
+              {this.props.option.category}
             </select>
           </div>
         </div>
@@ -362,7 +366,7 @@ export class PutForm extends React.Component {
           <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
           <div className="col-8">
             <select id='batch' name='batch' key='batch' value={this.state.put_data.batch} onChange={this.handleChange} required='required' className="custom-select">
-              {Select('batch')}
+              {this.props.option.category}
             </select>
           </div>
         </div>

@@ -80,7 +80,7 @@ export default class App extends React.Component {
                                         :
                                         <div></div>
                                 }
-                                <Post postform={<this.props.PostForm />} />
+                                <Post postform={<this.props.PostForm option={store.getState().option.payload.option}/>} />
 
                                 {
                                     (this.state.selected == null) ?
@@ -124,7 +124,7 @@ export default class App extends React.Component {
                                         </div>
                                 }
                                 {
-                                    // console.log("STORE=>", store.getState().select.payload.select.original)
+                                    console.log("STORE=>", store.getState().option.payload.option)
                                 }
 
                             </div>

@@ -12,6 +12,8 @@ export class PostForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Create = this.Create.bind(this)
+
     }
     handleChange(e) {
         const { post_data } = { ...this.state };
@@ -61,17 +63,19 @@ export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id:'',
+            id: '',
             put_data:
             {
                 designation: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Delete = this.Delete.bind(this)
+        this.Update = this.Update.bind(this)
     }
-    componentDidMount(){
-        this.setState({id:this.props.select._id})
-      }
+    componentDidMount() {
+        this.setState({ id: this.props.select._id })
+    }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/designation/' + this.state.id + '/', {

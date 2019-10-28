@@ -12,6 +12,8 @@ export class PostForm extends React.Component {
       },
     }
     this.handleChange = this.handleChange.bind(this)
+    this.Create = this.Create.bind(this)
+
   }
   handleChange(e) {
     const { post_data } = { ...this.state };
@@ -68,6 +70,8 @@ export class PutForm extends React.Component {
       },
     }
     this.handleChange = this.handleChange.bind(this)
+    this.Delete = this.Delete.bind(this)
+    this.Update = this.Update.bind(this)
   }
   Update = (e) => {
     e.preventDefault()

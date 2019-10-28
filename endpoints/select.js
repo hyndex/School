@@ -4,7 +4,7 @@ import SERVER_URL from '../endpoints/Server'
 import UpdateOption from '../Actions/OptionAction'
 
 
-//Role, Department, designation, category, Batch, ClassIC, ExamType, Class, Year
+//Role, Department, designation, category, Batch, ClassIC, ExamType, Class, Year,subjecttype
 // export default function Select(id = 'none') {
 //     var table = []
 //     table.push(<option key='1' value="rabbit">Rabbit</option>)
@@ -27,6 +27,8 @@ export default class SelectOption extends React.Component {
             examtype: [],
             class: [],
             year: [],
+            subjecttype:[],
+            examname:[],
             flag:null
         }
     }
@@ -174,6 +176,42 @@ export default class SelectOption extends React.Component {
                 })
                 console.log('TABLE=>',table)
                 this.setState({ year: table })
+            })
+            .catch((err)=>console.log(err))
+        fetch('http://' + SERVER_URL + '/api/examname/', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then((data) => {
+                var table = []
+                data.map(function(item){
+                    table.push(<option key={item._id} value={item._id}>{item.name}</option>);
+                })
+                console.log('TABLE=>',table)
+                this.setState({ examname: table })
+            })
+            .catch((err)=>console.log(err))
+        fetch('http://' + SERVER_URL + '/api/subjecttype/', {
+            method: 'GET',
+            credentials: 'include',
+            headers: {
+                "Content-type": "application/x-www-form-urlencoded",
+                'Accept': 'application/json',
+            }
+        })
+            .then(response => response.json())
+            .then((data) => {
+                var table = []
+                data.map(function(item){
+                    table.push(<option key={item._id} value={item._id}>{item.type}</option>);
+                })
+                console.log('TABLE=>',table)
+                this.setState({ subjecttype: table })
                 this.setState({flag:1})
             })
             .catch((err)=>console.log(err))

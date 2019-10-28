@@ -7,7 +7,7 @@ export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id:'',
+            id: '',
             post_data:
             {
                 role: '',
@@ -25,10 +25,12 @@ export class PostForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Create = this.Create.bind(this)
+
     }
-    componentDidMount(){
-        this.setState({id:this.props.select._id})
-      }
+    componentDidMount() {
+        this.setState({ id: this.props.select._id })
+    }
     handleChange(e) {
         const { post_data } = { ...this.state };
         const currentState = post_data;
@@ -166,6 +168,8 @@ export class PutForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Delete = this.Delete.bind(this)
+        this.Update = this.Update.bind(this)
     }
     Update = (e) => {
         e.preventDefault()

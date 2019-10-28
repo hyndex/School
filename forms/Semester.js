@@ -7,7 +7,7 @@ export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id:'',
+            id: '',
             pre_load: {
                 year: '',
             },
@@ -19,6 +19,8 @@ export class PostForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Create = this.Create.bind(this)
+
     }
     handleChange(e) {
         const { post_data } = { ...this.state };
@@ -57,7 +59,7 @@ export class PostForm extends React.Component {
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
                         <select id="year" name="year" key='year' onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('year')}
+                            {this.props.option.year}
                         </select>
                     </div>
                 </div>
@@ -87,10 +89,12 @@ export class PutForm extends React.Component {
             },
         }
         this.handleChange = this.handleChange.bind(this)
+        this.Delete = this.Delete.bind(this)
+        this.Update = this.Update.bind(this)
     }
-    componentDidMount(){
-        this.setState({id:this.props.select._id})
-      }
+    componentDidMount() {
+        this.setState({ id: this.props.select._id })
+    }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/semester/' + this.state.id + '/', {
@@ -139,7 +143,7 @@ export class PutForm extends React.Component {
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
                         <select id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} className="custom-select" required="required">
-                            {Select('year')}
+                        {this.props.option.year}
                         </select>
                     </div>
                 </div>
