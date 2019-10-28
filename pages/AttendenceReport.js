@@ -1,7 +1,5 @@
 import React from 'react'
 import { AttendenceReportColumns as columns } from '../components/Columns'
-import SideBar from '../components/Sidebar'
-import NavBar from '../components/Navbar'
 import ReportApp from '../components/ReportApp';
 import SERVER_URL from '../endpoints/Server'
 

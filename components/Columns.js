@@ -309,3 +309,115 @@ export const AttendenceReportColumns=[
         accessor:'remark',
     },
 ]
+
+export const FailListReportColumns=[
+    
+    {
+        Header:'RollNo',
+        accessor:'roll',
+    },
+    {
+        Header:'Reg.No',
+        accessor:'regno',
+    },
+    {
+        Header:'NAME',
+        accessor:'name',
+    },
+    {
+        Header:'IM',
+        accessor:'im',
+    },
+    {
+        Header:'EM',
+        accessor:'em',
+    },
+    {
+        Header:'Total',
+        accessor:'total',
+    },
+    {
+        Header:'Reason',
+        accessor:'reason',
+    },
+]
+export const PlacementReportColumns=[
+    
+    {
+        Header:'Roll No.',
+        accessor:'roll',
+    },
+    {
+        Header:'Name',
+        accessor:'name',
+    },
+    {
+        Header:'Gender',
+        accessor:'gender',
+    },
+    {
+        Header:'DOB',
+        accessor:'dob',
+    },
+    {
+        Header:'Phone',
+        accessor:'phone',
+    },
+    {
+        Header:'10 Percent',
+        accessor:'10percent',
+    },
+    // {
+    //     Header:'12 Percent',
+    //     accessor:'12percent',
+    // },
+    // {
+    //     Header:'Diploma',
+    //     accessor:'Diploma',
+    // },
+    // {
+    //     Header:'Backlog',
+    //     accessor:'Backlog',
+    // },
+    // {
+    //     Header:'Department',
+    //     accessor:'Department',
+    // },
+]
+
+
+export const MarkReportColumns=[
+    
+    {
+        Header:'Roll No.',
+        accessor:'roll',
+    },
+    {
+        Header:'Name',
+        accessor:'name',
+    },
+    {
+        Header:'BEEE',
+        accessor:'beee',
+    },
+    {
+        Header:'OS',
+        accessor:'os',
+    },
+    {
+        Header:'CP',
+        accessor:'cp',
+    },
+    {
+        Header:'Total',
+        accessor:'total',
+    },
+    {
+        Header:'Rank',
+        accessor:'rank',
+    },
+    {
+        Header:'Result',
+        accessor:'result',
+    },
+]
