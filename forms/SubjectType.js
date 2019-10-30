@@ -37,7 +37,7 @@ export class PostForm extends React.Component {
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 201) ? alert('Successful') : alert('Not Successful'))
+            .then(async (data) => await (data == 201) ? window.location.reload() : alert('Not Successful'))
     }
     componentDidMount() {
         this.setState({ id: this.props.select._id })
@@ -86,7 +86,7 @@ export default class PutForm extends React.Component {
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
+            .then(async (data) => await (data == 201) ? window.location.reload() : alert('You can not update a sample'))
     }
     Delete(e) {
         fetch('http://' + SERVER_URL + '/api/subjecttype/' + this.props.select._id, {
@@ -98,7 +98,7 @@ export default class PutForm extends React.Component {
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 204) ? alert('Successful') : alert('Not Successful'))
+            .then(async (data) => await (data == 202) ? window.location.reload() : alert('Not Successful'))
     }
     handleChange(e) {
         const { put_data } = { ...this.state };
