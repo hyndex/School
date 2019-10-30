@@ -1,21 +1,22 @@
 import React from 'react'
-import {ExamBrowserColumns as Column} from '../components/Columns'
-import {PostForm,PutForm} from '../forms/ExamBrowser'
+import {ExamColumns as Column} from '../components/Columns'
+import {PostForm,PutForm} from '../forms/Designation'
 import SERVER_URL from '../endpoints/Server'
 import App from '../components/App';
 
 
-
-
-export default class ExamBrowser extends React.Component {
+export default class Designation extends React.Component {
     constructor() {
         super()
         this.state = {
+            username: "dikibhuyan",
+            role:'student',
+            logged: true,
             fields_data:[],
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/api/exambrowser/', {
+        await fetch('http://'+SERVER_URL+'/api/exam/', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -31,7 +32,7 @@ export default class ExamBrowser extends React.Component {
     render() {
         return (
             <div>
-                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'Exam'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }

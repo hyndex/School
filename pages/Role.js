@@ -13,7 +13,7 @@ export default class Role extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/api/role/', {
+        await fetch('http://'+SERVER_URL+'/api/stafftype/', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -29,7 +29,7 @@ export default class Role extends React.Component {
     render() {
         return (
             <div>
-                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'Role'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
         )
     }

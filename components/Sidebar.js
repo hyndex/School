@@ -12,6 +12,12 @@ export default class Sidebar extends React.Component{
         super()
         var test_options=[
             ['Student','./Student',true],
+            //['Attendence','./Attendence',true],
+            ['Category','./Category',true],
+            ['Class','./Class',true],
+            //['Exam ','./Exam',true],
+            //['Mark ','./Exam',true],
+            ['User ','./Exam',true],
             ['Batch','./Batch',true],
             ['Department','./Department',true],
             ['ExamBrowser','./ExamBrowser',true],

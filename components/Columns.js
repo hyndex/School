@@ -1,21 +1,3 @@
-const columns=[
-    {
-        Header:'User Id',
-        accessor:'userId',
-    },
-    {
-        Header:'Title',
-        accessor:'title',
-        sortable:false,
-    },
-    {
-        Header:'Post',
-        accessor:'body',
-        sortable:false,
-        filterable:false,
-    },
-]
-export default columns
 export const AdmissionColumns=[
     {
         Header:'Name',
@@ -67,6 +49,46 @@ export const AdmissionColumns=[
         sortable:false,
     },
 ]
+export const AttendenceColumns=[
+    {
+        Header:'Date',
+        accessor:'date',
+    },
+    {
+        Header:'Hour',
+        accessor:'hour',
+    },
+	{
+        Header:'Class',
+        accessor:'class',
+    },
+]
+export const CategoryColumns=[
+    {
+        Header:'category',
+        accessor:'category',
+    },
+]
+export const ExamColumns=[
+    {
+        Header:'name',
+        accessor:'name',
+    },
+	{
+        Header:'type',
+        accessor:'type',
+    },
+	{
+        Header:'class',
+        accessor:'class',
+    },
+]
+export const UserColumns=[
+    {
+        Header:'email',
+        accessor:'email',
+    },
+]
 export const BatchColumns=[
     {
         Header:'Id',
@@ -92,7 +114,7 @@ export const DepartmentColumns=[
         accessor:'short',
     },
 ]
-export const DepartmentAllocationColumns=[
+export const ClassColumns=[
     
     {
         Header:'Batch',

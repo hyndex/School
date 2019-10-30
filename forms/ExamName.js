@@ -69,12 +69,9 @@ export class PutForm extends React.Component {
         this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/examname/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/examname/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -87,7 +84,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/examname/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/examname/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -114,7 +111,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlhtmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
-                        <input id="examname" name="examname" key='examname' value={this.state.put_data.examname} onChange={this.handleChange} placeholder="Exam Name" type="text" required="required" className="form-control" />
+                        <input id="examname" name="examname" key='examname' placeholder={this.props.select.examname} onChange={this.handleChange}  type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

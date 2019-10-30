@@ -76,7 +76,7 @@ export default class PutForm extends React.Component {
     }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/subjecttype/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/subjecttype/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -89,7 +89,7 @@ export default class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/subjecttype/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/subjecttype/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -119,7 +119,7 @@ export default class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="subtype" className="col-4 col-form-label">Add Subject Type</label>
                     <div className="col-8">
-                        <input id="subjecttype" name="subjecttype" value={this.state.put_data.subjecttype} onChange={this.handleChange} key='subjecttype' placeholder="Add Subject Type" type="text" required="required" className="form-control" />
+                        <input id="subjecttype" name="subjecttype"  onChange={this.handleChange} key='subjecttype' placeholder={this.props.select.subjecttype} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

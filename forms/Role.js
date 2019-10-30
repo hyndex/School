@@ -72,12 +72,9 @@ export class PutForm extends React.Component {
         this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/semester/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -90,7 +87,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/semester/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -122,7 +119,7 @@ export class PutForm extends React.Component {
                 </div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
-                        <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
+                        <button name="submit" type="submit" onClick={this.Update} className="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>

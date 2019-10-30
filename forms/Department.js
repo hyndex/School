@@ -89,12 +89,9 @@ export class PutForm extends React.Component {
         this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/department/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/department/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -107,7 +104,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/department/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/department/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -135,19 +132,19 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Department" className="col-4 col-form-label">Department Name</label>
                     <div className="col-8">
-                        <input id="department" name="department" key='department' value={this.state.put_data.department} onChange={this.handleChange} placeholder="Department Name" type="text" className="form-control" required="required" />
+                        <input id="department" name="department" key='department' placeholder={this.props.select.department} onChange={this.handleChange} type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="code" className="col-4 col-form-label">Department Code</label>
                     <div className="col-8">
-                        <input id="code" name="code" placeholder="Department Code" key='code' value={this.state.put_data.code} onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="code" name="code" placeholder="Department Code" key='code' placeholder={this.props.select.code} onChange={this.handleChange} type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="short" className="col-4 col-form-label">Short Name</label>
                     <div className="col-8">
-                        <input id="short" name="short" placeholder="Short Name" key='short' value={this.state.put_data.short} onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="short" name="short" placeholder="Short Name" key='short' placeholder={this.props.select.short} onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

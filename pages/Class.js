@@ -1,22 +1,20 @@
 import React from 'react'
-import {SubjectTypeColumns  as Column} from '../components/Columns'
-import {PostForm,PutForm} from '../forms/SubjectType'
+import {ClassColumns as Column} from '../components/Columns'
+import {PostForm,PutForm} from '../forms/Class'
 import SERVER_URL from '../endpoints/Server'
 import App from '../components/App';
 
 
-export default class SubjectType extends React.Component {
+
+export default class Class extends React.Component {
     constructor() {
         super()
         this.state = {
-            username: "dikibhuyan",
-            role:'student',
-            logged: true,
             fields_data:[],
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/api/subjecttype/', {
+        await fetch('http://'+SERVER_URL+'/api/class/', {
             method: 'GET',
             credentials: 'include',
             headers: {
@@ -32,7 +30,7 @@ export default class SubjectType extends React.Component {
     render() {
         return (
             <div>
-                <App name={'Subjecttype'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'Class'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }

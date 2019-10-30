@@ -29,7 +29,7 @@ export default class Role extends React.Component {
     render() {
         return (
             <div>
-                <App PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'Subject'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }

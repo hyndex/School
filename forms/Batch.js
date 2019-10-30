@@ -109,9 +109,6 @@ export class PutForm extends React.Component {
         this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
         fetch('http://' + SERVER_URL + '/api/batch/' + this.state.id + '/', {
@@ -160,7 +157,7 @@ export class PutForm extends React.Component {
                                     <i className="fa fa-calendar-plus-o"></i>
                                 </div>
                             </div>
-                            <input id="start" name="start" key='start' value={this.state.put_data.start} onChange={this.handleChange} placeholder="Start Date" type="date" className="form-control" />
+                            <input id="start" name="start" key='start' placeholder={this.props.select.start} onChange={this.handleChange} type="date" className="form-control" />
                         </div>
                     </div>
                 </div>
@@ -173,14 +170,14 @@ export class PutForm extends React.Component {
                                     <i className="fa fa-calendar-times-o"></i>
                                 </div>
                             </div>
-                            <input id="end" name="end" key='end' value={this.state.put_data.end} onChange={this.handleChange} placeholder="End Date" type="date" className="form-control" />
+                            <input id="end" name="end" key='end' placeholder={this.props.select.end} onChange={this.handleChange} type="date" className="form-control" />
                         </div>
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
-                        <input id="batch" name="batch" key='batch' value={this.state.put_data.batch} onChange={this.handleChange} placeholder="Batch" type="text" className="form-control" />
+                        <input id="batch" name="batch" key='batch' placeholder={this.props.select.batch} onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

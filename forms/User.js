@@ -6,10 +6,9 @@ export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            id: '',
             post_data:
             {
-                examtype: '',
+                stafftype: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -27,7 +26,7 @@ export class PostForm extends React.Component {
         console.log('POST STATE=>', this.state.post_data)
     }
     Create = () => {
-        fetch('http://' + SERVER_URL + '/api/examtype/', {
+        fetch('http://' + SERVER_URL + '/api/stafftype/', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(this.state.post_data),
@@ -43,9 +42,9 @@ export class PostForm extends React.Component {
         return (
             <div>
                 <div className="form-group row">
-                    <label htmlFor="examtype" className="col-4 col-form-label">Exam Type</label>
+                    <label htmlFor="role" className="col-4 col-form-label">Add Staff Type</label>
                     <div className="col-8">
-                        <input id="examtype" name="examtype" key='examtype' onChange={this.handleChange} placeholder="Exam Type" type="text" required="required" className="form-control" />
+                        <input id="stafftype" name="stafftype" key='stafftype' onChange={this.handleChange} placeholder="Role" type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -58,6 +57,7 @@ export class PostForm extends React.Component {
     }
 }
 
+
 export class PutForm extends React.Component {
     constructor() {
         super()
@@ -65,7 +65,7 @@ export class PutForm extends React.Component {
             id: '',
             put_data:
             {
-                examtype: '',
+                stafftype: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -74,7 +74,7 @@ export class PutForm extends React.Component {
     }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/examtype/' + this.props.select._id + '/', {
+        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -87,7 +87,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/examtype/' + this.props.select._id, {
+        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -112,9 +112,9 @@ export class PutForm extends React.Component {
         return (
             <div>
                 <div className="form-group row">
-                    <label htmlFor="examtype" className="col-4 col-form-label">Exam Type</label>
+                    <label htmlFor="role" className="col-4 col-form-label">Add Staff Type</label>
                     <div className="col-8">
-                        <input id="examtype" name="examtype" key='examtype' placeholder={this.props.select.examtype} onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="stafftype" name="stafftype" key='stafftype' onChange={this.handleChange} placeholder={this.props.select.stafftype} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -126,3 +126,4 @@ export class PutForm extends React.Component {
         )
     }
 }
+

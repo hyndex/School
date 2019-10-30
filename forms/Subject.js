@@ -100,12 +100,9 @@ export class PutForm extends React.Component {
         this.Update = this.Update.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/subject/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/subject/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -118,7 +115,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/subject/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/subject/' + this.props.select._id, {
             method: 'DELETE',
             headers: {
                 "Content-type": "application/json",
@@ -147,19 +144,19 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="code" className="col-4 col-form-label">Code</label>
                     <div className="col-8">
-                        <input id="code" name="code" key='code' placeholder="Code" value={this.state.put_data.code} onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="code" name="code" key='code'  placeholder={this.props.select.code} onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="name" className="col-4 col-form-label">Name</label>
                     <div className="col-8">
-                        <input id="name" name="name" key='name' placeholder="Name" value={this.state.put_data.name} onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="name" name="name" key='name'  placeholder={this.props.select.name} onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
-                        <select id="subjecttype" name="subjecttype" key='subjecttype' value={this.state.put_data.subjecttype} onChange={this.handleChange} className="custom-select" required="required">
+                        <select id="subjecttype" name="subjecttype" key='subjecttype' placeholder={this.props.select.subjecttype} onChange={this.handleChange} className="custom-select" required="required">
                             {this.props.option.subjecttype}
                         </select>
                     </div>

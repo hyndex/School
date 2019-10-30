@@ -1,27 +1,22 @@
 import React from 'react'
-import Select from '../endpoints/select'
 import SERVER_URL from '../endpoints/Server'
+
 
 export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            pre_load: {
-                batch: '',
-                category: '',
-                department: ''
-            },
             post_data:
             {
-                batch: '',
-                semister: '',
-                department: '',
-                category: '',
+                date: '',
+                subject: '',
+                class: '',
+				absentees:[]
+
             },
         }
         this.handleChange = this.handleChange.bind(this)
         this.Create = this.Create.bind(this)
-
     }
     handleChange(e) {
         const { post_data } = { ...this.state };
@@ -34,7 +29,7 @@ export class PostForm extends React.Component {
         console.log('POST STATE=>', this.state.post_data)
     }
     Create = () => {
-        fetch('http://' + SERVER_URL + '/api/depertmentallocation/', {
+        fetch('http://' + SERVER_URL + '/api/attendence/', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(this.state.post_data),
@@ -49,35 +44,41 @@ export class PostForm extends React.Component {
     render() {
         return (
             <div>
-
                 <div className="form-group row">
-                    <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
+                    <label htmlFor="start" className="col-4 col-form-label">Date</label>
                     <div className="col-8">
-                        <select id='batch' name='batch' key='batch' onChange={this.handleChange} required='required' className="custom-select">
-                            {this.props.option.batch}
-                        </select>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text">
+                                    <i className="fa fa-calendar-plus-o"></i>
+                                </div>
+                            </div>
+                            <input id="date" name="date" key='date' onChange={this.handleChange} placeholder="Date" type="date" className="form-control" />
+                        </div>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="Department" className="col-4 col-form-label">Department</label>
+                    <label htmlFor="end" className="col-4 col-form-label">Subject</label>
                     <div className="col-8">
-                        <select id='department' name='department' key='department' onChange={this.handleChange} required='required' className="custom-select">
-                            {this.props.option.department}
-                        </select>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text">
+                                    <i className="fa fa-calendar-times-o"></i>
+                                </div>
+                            </div>
+                            <input id="subject" name="subject" key='subject' onChange={this.handleChange} placeholder="End Date" type="text" className="form-control" />
+                        </div>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="category" className="col-4 col-form-label">category</label>
+                    <label htmlFor="batch" className="col-4 col-form-label">absentees</label>
                     <div className="col-8">
-
-                        <select id='category' name='category' key='category' onChange={this.handleChange} required='required' className="custom-select">
-                            {this.props.option.category}
-                        </select>
+                        <input id="absentees" name="absentees" key='absentees' onChange={this.handleChange} placeholder="absentees" type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
-                        <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
+                        <button name="submit" onClick={this.Create} type="submit" className="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
@@ -85,9 +86,11 @@ export class PostForm extends React.Component {
     }
 }
 
-/////////////////////////////////////////////////
-// Update
-/////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////
+// Edit Form
+//////////////////////////////////////////////////////
 
 
 export class PutForm extends React.Component {
@@ -95,30 +98,22 @@ export class PutForm extends React.Component {
         super()
         this.state = {
             id: '',
-            pre_load: {
-                batch: '',
-                category: '',
-                department: ''
-            },
             put_data:
             {
-                batch: '',
-                semister: '',
-                department: '',
-                category: '',
-                classic: '',
+                date: '',
+                subject: '',
+                class: '',
+				absentees:[]
+
             },
         }
         this.handleChange = this.handleChange.bind(this)
         this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/departmentallocation/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/attendence/' + this.state.id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -131,7 +126,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/departmentallocation/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/attendence/' + this.state.id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -155,47 +150,44 @@ export class PutForm extends React.Component {
     render() {
         return (
             <div>
-
                 <div className="form-group row">
-                    <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
+                    <label htmlFor="start" className="col-4 col-form-label">Date</label>
                     <div className="col-8">
-                        <select id='batch' name='batch' key='batch' value={this.state.put_data.batch} onChange={this.handleChange} required='required' className="custom-select">
-                            {this.props.option.batch}
-                        </select>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text">
+                                    <i className="fa fa-calendar-plus-o"></i>
+                                </div>
+                            </div>
+                            <input id="date" name="date" key='date' value={this.props.select.date} onChange={this.handleChange} placeholder="Date" type="date" className="form-control" />
+                        </div>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="Department" className="col-4 col-form-label">Department</label>
+                    <label htmlFor="end" className="col-4 col-form-label">End Date</label>
                     <div className="col-8">
-                        <select id='department' name='department' key='department' value={this.state.put_data.department} onChange={this.handleChange} required='required' className="custom-select">
-                            {this.props.option.department}
-                        </select>
+                        <div className="input-group">
+                            <div className="input-group-prepend">
+                                <div className="input-group-text">
+                                    <i className="fa fa-calendar-times-o"></i>
+                                </div>
+                            </div>
+                            <input id="subject" name="subject" key='subject' value={this.props.select.subject} onChange={this.handleChange} placeholder="End Date" type="text" className="form-control" />
+                        </div>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="category" className="col-4 col-form-label">category</label>
+                    <label htmlFor="batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
-
-                        <select id='category' name='category' key='category' value={this.state.put_data.category} onChange={this.handleChange} required='required' className="custom-select">
-                            {this.props.option.category}
-                        </select>
-                    </div>
-                </div>
-                <div className="form-group row">
-                    <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
-                    <div className="col-8">
-                        <select id='classic' name='classic' key='classic' value={this.state.put_data.classic} onChange={this.handleChange} required='required' className="custom-select">
-                            {Select('classic')}
-                        </select>
+                        <input id="absentees" name="absentees" key='absentees' value={this.props.select.absentees} onChange={this.handleChange} placeholder="absentees" type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
-                        <button name="submit" type="submit" onClick={this.Update} className="btn btn-primary">Submit</button>
+                        <button name="submit" onClick={this.Update} type="submit" className="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
         )
     }
 }
-

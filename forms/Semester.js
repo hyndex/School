@@ -92,12 +92,9 @@ export class PutForm extends React.Component {
         this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/semester/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -110,7 +107,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? alert('Successful') : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/semester/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id, {
             method: 'DELETE',
             headers: {
                 "Content-type": "application/json",
@@ -136,14 +133,14 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Semester" className="col-4 col-form-label">Semester</label>
                     <div className="col-8">
-                        <input id="semester" name="semester" key='semester' value={this.state.put_data.semester} placeholder="Semester" onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="semester" name="semester" key='semester' placeholder={this.state.put_data.semester}  onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
-                        <select id="year" name="year" key='year' value={this.state.put_data.year} onChange={this.handleChange} className="custom-select" required="required">
-                        {this.props.option.year}
+                        <select id="year" name="year" key='year' placeholder={this.state.put_data.year} onChange={this.handleChange} className="custom-select" required="required">
+                            {this.props.option.year}
                         </select>
                     </div>
                 </div>
