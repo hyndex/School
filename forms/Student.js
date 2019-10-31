@@ -7,11 +7,6 @@ export class PostForm extends React.Component {
   constructor() {
     super()
     this.state = {
-      pre_load: {
-        batch: '',
-        category: '',
-        // department: ''
-      },
       post_data:
       {
         address: '',
@@ -24,7 +19,7 @@ export class PostForm extends React.Component {
         name: '',
         gender: '',
         fatherName: '',
-        dob: Date,
+        dob: '',
         sslcMark: '',
         hscMark: '',
         community: '',
@@ -198,12 +193,7 @@ export class PutForm extends React.Component {
   constructor() {
     super()
     this.state = {
-      id: '',
-      pre_load: {
-        batch: '',
-        category: '',
-        // depertment: ''
-      },
+      id: '',,
       put_data:
       {
         address: '',
@@ -217,7 +207,7 @@ export class PutForm extends React.Component {
         name: '',
         gender: '',
         fatherName: '',
-        dob: Date,
+        dob: '',
         sslcMark: '',
         hscMark: '',
         community: '',
@@ -354,7 +344,7 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="Category" className="col-4 col-form-label">Category</label>
           <div className="col-8">
-            <select id='category_id' name='category_id' key='category_id' placeholder={this.props.select.category} onChange={this.handleChange} required='required' className="custom-select">
+            <select id='category' name='category' key='category' placeholder={this.props.select.category} onChange={this.handleChange} required='required' className="custom-select">
               {this.props.option.category}
             </select>
           </div>
@@ -363,7 +353,7 @@ export class PutForm extends React.Component {
           <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
           <div className="col-8">
             <select id='batch' name='batch' key='batch' placeholder={this.props.select.batch} onChange={this.handleChange} required='required' className="custom-select">
-              {this.props.option.category}
+              {this.props.option.batch}
             </select>
           </div>
         </div>

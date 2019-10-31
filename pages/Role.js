@@ -1,6 +1,6 @@
 import React from 'react'
 import { StaffTypeColumns as Column} from '../components/Columns'
-import { PostForm, PutForm } from '../forms/Role'
+import { PostForm, PutForm } from '../forms/StaffType'
 import SERVER_URL from '../endpoints/Server'
 import App from '../components/App';
 
@@ -29,7 +29,7 @@ export default class Role extends React.Component {
     render() {
         return (
             <div>
-                <App name={'Role'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'Stafftype'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
         )
     }

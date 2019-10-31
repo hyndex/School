@@ -10,7 +10,8 @@ export class PostForm extends React.Component {
             id: '',
             post_data:
             {
-                role: '',
+                id: '',
+                designation: '',
                 name: '',
                 dob: '',
                 address: '',
@@ -18,9 +19,19 @@ export class PostForm extends React.Component {
                 phone: '',
                 email: '',
                 gender: '',
+                dateOfJoining: '',
                 qualification: '',
                 aadhar: '',
-                staffid: '',
+				addressdoorNo: '',
+				addressstreet: '',
+				addresslandmark: '',
+				addresspost:'',
+				addresscity: '',
+				addressstate: '',
+				addresscountry: '',
+				addresspincode: '',
+				addressmobile1: '',
+				addressmobile2: '',
 
             },
         }
@@ -60,13 +71,19 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="name" className="col-3 col-form-label">Name</label>
                     <div className="col-9">
-                        <input id="name" name="name" key="name" onChange={this.handleChange} placeholder="Name" type="text" className="form-control" required="required" />
+                        <input id="name" name="name" key="name" onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlfor="DOB" className="col-3 col-form-label">Date of Birth</label>
                     <div className="col-9">
-                        <input id="dob" name="dob" key='dob' onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="dob" name="dob" key='dob' onChange={this.handleChange} type="date" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="dateOfJoining" className="col-3 col-form-label">Date of Join</label>
+                    <div className="col-9">
+                        <input id="dateOfJoining" name="dateOfJoining" key='dateOfJoining' onChange={this.handleChange} type="date" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -77,7 +94,7 @@ export class PostForm extends React.Component {
                             <label htmlfor="radio_0" className="form-check-label">Male</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input name="gender" id="radio_1" type="radio" key='gender' onChange={this.handleChange} className="form-check-input" value="female" required="required" />
+                            <input name="gender" id="radio_1" type="radio" key='gender'  onChange={this.handleChange} className="form-check-input" value="female" required="required" />
                             <label htmlfor="radio_1" className="form-check-label">Female</label>
                         </div>
                         <div className="form-check form-check-inline">
@@ -87,53 +104,91 @@ export class PostForm extends React.Component {
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlfor="address" className="col-3 col-form-label">Address</label>
+                    <label htmlfor="address" className="col-3 col-form-label">doorNo</label>
                     <div className="col-9">
-                        <input id="address" name="address" key='address' onChange={this.handleChange} placeholder="Address" type="text" className="form-control" required="required" />
+                        <input id="addressdoorNo" name="addressdoorNo" key='addressdoorNo'  onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="pin" className="col-3 col-form-label">PIN Code</label>
+				<div className="form-group row">
+                    <label htmlfor="address" className="col-3 col-form-label">street</label>
                     <div className="col-9">
-                        <input id="pin" name="pin" key='pin' onChange={this.handleChange} placeholder="PIN Code" type="text" className="form-control" />
+                        <input id="addressstreet" name="addressstreet" key='addressstreet' onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="phone" className="col-3 col-form-label">Phone</label>
+				<div className="form-group row">
+                    <label htmlfor="address" className="col-3 col-form-label">landmark</label>
                     <div className="col-9">
-                        <input id="phone" name="phone" key="phone" onChange={this.handleChange} placeholder="Phone Number" type="text" className="form-control" required="required" />
+                        <input id="addresslandmark" name="addresslandmark" key='addresslandmark'  onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="email" className="col-3 col-form-label">Email</label>
+				<div className="form-group row">
+                    <label htmlfor="address" className="col-3 col-form-label">post</label>
                     <div className="col-9">
-                        <input id="email" name="email" key="email" onChange={this.handleChange} placeholder="Email" type="text" className="form-control" required="required" />
+                        <input id="addresspost" name="addresspost" key='addresspost' onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="aadhar" className="col-3 col-form-label">Aadhar</label>
+				<div className="form-group row">
+                    <label htmlfor="addresscity" className="col-3 col-form-label">city</label>
                     <div className="col-9">
-                        <input id="aadhar" name="aadhar" key="aadhar" onChange={this.handleChange} placeholder="Aadhar" type="text" className="form-control" />
+                        <input id="addresscity" name="addresscity" key='addresscity' onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="Qualification" className="col-3 col-form-label">Qualification</label>
+				<div className="form-group row">
+                    <label htmlfor="addressstate" className="col-3 col-form-label">state</label>
                     <div className="col-9">
-                        <input id="Qualification" name="Qualification" onChange={this.handleChange} key="qualification" placeholder="Qualification" type="text" className="form-control" />
+                        <input id="addressstate" name="addressstate" key='addressstate' onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div class="form-group row">
+				<div className="form-group row">
+                    <label htmlfor="addresscountry" className="col-3 col-form-label">country</label>
+                    <div className="col-9">
+                        <input id="addresscountry" name="addresscountry" key='addresscountry' onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="addresspincode" className="col-3 col-form-label">pincode</label>
+                    <div className="col-9">
+                        <input id="addresspincode" name="addresspincode" key='addresspincode' onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="addressmobile1" className="col-3 col-form-label">mobile 1</label>
+                    <div className="col-9">
+                        <input id="addressmobile1" name="addressmobile1" key='addressmobile1' onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="addressmobile2" className="col-3 col-form-label">mobile 2</label>
+                    <div className="col-9">
+                        <input id="addressmobile2" name="addressmobile2" key='addressmobile2'  onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+                
+                
+      
+				
+				<div class="form-group row">
                     <label htmlfor="Stafftype" class="col-4 col-form-label">Staff Type</label>
                     <div class="col-8">
-                        <select id='role' name='role' key='role' onChange={this.handleChange} required='required' className="custom-select">
-                            {Select('role')}
+                        <select id='designation' name='designation' key='designation' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.designation}
                         </select>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="staffid" className="col-3 col-form-label">Staff Id.</label>
-                    <div className="col-9">
-                        <input id="staffid" name="staffid" key="staffid" onChange={this.handleChange} placeholder="Staff Id." type="text" required="required" className="form-control" />
+				<div class="form-group row">
+                    <label htmlfor="userAccount" class="col-4 col-form-label">Account</label>
+                    <div class="col-8">
+                        <select id='userAccount' name='userAccount' key='userAccount' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.userAccount}
+                        </select>
+                    </div>
+                </div>
+				<div class="form-group row">
+                    <label htmlfor="Stafftype" class="col-4 col-form-label">Staff Type</label>
+                    <div class="col-8">
+                        <select id='staffType' name='staffType' key='staffType' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.stafftype}
+                        </select>
                     </div>
                 </div>
                 <div className="form-group row">
@@ -152,8 +207,9 @@ export class PutForm extends React.Component {
         this.state = {
             id: '',
             put_data:
-            {
-                role: '',
+             {
+                id: '',
+                designation: '',
                 name: '',
                 dob: '',
                 address: '',
@@ -161,9 +217,19 @@ export class PutForm extends React.Component {
                 phone: '',
                 email: '',
                 gender: '',
+                dateOfJoining: '',
                 qualification: '',
                 aadhar: '',
-                staffid: '',
+				addressdoorNo: '',
+				addressstreet: '',
+				addresslandmark: '',
+				addresspost:'',
+				addresscity: '',
+				addressstate: '',
+				addresscountry: '',
+				addresspincode: '',
+				addressmobile1: '',
+				addressmobile2: '',
 
             },
         }
@@ -218,7 +284,13 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="DOB" className="col-3 col-form-label">Date of Birth</label>
                     <div className="col-9">
-                        <input id="dob" name="dob" key='dob' placeholder={this.props.select.dob} onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="dob" name="dob" key='dob' placeholder={this.props.select.dob} onChange={this.handleChange} type="date" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="dateOfJoining" className="col-3 col-form-label">Date of Join</label>
+                    <div className="col-9">
+                        <input id="dateOfJoining" name="dateOfJoining" key='dateOfJoining' placeholder={this.props.select.dateOfJoining} onChange={this.handleChange} type="date" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -239,53 +311,91 @@ export class PutForm extends React.Component {
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlfor="address" className="col-3 col-form-label">Address</label>
+                    <label htmlfor="address" className="col-3 col-form-label">doorNo</label>
                     <div className="col-9">
-                        <input id="address" name="address" key='address' placeholder={this.props.select.address} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addressdoorNo" name="addressdoorNo" key='addressdoorNo' placeholder={this.props.select.addressdoorNo} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="pin" className="col-3 col-form-label">PIN Code</label>
+				<div className="form-group row">
+                    <label htmlfor="address" className="col-3 col-form-label">street</label>
                     <div className="col-9">
-                        <input id="pin" name="pin" key='pin' placeholder={this.props.select.pin} onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="addressstreet" name="addressstreet" key='addressstreet' placeholder={this.props.select.addressstreet} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="phone" className="col-3 col-form-label">Phone</label>
+				<div className="form-group row">
+                    <label htmlfor="address" className="col-3 col-form-label">landmark</label>
                     <div className="col-9">
-                        <input id="phone" name="phone" key="phone" placeholder={this.props.select.phone} onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="addresslandmark" name="addresslandmark" key='addresslandmark' placeholder={this.props.select.addresslandmark} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="email" className="col-3 col-form-label">Email</label>
+				<div className="form-group row">
+                    <label htmlfor="address" className="col-3 col-form-label">post</label>
                     <div className="col-9">
-                        <input id="email" name="email" key="email" placeholder={this.props.select.email} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addresspost" name="addresspost" key='addresspost' placeholder={this.props.select.addresspost} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="aadhar" className="col-3 col-form-label">Aadhar</label>
+				<div className="form-group row">
+                    <label htmlfor="addresscity" className="col-3 col-form-label">city</label>
                     <div className="col-9">
-                        <input id="aadhar" name="aadhar" key="aadhar" placeholder={this.props.select.aadhar} onChange={this.handleChange}  type="text" className="form-control" />
+                        <input id="addresscity" name="addresscity" key='addresscity' placeholder={this.props.select.addresscity} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="Qualification" className="col-3 col-form-label">Qualification</label>
+				<div className="form-group row">
+                    <label htmlfor="addressstate" className="col-3 col-form-label">state</label>
                     <div className="col-9">
-                        <input id="qualification" name="qualification" key='qualification' placeholder={this.props.select.qualification} onChange={this.handleChange} key="qualification" placeholder="Qualification" type="text" className="form-control" />
+                        <input id="addressstate" name="addressstate" key='addressstate' placeholder={this.props.select.addressstate} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
-                <div class="form-group row">
+				<div className="form-group row">
+                    <label htmlfor="addresscountry" className="col-3 col-form-label">country</label>
+                    <div className="col-9">
+                        <input id="addresscountry" name="addresscountry" key='addresscountry' placeholder={this.props.select.addresscountry} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="addresspincode" className="col-3 col-form-label">pincode</label>
+                    <div className="col-9">
+                        <input id="addresspincode" name="addresspincode" key='addresspincode' placeholder={this.props.select.addresspincode} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="addressmobile1" className="col-3 col-form-label">mobile 1</label>
+                    <div className="col-9">
+                        <input id="addressmobile1" name="addressmobile1" key='addressmobile1' placeholder={this.props.select.addressmobile1} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlfor="addressmobile2" className="col-3 col-form-label">mobile 2</label>
+                    <div className="col-9">
+                        <input id="addressmobile2" name="addressmobile2" key='addressmobile2' placeholder={this.props.select.addressmobile2} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                    </div>
+                </div>
+                
+                
+      
+				
+				<div class="form-group row">
                     <label htmlfor="Stafftype" class="col-4 col-form-label">Staff Type</label>
                     <div class="col-8">
-                        <select id='role' name='role' key='role' placeholder={this.props.select.role} onChange={this.handleChange} required='required' className="custom-select">
-                            {Select('role')}
+                        <select id='designation' name='designation' key='designation' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.designation}
                         </select>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlfor="staffid" className="col-3 col-form-label">Staff Id.</label>
-                    <div className="col-9">
-                        <input id="staffid" name="staffid" key="staffid" placeholder={this.props.select.staffid} onChange={this.handleChange}  type="text" required="required" className="form-control" />
+				<div class="form-group row">
+                    <label htmlfor="userAccount" class="col-4 col-form-label">Account</label>
+                    <div class="col-8">
+                        <select id='userAccount' name='userAccount' key='userAccount' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.userAccount}
+                        </select>
+                    </div>
+                </div>
+				<div class="form-group row">
+                    <label htmlfor="Stafftype" class="col-4 col-form-label">Staff Type</label>
+                    <div class="col-8">
+                        <select id='staffType' name='staffType' key='staffType' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.stafftype}
+                        </select>
                     </div>
                 </div>
                 <div className="form-group row">

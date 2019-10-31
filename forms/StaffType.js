@@ -8,7 +8,7 @@ export class PostForm extends React.Component {
         this.state = {
             post_data:
             {
-                stafftype: '',
+                type: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -44,7 +44,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="role" className="col-4 col-form-label">Add Staff Type</label>
                     <div className="col-8">
-                        <input id="stafftype" name="stafftype" key='stafftype' onChange={this.handleChange} placeholder="Role" type="text" required="required" className="form-control" />
+                        <input id="type" name="type" key='type' onChange={this.handleChange} placeholder="Role" type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -65,7 +65,7 @@ export class PutForm extends React.Component {
             id: '',
             put_data:
             {
-                stafftype: '',
+                type: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -74,7 +74,7 @@ export class PutForm extends React.Component {
     }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id + '/', {
+        fetch('http://' + SERVER_URL + '/api/stafftype/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -87,7 +87,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? window.location.reload() : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/semester/' + this.props.select._id, {
+        fetch('http://' + SERVER_URL + '/api/stafftype/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -114,7 +114,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="role" className="col-4 col-form-label">Add Staff Type</label>
                     <div className="col-8">
-                        <input id="stafftype" name="stafftype" key='stafftype' onChange={this.handleChange} placeholder="Role" type="text" required="required" className="form-control" />
+                        <input id="type" name="type" key='type' onChange={this.handleChange} placeholder={this.props.select.type} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

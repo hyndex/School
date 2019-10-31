@@ -8,7 +8,14 @@ export class PostForm extends React.Component {
         this.state = {
             post_data:
             {
-                stafftype: '',
+                name: '',
+                type: '',
+                class: '',
+                exam:{
+					datetime:'',
+					description:'',
+					subject:'',
+				},
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -42,11 +49,29 @@ export class PostForm extends React.Component {
         return (
             <div>
                 <div className="form-group row">
-                    <label htmlFor="role" className="col-4 col-form-label">Add Exam</label>
-                    <div className="col-8">
-                        <input id="exam" name="exam" key='exam' onChange={this.handleChange} placeholder="Exam" type="text" required="required" className="form-control" />
-                    </div>
-                </div>
+				  <label htmlFor="type" className="col-4 col-form-label">type</label>
+				  <div className="col-8">
+					<select id='type' name='type' key='type'onChange={this.handleChange} required='required' className="custom-select">
+					  {this.props.option.examtype}
+					</select>
+				  </div>
+				</div>
+				<div className="form-group row">
+				  <label htmlFor="name" className="col-4 col-form-label">name</label>
+				  <div className="col-8">
+					<select id='name' name='name' key='name' onChange={this.handleChange} required='required' className="custom-select">
+					  {this.props.option.examname}
+					</select>
+				  </div>
+				</div>
+				<div className="form-group row">
+				  <label htmlFor="class" className="col-4 col-form-label">name</label>
+				  <div className="col-8">
+					<select id='class' name='class' key='class' onChange={this.handleChange} required='required' className="custom-select">
+					  {this.props.option.class}
+					</select>
+				  </div>
+				</div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
@@ -65,7 +90,14 @@ export class PutForm extends React.Component {
             id: '',
             put_data:
             {
-                stafftype: '',
+                name: '',
+                type: '',
+                class: '',
+                exam:{
+					datetime:'',
+					description:'',
+					subject:'',
+				},
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -111,12 +143,30 @@ export class PutForm extends React.Component {
     render() {
         return (
             <div>
-                <div className="form-group row">
-                    <label htmlFor="role" className="col-4 col-form-label">Add Exam</label>
-                    <div className="col-8">
-                        <input id="exam" name="exam" key='exam' onChange={this.handleChange} placeholder="Exam" type="text" required="required" className="form-control" />
-                    </div>
-                </div>
+				<div className="form-group row">
+				  <label htmlFor="type" className="col-4 col-form-label">type</label>
+				  <div className="col-8">
+					<select id='type' name='type' key='type' placeholder={this.props.select.type} onChange={this.handleChange} required='required' className="custom-select">
+					  {this.props.option.examtype}
+					</select>
+				  </div>
+				</div>
+				<div className="form-group row">
+				  <label htmlFor="name" className="col-4 col-form-label">name</label>
+				  <div className="col-8">
+					<select id='name' name='name' key='name' placeholder={this.props.select.name} onChange={this.handleChange} required='required' className="custom-select">
+					  {this.props.option.examname}
+					</select>
+				  </div>
+				</div>
+				<div className="form-group row">
+				  <label htmlFor="class" className="col-4 col-form-label">name</label>
+				  <div className="col-8">
+					<select id='class' name='class' key='class' placeholder={this.props.select.class} onChange={this.handleChange} required='required' className="custom-select">
+					  {this.props.option.class}
+					</select>
+				  </div>
+				</div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" type="submit" onClick={this.Update} className="btn btn-primary">Submit</button>

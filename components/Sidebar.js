@@ -52,7 +52,7 @@ export default class Sidebar extends React.Component{
             const view = this.state.options[arr][2]
             const index= arr
             var active=''
-            if (arr==this.state.current){
+            if (arr==field){
                 active='table-active'
             }
             

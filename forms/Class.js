@@ -6,17 +6,14 @@ export class PostForm extends React.Component {
     constructor() {
         super()
         this.state = {
-            pre_load: {
-                batch: '',
-                category: '',
-                department: ''
-            },
             post_data:
             {
                 batch: '',
                 semister: '',
                 department: '',
                 category: '',
+				staff:'',
+				classname:'',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -75,6 +72,20 @@ export class PostForm extends React.Component {
                         </select>
                     </div>
                 </div>
+				<div className="form-group row">
+                    <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
+                    <div className="col-8">
+                        <select id='staff' name='staff' key='staff' placeholder='Class IC' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.staff}
+                        </select>
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlFor="classname" className="col-4 col-form-label">Class</label>
+                    <div className="col-8">
+                        <input id="classname" name="classname" key='classname' onChange={this.handleChange} placeholder="classname" type="text" className="form-control" />
+                    </div>
+                </div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
@@ -95,18 +106,14 @@ export class PutForm extends React.Component {
         super()
         this.state = {
             id: '',
-            pre_load: {
-                batch: '',
-                category: '',
-                department: ''
-            },
             put_data:
             {
                 batch: '',
                 semister: '',
                 department: '',
                 category: '',
-                classic: '',
+                staff: '',
+				classname:'',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -181,9 +188,15 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="ClassI/C" className="col-4 col-form-label">ClassI/C</label>
                     <div className="col-8">
-                        <select id='classic' name='classic' key='classic' placeholder={this.props.select.classic} onChange={this.handleChange} required='required' className="custom-select">
-                            {Select('classic')}
+                        <select id='staff' name='staff' key='staff' placeholder={this.props.select.staff} onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.staff}
                         </select>
+                    </div>
+                </div>
+				<div className="form-group row">
+                    <label htmlFor="classname" className="col-4 col-form-label">Class</label>
+                    <div className="col-8">
+                        <input id="classname" name="classname" key='classname' onChange={this.handleChange} placeholder={this.props.select.classname} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

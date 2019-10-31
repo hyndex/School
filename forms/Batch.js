@@ -10,7 +10,7 @@ export class PostForm extends React.Component {
             {
                 start: '',
                 end: '',
-                batch: '',
+                batchShortcode: '',
 
             },
         }
@@ -72,7 +72,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
-                        <input id="batch" name="batch" key='batch' onChange={this.handleChange} placeholder="Batch" type="text" className="form-control" />
+                        <input id="batchShortcode" name="batchShortcode" key='batchShortcode' onChange={this.handleChange} placeholder="Batch" type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -101,7 +101,7 @@ export class PutForm extends React.Component {
             {
                 start: '',
                 end: '',
-                batch: '',
+                batchShortcode: '',
 
             },
         }
@@ -111,7 +111,7 @@ export class PutForm extends React.Component {
     }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/batch/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/batch/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -124,7 +124,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? window.location.reload() : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/batch/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/batch/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {
@@ -177,7 +177,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
-                        <input id="batch" name="batch" key='batch' placeholder={this.props.select.batch} onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="batchShortcode" name="batchShortcode" key='batchShortcode' placeholder={this.props.select.batchShortcode} onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

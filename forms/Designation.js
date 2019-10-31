@@ -8,7 +8,7 @@ export class PostForm extends React.Component {
         this.state = {
             post_data:
             {
-                designation: '',
+                type: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -44,7 +44,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Designation" className="col-4 col-form-label">Designation</label>
                     <div className="col-8">
-                        <input id="designation" name="designation" key='designation' onChange={this.handleChange} placeholder="Designation" type="text" required="required" className="form-control" />
+                        <input id="type" name="type" key='type' onChange={this.handleChange} placeholder="Designation" type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -66,7 +66,7 @@ export class PutForm extends React.Component {
             id: '',
             put_data:
             {
-                designation: '',
+                type: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -115,7 +115,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Designation" className="col-4 col-form-label">Designation</label>
                     <div className="col-8">
-                        <input id="designation" name="designation" key='designation' placeholder={this.props.select.designation} onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="type" name="type" key='type' placeholder={this.props.select.type} onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

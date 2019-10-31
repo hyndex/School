@@ -9,7 +9,7 @@ export class PostForm extends React.Component {
             id: '',
             post_data:
             {
-                subjecttype: '',
+                type: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -48,7 +48,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="subtype" className="col-4 col-form-label">Add Subject Type</label>
                     <div className="col-8">
-                        <input id="subjecttype" name="subjecttype" onChange={this.handleChange} key='subjecttype' placeholder="Add Subject Type" type="text" required="required" className="form-control" />
+                        <input id="type" name="type" onChange={this.handleChange} key='type' placeholder="Add Subject Type" type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -67,7 +67,7 @@ export default class PutForm extends React.Component {
         this.state = {
             put_data:
             {
-                subjecttype: '',
+                type: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -119,7 +119,7 @@ export default class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="subtype" className="col-4 col-form-label">Add Subject Type</label>
                     <div className="col-8">
-                        <input id="subjecttype" name="subjecttype"  onChange={this.handleChange} key='subjecttype' placeholder={this.props.select.subjecttype} type="text" required="required" className="form-control" />
+                        <input id="type" name="type"  onChange={this.handleChange} key='type' placeholder={this.props.select.type} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

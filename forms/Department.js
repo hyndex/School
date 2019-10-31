@@ -8,9 +8,9 @@ export class PostForm extends React.Component {
         this.state = {
             post_data:
             {
-                department: '',
+                name: '',
                 code: '',
-                short: '',
+                shortName: '',
 
             },
         }
@@ -47,7 +47,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Department" className="col-4 col-form-label">Department Name</label>
                     <div className="col-8">
-                        <input id="department" name="department" key='department' onChange={this.handleChange} placeholder="Department Name" type="text" className="form-control" required="required" />
+                        <input id="name" name="name" key='name' onChange={this.handleChange} placeholder="Department Name" type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -59,7 +59,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="short" className="col-4 col-form-label">Short Name</label>
                     <div className="col-8">
-                        <input id="short" name="short" placeholder="Short Name" key='short' onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="shortName" name="shortName" placeholder="Short Name" key='shortName' onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -79,9 +79,9 @@ export class PutForm extends React.Component {
             id: '',
             put_data:
             {
-                department: '',
+                name: '',
                 code: '',
-                short: '',
+                shortName: '',
 
             },
         }
@@ -132,7 +132,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Department" className="col-4 col-form-label">Department Name</label>
                     <div className="col-8">
-                        <input id="department" name="department" key='department' placeholder={this.props.select.department} onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="name" name="name" key='name' placeholder={this.props.select.name} onChange={this.handleChange} type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -144,7 +144,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="short" className="col-4 col-form-label">Short Name</label>
                     <div className="col-8">
-                        <input id="short" name="short" placeholder="Short Name" key='short' placeholder={this.props.select.short} onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="shortName" name="shortName" placeholder="Short Name" key='shortName' placeholder={this.props.select.shortName} onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

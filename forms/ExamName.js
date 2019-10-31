@@ -7,7 +7,7 @@ export class PostForm extends React.Component {
         this.state = {
             post_data:
             {
-                examname: '',
+                name: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -42,7 +42,7 @@ export class PostForm extends React.Component {
                 <div className="form-group row">
                     <label htmlhtmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
-                        <input id="examname" name="examname" key='examname' onChange={this.handleChange} placeholder="Exam Name" type="text" required="required" className="form-control" />
+                        <input id="name" name="name" key='name' onChange={this.handleChange} placeholder="Exam Name" type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
@@ -62,7 +62,7 @@ export class PutForm extends React.Component {
             id: '',
             put_data:
             {
-                examname: '',
+                name: '',
             },
         }
         this.handleChange = this.handleChange.bind(this)
@@ -111,12 +111,12 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlhtmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
-                        <input id="examname" name="examname" key='examname' placeholder={this.props.select.examname} onChange={this.handleChange}  type="text" required="required" className="form-control" />
+                        <input id="name" name="name" key='name' placeholder={this.props.select.name} onChange={this.handleChange}  type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
-                        <button name="submit" type="submit" onClick={this.Create} className="btn btn-primary">Submit</button>
+                        <button name="submit" type="submit" onClick={this.Update} className="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
