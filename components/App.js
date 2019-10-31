@@ -69,7 +69,7 @@ export default class App extends React.Component {
                         </div>
                     </div>
                     <div className="row my-4">
-                        <SideBar role={this.props.name} />
+                        <SideBar selected={this.props.name} />
                         <div className="row card card-body mx-4">
                             <div id='Body'>
                                 {
