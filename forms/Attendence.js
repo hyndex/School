@@ -113,7 +113,7 @@ export class PutForm extends React.Component {
     }
     Update = (e) => {
         e.preventDefault()
-        fetch('http://' + SERVER_URL + '/api/attendence/' + this.state.id + '/', {
+        fetch('http://' + SERVER_URL + '/api/attendence/' + this.props.select._id + '/', {
             method: 'PUT',
             credentials: 'include',
             body: JSON.stringify(this.state.put_data),
@@ -126,7 +126,7 @@ export class PutForm extends React.Component {
             .then(async (data) => await (data == 201) ? window.location.reload() : alert('You can not update a sample'))
     }
     Delete(e) {
-        fetch('http://' + SERVER_URL + '/api/attendence/' + this.state.id, {
+        fetch('http://' + SERVER_URL + '/api/attendence/' + this.props.select._id, {
             method: 'DELETE',
             credentials: 'include',
             headers: {

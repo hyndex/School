@@ -17,10 +17,10 @@ export default class ExamName extends React.Component {
         }
     }
     async componentDidMount() {
-        const cookies = new Cookies();
-        if (cookies.get('logged') != true) {
-            window.location.replace("./Login");
-        }
+        // const cookies = new Cookies();
+        // if (cookies.get('logged') != true) {
+        //     window.location.replace("./Login");
+        // }
         await fetch('http://'+SERVER_URL+'/api/examname/', {
             method: 'GET',
             credentials: 'include',

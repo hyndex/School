@@ -29,6 +29,8 @@ export default class SelectOption extends React.Component {
             year: [],
             subjecttype:[],
             examname:[],
+            examtype:[],
+            staff:[],
             flag:null
         }
     }
@@ -212,18 +214,48 @@ export default class SelectOption extends React.Component {
                 })
                 console.log('TABLE=>',table)
                 this.setState({ subjecttype: table })
-                this.setState({flag:1})
             })
             .catch((err)=>console.log(err))
+            fetch('http://' + SERVER_URL + '/api/examtype/', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded",
+                    'Accept': 'application/json',
+                }
+            })
+                .then(response => response.json())
+                .then((data) => {
+                    var table = []
+                    data.map(function(item){
+                        table.push(<option key={item._id} value={item._id}>{item.type}</option>);
+                    })
+                    console.log('TABLE=>',table)
+                    this.setState({ examtype: table })
+                })
+                .catch((err)=>console.log(err))
+            .catch((err)=>console.log(err))
+            fetch('http://' + SERVER_URL + '/api/staff/', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded",
+                    'Accept': 'application/json',
+                }
+            })
+                .then(response => response.json())
+                .then((data) => {
+                    var table = []
+                    data.map(function(item){
+                        table.push(<option key={item._id} value={item._id}>{item.name}</option>);
+                    })
+                    console.log('TABLE=>',table)
+                    this.setState({ staff: table })
+                    this.setState({flag:1})
+                })
+                .catch((err)=>console.log(err))
     }
-    render() {
-        var table = []
-        table.push(<option key='1' value="rabbit">Rabbit</option>)
-        table.push(<option key='2' value="rabbit">Rabbit</option>)
-        table.push(<option key='3' value="rabbit">Rabbit</option>)
-        table.push(<option key='4' value="rabbit">Rabbit</option>)
-        table.push(<option key='5' value="rabbit">Rabbit</option>)
-        
+    render() {      
         console.log('PRELOAD=>',this.state)
         if(this.state.flag == null){
             store.dispatch(UpdateOption(this.state))

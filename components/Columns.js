@@ -91,19 +91,15 @@ export const UserColumns=[
 ]
 export const BatchColumns=[
     {
-        Header:'Id',
-        accessor:'userId',
-    },
-    {
         Header:'Batch',
-        accessor:'batch',
+        accessor:'batchShortcode',
     }
 ]
 export const DepartmentColumns=[
     
     {
         Header:'Department',
-        accessor:'department',
+        accessor:'name',
     },
     {
         Header:'Department Code',
@@ -111,7 +107,7 @@ export const DepartmentColumns=[
     },
     {
         Header:'Short Name',
-        accessor:'short',
+        accessor:'shortName',
     },
 ]
 export const ClassColumns=[
@@ -134,14 +130,10 @@ export const ClassColumns=[
     },
     {
         Header:'ClassIC',
-        accessor:'classic',
+        accessor:'staff',
     },
 ]
 export const DesignationColumns=[
-    {
-        Header:'ID',
-        accessor:'id',
-    },
     {
         Header:'Designation',
         accessor:'designation',
@@ -171,18 +163,14 @@ export const ExamNameColumns=[
     
     {
         Header:'Exam Name',
-        accessor:'examname',
+        accessor:'name',
     },
 ]
 
 export const ExamTypeColumns=[
     {
-        Header:'ID',
-        accessor:'id',
-    },
-    {
         Header:'Exam Type',
-        accessor:'examtype',
+        accessor:'type',
     },
 ]
 export const StaffTypeColumns=[
@@ -198,29 +186,17 @@ export const StaffTypeColumns=[
 
 export const SemesterColumns=[
     {
-        Header:'ID',
-        accessor:'id',
-    },
-    {
-        Header:'Year',
-        accessor:'year',
-    },
-    {
         Header:'Semester',
         accessor:'semester',
     },
 ]
 export const StaffColumns=[
     {
-        Header:'ID',
-        accessor:'id',
-    },
-    {
         Header:'Name',
         accessor:'name',
     },
     {
-        Header:'Role',
+        Header:'stafftype',
         accessor:'stafftype',
     },
     {
@@ -237,15 +213,11 @@ export const SubjectTypeColumns=[
     
     {
         Header:'Subject Type',
-        accessor:'subjecttype',
+        accessor:'type',
     },
 ]
 
 export const YearColumns=[
-    {
-        Header:'Id',
-        accessor:"_id",
-    },
     {
         Header:'Year',
         accessor:"year",

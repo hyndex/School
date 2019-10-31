@@ -20,7 +20,7 @@ export default class Sidebar extends React.Component{
             ['User ','./Exam',true],
             ['Batch','./Batch',true],
             ['Department','./Department',true],
-            ['ExamBrowser','./ExamBrowser',true],
+            // ['ExamBrowser','./ExamBrowser',true],
             ['ExamName','./ExamName',true],
             ['ExamType','./ExamType',true],
             ['Register','./Register',true],

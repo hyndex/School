@@ -29,7 +29,7 @@ export class PostForm extends React.Component {
         console.log('POST STATE=>', this.state.post_data)
     }
     Create = () => {
-        fetch('http://' + SERVER_URL + '/api/depertment/', {
+        fetch('http://' + SERVER_URL + '/api/department/', {
             method: 'POST',
             credentials: 'include',
             body: JSON.stringify(this.state.post_data),

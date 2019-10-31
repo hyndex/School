@@ -39,9 +39,7 @@ export class PostForm extends React.Component {
             .then(response => response.status)
             .then(async (data) => await (data == 201) ? window.location.reload() : alert('Not Successful'))
     }
-    componentDidMount() {
-        this.setState({ id: this.props.select._id })
-    }
+
     render() {
         return (
             <div>
@@ -61,7 +59,7 @@ export class PostForm extends React.Component {
     }
 }
 
-export default class PutForm extends React.Component {
+export class PutForm extends React.Component {
     constructor() {
         super()
         this.state = {

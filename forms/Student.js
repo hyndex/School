@@ -193,7 +193,7 @@ export class PutForm extends React.Component {
   constructor() {
     super()
     this.state = {
-      id: '',,
+      id: '',
       put_data:
       {
         address: '',

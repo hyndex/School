@@ -1,6 +1,6 @@
 import React from 'react'
 import {CategoryColumns as Column} from '../components/Columns'
-import {PostForm,PutForm} from '../forms/Designation'
+import {PostForm,PutForm} from '../forms/Category'
 import SERVER_URL from '../endpoints/Server'
 import App from '../components/App';
 
