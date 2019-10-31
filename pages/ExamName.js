@@ -37,7 +37,7 @@ export default class ExamName extends React.Component {
     render() {
         return (
             <div>
-                <App name={'Examname'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'ExamName'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }

@@ -32,7 +32,7 @@ export default class SubjectType extends React.Component {
     render() {
         return (
             <div>
-                <App name={'Subjecttype'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'SubjectType'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }

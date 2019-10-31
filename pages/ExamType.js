@@ -30,7 +30,7 @@ export default class ExamType extends React.Component {
     render() {
         return (
             <div>
-                <App name={'Examtype'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
+                <App name={'ExamType'} PostForm={PostForm} PutForm={PutForm} Column={Column} fields_data={this.state.fields_data}/>
             </div>
             )
     }
