@@ -2,7 +2,6 @@ import React from 'react'
 import SideBar from '../components/Sidebar'
 import NavBar from '../components/Navbar'
 import {CSVLink} from "react-csv";
-
 import Show from '../components/Show'
 import ReactTable from 'react-table'
 import Cookies from 'universal-cookie';
@@ -45,11 +44,10 @@ export default class ReportApp extends React.Component {
                     window.location.replace("./Login");
                 }
             })
-        this.setState({columns:this.props.columns})
 
     }
     download(event) {
-        var columns=this.state.columns
+        var columns=this.props.columns
         const currentRecords = this.reactTable.getResolvedState().sortedData;
         var data_to_download = []
         for (var index = 0; index < currentRecords.length; index++) {
@@ -89,7 +87,7 @@ export default class ReportApp extends React.Component {
                                 </div>
                                 <div>
                                     <CSVLink
-                                        data={this.state.dataToDownload}
+                                        data={this.props.fields_data}
                                         filename="data.csv"
                                         className="hidden"
                                         ref={(r) => this.csvLink = r}
@@ -98,8 +96,8 @@ export default class ReportApp extends React.Component {
                                 </div>
                                 <ReactTable
                                     ref ={(r) => this.reactTable = r}
-                                    columns={this.state.columns}
-                                    data={this.state.fields_data}
+                                    columns={this.props.columns}
+                                    data={this.props.fields_data}
                                     filterable
                                     defaultPageSize={7}
                                     noDataText={'Please wait....'}

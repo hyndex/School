@@ -38,7 +38,7 @@ export class PostForm extends React.Component {
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 201) ? window.location.reload() : alert('Not Successful'))
+            .then(async (data) => await (data < 300) ? window.location.reload() : alert('Not Successful'))
     }
     render() {
         return (
@@ -121,7 +121,7 @@ export class PutForm extends React.Component {
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 201) ? window.location.reload() : alert('You can not update a sample'))
+            .then(async (data) => await (data < 300) ? window.location.reload() : alert('You can not update a sample'))
     }
     Delete(e) {
         fetch('http://' + SERVER_URL + '/api/batch/' + this.props.select._id, {
@@ -133,7 +133,7 @@ export class PutForm extends React.Component {
             }
         })
             .then(response => response.status)
-            .then(async (data) => await (data == 202) ? window.location.reload() : alert('Not Successful'))
+            .then(async (data) => await (data < 300) ? window.location.reload() : alert('Not Successful'))
     }
     handleChange(e) {
         const { put_data } = { ...this.state };

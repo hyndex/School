@@ -12,9 +12,7 @@ export default class AttendenceReport extends React.Component {
             role:'student',
             logged: true,
             fields_data: [],
-            dataToDownload: [],
         }
-        this.download = this.download.bind(this)
     }
     async componentDidMount() {
         await fetch('http://' + SERVER_URL+'/api/attendencereport/', {
@@ -34,7 +32,7 @@ export default class AttendenceReport extends React.Component {
         
         return (
             <div>
-                <ReportApp Column={columns} fields_data={this.state.fields_data}/>
+                <ReportApp columns={columns} fields_data={this.state.fields_data}/>
             </div>
         )
     }

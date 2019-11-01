@@ -38,7 +38,7 @@ export class PostForm extends React.Component {
       }
     })
       .then(response => response.status)
-      .then(async (data) => await (data == 201) ? alert('Successful') : alert('Not Successful'))
+      .then(async (data) => await (data < 300) ?  window.location.reload() : alert('Not Successful'))
   }
   render() {
     return (
