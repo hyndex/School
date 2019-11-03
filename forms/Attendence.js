@@ -1,4 +1,5 @@
 import React from 'react'
+import { Fragment } from 'react'
 import SERVER_URL from '../endpoints/Server'
 
 
@@ -11,13 +12,47 @@ export class PostForm extends React.Component {
                 date: '',
                 subject: '',
                 class: '',
-				absentees:[]
+                absentees: []
 
             },
+            questions: [],
+            student:[]
         }
         this.handleChange = this.handleChange.bind(this)
         this.Create = this.Create.bind(this)
+        this.handleText = this.handleText.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
+        this.addQuestion = this.addQuestion.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
+    //////////////////////////////////////////////////////////////
+    handleText = i => e => {
+        let questions = [...this.state.questions]
+        questions[i] = e.target.value
+        this.setState({
+            questions
+        })
+    }
+
+    handleDelete = i => e => {
+        e.preventDefault()
+        let questions = [
+            ...this.state.questions.slice(0, i),
+            ...this.state.questions.slice(i + 1)
+        ]
+        this.setState({
+            questions
+        })
+    }
+
+    addQuestion = e => {
+        e.preventDefault()
+        let questions = this.state.questions.concat([''])
+        this.setState({
+            questions
+        })
+    }
+    //////////////////////////////////////////////////////////////
     handleChange(e) {
         const { post_data } = { ...this.state };
         const currentState = post_data;
@@ -29,6 +64,11 @@ export class PostForm extends React.Component {
         console.log('POST STATE=>', this.state.post_data)
     }
     Create = () => {
+        var { post_data } = {...this.state}
+        var absentees = this.state.questions
+        post_data.absentees = absentees;
+        this.setState({post_data:post_data})
+
         fetch('http://' + SERVER_URL + '/api/attendence/', {
             method: 'POST',
             credentials: 'include',
@@ -41,41 +81,80 @@ export class PostForm extends React.Component {
             .then(response => response.status)
             .then(async (data) => await (data < 300) ? window.location.reload() : alert('Not Successful'))
     }
+    componentDidMount(){
+        fetch('http://' + SERVER_URL + '/api/student/', {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    "Content-type": "application/x-www-form-urlencoded",
+                    'Accept': 'application/json',
+                }
+            })
+                .then(response => response.json())
+                .then((data) => {
+                    var table = []
+                    data.map(function(item){
+                        table.push(<option data-tokens={item.name} key={item._id} value={item._id}>{item.roll} {item.name}</option>);
+                    })
+                    console.log('TABLE=>',table)
+                    this.setState({ student: table })
+                })
+                .catch((err)=>console.log(err))
+            .catch((err)=>console.log(err))
+            
+    }
     render() {
+        console.log(this.state)
         return (
             <div>
                 <div className="form-group row">
                     <label htmlFor="start" className="col-4 col-form-label">Date</label>
                     <div className="col-8">
                         <div className="input-group">
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">
-                                    <i className="fa fa-calendar-plus-o"></i>
-                                </div>
-                            </div>
                             <input id="date" name="date" key='date' onChange={this.handleChange} placeholder="Date" type="date" className="form-control" />
                         </div>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="end" className="col-4 col-form-label">Subject</label>
+                    <label htmlFor="hour" className="col-4 col-form-label">Hour</label>
                     <div className="col-8">
                         <div className="input-group">
-                            <div className="input-group-prepend">
-                                <div className="input-group-text">
-                                    <i className="fa fa-calendar-times-o"></i>
-                                </div>
-                            </div>
-                            <input id="subject" name="subject" key='subject' onChange={this.handleChange} placeholder="End Date" type="text" className="form-control" />
+                            <input id="hour" name="hour" key='hour' onChange={this.handleChange} placeholder="hour" type="number" className="form-control" />
                         </div>
                     </div>
                 </div>
                 <div className="form-group row">
-                    <label htmlFor="batch" className="col-4 col-form-label">absentees</label>
+                    <label htmlFor="subject" className="col-4 col-form-label">subject</label>
                     <div className="col-8">
-                        <input id="absentees" name="absentees" key='absentees' onChange={this.handleChange} placeholder="absentees" type="text" className="form-control" />
+                        <select id='subject' name='subject' key='subject' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.subject}
+                        </select>
                     </div>
                 </div>
+                <div className="form-group row">
+                    <label htmlFor="class" className="col-4 col-form-label">class</label>
+                    <div className="col-8">
+                        <select id='class' name='class' key='class' onChange={this.handleChange} required='required' className="custom-select">
+                            {this.props.option.class}
+                        </select>
+                    </div>
+                </div>
+                <Fragment>
+                    {this.state.questions.map((question, index) => (
+                        <span key={index}>
+                            <div className="form-group row">
+                                <label htmlFor="student" className="col-4 col-form-label">student</label>
+                                <div className="col-8">
+                                    <select id='student' class="form-control selectpicker" data-live-search="true" name='student' key='student' onChange={this.handleText(index)} required='required' className="custom-select">
+                                        {this.state.student}
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger" onClick={this.handleDelete(index)}>delete</button>
+                        </span>
+                    ))}
+                    <button class="btn btn-success mx-1 my-1" onClick={this.addQuestion}>Add New Absentee</button>
+                </Fragment>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" onClick={this.Create} type="submit" className="btn btn-primary">Submit</button>
@@ -103,7 +182,7 @@ export class PutForm extends React.Component {
                 date: '',
                 subject: '',
                 class: '',
-				absentees:[]
+                absentees: []
 
             },
         }

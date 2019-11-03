@@ -1,6 +1,6 @@
 import React from 'react'
 import {AttendenceColumns as Column} from '../components/Columns'
-import {PostForm,PutForm} from '../forms/Designation'
+import {PostForm,PutForm} from '../forms/Attendence'
 import SERVER_URL from '../endpoints/Server'
 import App from '../components/App';
 

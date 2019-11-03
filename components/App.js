@@ -46,9 +46,9 @@ export default class App extends React.Component {
             })
             .catch((err) => {
                 console.log('ERRRRRR', err.message)
-                if (err.message == '401') {
-                    window.location.replace("./Login");
-                }
+                // if (err.message == '401') {
+                //     window.location.replace("./Login");
+                // }
             })
 
     }
@@ -131,11 +131,14 @@ export default class App extends React.Component {
                         </div>
                     </div>
                 </div>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+                <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" rel="stylesheet" />
                 <link rel="stylesheet" href="./static/css/bootstrap.min.css" />
                 <link rel="stylesheet" href="./static/css/SideBar.css" />
                 <link rel="stylesheet" href="./static/css/react-table.css" />
                 <script src="./static/js/jquery-3.3.1.slim.min.js"></script>
                 <script src="./static/js/popper.min.js"></script>
+                <script src="./static/js/myJs.js"></script>
                 <script src="./static/js/bootstrap.min.js"></script>
             </div>
         )

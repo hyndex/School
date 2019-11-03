@@ -5,7 +5,7 @@ import App from '../components/App';
 
 
 
-export default class Login extends React.Component {
+export default class Register extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -58,10 +58,7 @@ export default class Login extends React.Component {
                                 <label htmlFor=    "Password">Password</label>
                                 <input type="password" autoComplete="current-password" className="form-control" id="Password" name="password" placeholder="Password" onChange={this.handleChange} />
                             </div>
-                            <div className="form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label" htmlFor=    "exampleCheck1">Check me out</label>
-                            </div>
+
                             <button type="button" className="btn btn-primary" onClick={this.Register}>SignUp</button>
                         </form>
                     </div>
