@@ -15,7 +15,7 @@ export default class AttendenceReport extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://' + SERVER_URL+'/api/attendencereport/', {
+        await fetch('http://' + SERVER_URL+'/reports/attendencereport/', {
             method: 'GET',
             credentials: 'include',
             headers: {

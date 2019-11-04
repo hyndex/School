@@ -9,11 +9,11 @@ export default class Register extends React.Component {
     constructor() {
         super()
         this.state = {
-            username: "",
+            email: "",
             password: "",
         }
         this.handleChange = this.handleChange.bind(this)
-        this.Login = this.Login.bind(this)
+        this.Register = this.Register.bind(this)
     }
 
     handleChange(event) {
@@ -23,40 +23,35 @@ export default class Register extends React.Component {
         console.log(this.state)
     }
 
-    // Login(){
-    //     return true
-    // }
+    
     Register() {
-        fetch('http://' + SERVER_URL+'/api/auth/login', {
+        fetch('http://' + SERVER_URL+'/auth/register', {
             method: 'POST',
             body: JSON.stringify(this.state),
             headers: {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
             }
-        }).then(async (res) => {
-            try {
-                const data = await res.json()
-                if (data.status == 200) {
-                    logged = true
-                }
-            } catch (error) { console.error(error) }
-        }).catch(err => { console.error(err) })
+        })
+        .then(response => response.status)
+        .then(async (data) => await (data < 300) ? alert('Successful') : alert('Unable to register account'))
+
     }
     
     render() {
+        console.log(this.state)
         return (
             <div>
                 <div className="container margin-centre card w-25 my-5">
                     <div className="card-body">
                         <form action="#">
                             <div className="form-group">
-                                <label htmlFor=    "Username">Username</label>
-                                <input type="text" className="form-control" id="Username" name="username" placeholder="Enter username" onChange={this.handleChange} />
+                                <label htmlFor="Username">email</label>
+                                <input type="text" className="form-control" id="email" name="email" key='email' placeholder="Enter email" onChange={this.handleChange} />
                             </div>
                             <div className="form-group">
-                                <label htmlFor=    "Password">Password</label>
-                                <input type="password" autoComplete="current-password" className="form-control" id="Password" name="password" placeholder="Password" onChange={this.handleChange} />
+                                <label htmlFor= "Password">Password</label>
+                                <input type="password" className="form-control" id="password" key="password" name="password" placeholder="Password" onChange={this.handleChange} />
                             </div>
 
                             <button type="button" className="btn btn-primary" onClick={this.Register}>SignUp</button>
