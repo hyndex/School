@@ -157,7 +157,7 @@ export class PutForm extends React.Component {
                                     <i className="fa fa-calendar-plus-o"></i>
                                 </div>
                             </div>
-                            <input id="start" name="start" key='start' placeholder={this.props.select.start} onChange={this.handleChange} type="date" className="form-control" />
+                            <input id="start" name="start" key='start' defaultValue={this.props.select.start} onChange={this.handleChange} type="date" className="form-control" />
                         </div>
                     </div>
                 </div>
@@ -170,14 +170,14 @@ export class PutForm extends React.Component {
                                     <i className="fa fa-calendar-times-o"></i>
                                 </div>
                             </div>
-                            <input id="end" name="end" key='end' placeholder={this.props.select.end} onChange={this.handleChange} type="date" className="form-control" />
+                            <input id="end" name="end" key='end' defaultValue={this.props.select.end} onChange={this.handleChange} type="date" className="form-control" />
                         </div>
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="batch" className="col-4 col-form-label">Batch</label>
                     <div className="col-8">
-                        <input id="batchShortcode" name="batchShortcode" key='batchShortcode' placeholder={this.props.select.batchShortcode} onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="batchShortcode" name="batchShortcode" key='batchShortcode' defaultValue={this.props.select.batchShortcode} onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

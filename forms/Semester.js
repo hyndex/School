@@ -126,13 +126,13 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Semester" className="col-4 col-form-label">Semester</label>
                     <div className="col-8">
-                        <input id="semester" name="semester" key='semester' placeholder={this.props.select.semester}  onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="semester" name="semester" key='semester' defaultValue={this.props.select.semester}  onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label htmlFor="Year" class="col-4 col-form-label">Year</label>
                     <div class="col-8">
-                        <select id="year" name="year" key='year' placeholder={this.props.select.year} onChange={this.handleChange} className="custom-select" required="required">
+                        <select id="year" name="year" key='year' defaultValue={this.props.select.year} onChange={this.handleChange} className="custom-select" required="required">
                             {this.props.option.year}
                         </select>
                     </div>

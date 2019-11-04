@@ -117,7 +117,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="subtype" className="col-4 col-form-label">Add Subject Type</label>
                     <div className="col-8">
-                        <input id="type" name="type"  onChange={this.handleChange} key='type' placeholder={this.props.select.type} type="text" required="required" className="form-control" />
+                        <input id="type" name="type"  onChange={this.handleChange} key='type' defaultValue={this.props.select.type} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

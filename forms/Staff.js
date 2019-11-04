@@ -278,34 +278,34 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="name" className="col-3 col-form-label">Name</label>
                     <div className="col-9">
-                        <input id="name" name="name" key="name" placeholder={this.props.select.name} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="name" name="name" key="name" defaultValue={this.props.select.name} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlfor="DOB" className="col-3 col-form-label">Date of Birth</label>
                     <div className="col-9">
-                        <input id="dob" name="dob" key='dob' placeholder={this.props.select.dob} onChange={this.handleChange} type="date" className="form-control" required="required" />
+                        <input id="dob" name="dob" key='dob' defaultValue={this.props.select.dob} onChange={this.handleChange} type="date" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="dateOfJoining" className="col-3 col-form-label">Date of Join</label>
                     <div className="col-9">
-                        <input id="dateOfJoining" name="dateOfJoining" key='dateOfJoining' placeholder={this.props.select.dateOfJoining} onChange={this.handleChange} type="date" className="form-control" required="required" />
+                        <input id="dateOfJoining" name="dateOfJoining" key='dateOfJoining' defaultValue={this.props.select.dateOfJoining} onChange={this.handleChange} type="date" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label className="col-3">Gender</label>
                     <div className="col-9">
                         <div className="form-check form-check-inline">
-                            <input name="gender" id="radio_0" type="radio" key='gender' placeholder={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="male" required="required" />
+                            <input name="gender" id="radio_0" type="radio" key='gender' defaultValue={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="male" required="required" />
                             <label htmlfor="radio_0" className="form-check-label">Male</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input name="gender" id="radio_1" type="radio" key='gender' placeholder={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="female" required="required" />
+                            <input name="gender" id="radio_1" type="radio" key='gender' defaultValue={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="female" required="required" />
                             <label htmlfor="radio_1" className="form-check-label">Female</label>
                         </div>
                         <div className="form-check form-check-inline">
-                            <input name="gender" id="radio_2" type="radio" key='gender' placeholder={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="others" required="required" />
+                            <input name="gender" id="radio_2" type="radio" key='gender' defaultValue={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="others" required="required" />
                             <label htmlfor="radio_2" className="form-check-label">Others</label>
                         </div>
                     </div>
@@ -313,61 +313,61 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlfor="address" className="col-3 col-form-label">doorNo</label>
                     <div className="col-9">
-                        <input id="addressdoorNo" name="addressdoorNo" key='addressdoorNo' placeholder={this.props.select.addressdoorNo} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addressdoorNo" name="addressdoorNo" key='addressdoorNo' defaultValue={this.props.select.addressdoorNo} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="address" className="col-3 col-form-label">street</label>
                     <div className="col-9">
-                        <input id="addressstreet" name="addressstreet" key='addressstreet' placeholder={this.props.select.addressstreet} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addressstreet" name="addressstreet" key='addressstreet' defaultValue={this.props.select.addressstreet} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="address" className="col-3 col-form-label">landmark</label>
                     <div className="col-9">
-                        <input id="addresslandmark" name="addresslandmark" key='addresslandmark' placeholder={this.props.select.addresslandmark} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addresslandmark" name="addresslandmark" key='addresslandmark' defaultValue={this.props.select.addresslandmark} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="address" className="col-3 col-form-label">post</label>
                     <div className="col-9">
-                        <input id="addresspost" name="addresspost" key='addresspost' placeholder={this.props.select.addresspost} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addresspost" name="addresspost" key='addresspost' defaultValue={this.props.select.addresspost} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="addresscity" className="col-3 col-form-label">city</label>
                     <div className="col-9">
-                        <input id="addresscity" name="addresscity" key='addresscity' placeholder={this.props.select.addresscity} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addresscity" name="addresscity" key='addresscity' defaultValue={this.props.select.addresscity} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="addressstate" className="col-3 col-form-label">state</label>
                     <div className="col-9">
-                        <input id="addressstate" name="addressstate" key='addressstate' placeholder={this.props.select.addressstate} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addressstate" name="addressstate" key='addressstate' defaultValue={this.props.select.addressstate} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="addresscountry" className="col-3 col-form-label">country</label>
                     <div className="col-9">
-                        <input id="addresscountry" name="addresscountry" key='addresscountry' placeholder={this.props.select.addresscountry} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addresscountry" name="addresscountry" key='addresscountry' defaultValue={this.props.select.addresscountry} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="addresspincode" className="col-3 col-form-label">pincode</label>
                     <div className="col-9">
-                        <input id="addresspincode" name="addresspincode" key='addresspincode' placeholder={this.props.select.addresspincode} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addresspincode" name="addresspincode" key='addresspincode' defaultValue={this.props.select.addresspincode} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="addressmobile1" className="col-3 col-form-label">mobile 1</label>
                     <div className="col-9">
-                        <input id="addressmobile1" name="addressmobile1" key='addressmobile1' placeholder={this.props.select.addressmobile1} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addressmobile1" name="addressmobile1" key='addressmobile1' defaultValue={this.props.select.addressmobile1} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
 				<div className="form-group row">
                     <label htmlfor="addressmobile2" className="col-3 col-form-label">mobile 2</label>
                     <div className="col-9">
-                        <input id="addressmobile2" name="addressmobile2" key='addressmobile2' placeholder={this.props.select.addressmobile2} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+                        <input id="addressmobile2" name="addressmobile2" key='addressmobile2' defaultValue={this.props.select.addressmobile2} onChange={this.handleChange}  type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 

@@ -132,19 +132,19 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="Department" className="col-4 col-form-label">Department Name</label>
                     <div className="col-8">
-                        <input id="name" name="name" key='name' placeholder={this.props.select.name} onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="name" name="name" key='name' defaultValue={this.props.select.name} onChange={this.handleChange} type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="code" className="col-4 col-form-label">Department Code</label>
                     <div className="col-8">
-                        <input id="code" name="code" placeholder="Department Code" key='code' placeholder={this.props.select.code} onChange={this.handleChange} type="text" className="form-control" required="required" />
+                        <input id="code" name="code"  key='code' defaultValue={this.props.select.code} onChange={this.handleChange} type="text" className="form-control" required="required" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="short" className="col-4 col-form-label">Short Name</label>
                     <div className="col-8">
-                        <input id="shortName" name="shortName" placeholder="Short Name" key='shortName' placeholder={this.props.select.shortName} onChange={this.handleChange} type="text" className="form-control" />
+                        <input id="shortName" name="shortName"  key='shortName' defaultValue={this.props.select.shortName} onChange={this.handleChange} type="text" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

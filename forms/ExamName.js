@@ -111,7 +111,7 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlhtmlFor="examname" className="col-4 col-form-label">Exam Name</label>
                     <div className="col-8">
-                        <input id="name" name="name" key='name' placeholder={this.props.select.name} onChange={this.handleChange}  type="text" required="required" className="form-control" />
+                        <input id="name" name="name" key='name' defaultValue={this.props.select.name} onChange={this.handleChange}  type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">

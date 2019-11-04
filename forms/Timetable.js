@@ -143,19 +143,19 @@ export class PutForm extends React.Component {
                 <div className="form-group row">
                     <label htmlFor="day" className="col-4 col-form-label">day</label>
                     <div className="col-8">
-                        <input id="day" name="day" placeholder={this.props.select.day} key='day' placeholder="day" onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="day" name="day" defaultValue={this.props.select.day} key='day' placeholder="day" onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div className="form-group row">
                     <label htmlFor="hour" className="col-4 col-form-label">hour</label>
                     <div className="col-8">
-                        <input id="hour" name="hour" key='hour' placeholder={this.props.select.hour} placeholder="hour" onChange={this.handleChange} type="text" required="required" className="form-control" />
+                        <input id="hour" name="hour" key='hour' defaultValue={this.props.select.hour} placeholder="hour" onChange={this.handleChange} type="text" required="required" className="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <label htmlFor="class" class="col-4 col-form-label">class</label>
                     <div class="col-8">
-                        <select id="class" name="class" key='class' placeholder={this.props.select.class} onChange={this.handleChange} className="custom-select" required="required">
+                        <select id="class" name="class" key='class' defaultValue={this.props.select.class} onChange={this.handleChange} className="custom-select" required="required">
                             {this.props.option.class}
                         </select>
                     </div>
@@ -163,7 +163,7 @@ export class PutForm extends React.Component {
                 <div class="form-group row">
                     <label htmlFor="subject" class="col-4 col-form-label">subject</label>
                     <div class="col-8">
-                        <select id="subject" name="subject" key='subject' placeholder={this.props.select.subject} onChange={this.handleChange} className="custom-select" required="required">
+                        <select id="subject" name="subject" key='subject' defaultValue={this.props.select.subject} onChange={this.handleChange} className="custom-select" required="required">
                             {this.props.option.subject}
                         </select>
                     </div>

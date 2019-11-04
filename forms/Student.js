@@ -267,20 +267,20 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="name" className="col-3 col-form-label">Name</label>
           <div className="col-9">
-            <input id="name" name="name" key="name" placeholder={this.props.select.name} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+            <input id="name" name="name" key="name" defaultValue={this.props.select.name} onChange={this.handleChange}  type="text" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="DOB" className="col-3 col-form-label">Date of Birth</label>
           <div className="col-9">
-            <input id="dob" name="dob" key='dob' placeholder={this.props.select.dob} onChange={this.handleChange} type="date" className="form-control" required="required" />
+            <input id="dob" name="dob" key='dob' defaultValue={this.props.select.dob} onChange={this.handleChange} type="date" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
           <label className="col-3">Gender</label>
           <div className="col-9">
             <div className="form-check form-check-inline">
-              <input name="gender" id="radio_0" type="radio" key='gender' placeholder={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="male" required="required" />
+              <input name="gender" id="radio_0" type="radio" key='gender' defaultValue={this.props.select.gender} onChange={this.handleChange} className="form-check-input" value="male" required="required" />
               <label htmlFor="radio_0" className="form-check-label">Male</label>
             </div>
             <div className="form-check form-check-inline">
@@ -296,55 +296,55 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="address" className="col-3 col-form-label">Address.</label>
           <div className="col-9">
-            <input id="address" name="address" key='address' placeholder={this.props.select.address} onChange={this.handleChange} placeholder="Address" type="text" className="form-control" required="required" />
+            <input id="address" name="address" key='address' defaultValue={this.props.select.address} onChange={this.handleChange} defaultValue="Address" type="text" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="pin" className="col-3 col-form-label">PIN Code</label>
           <div className="col-9">
-            <input id="address_pincode" name="address_pincode" placeholder={this.props.select.address_pincode} onChange={this.handleChange} key='address_pincode'  type="text" className="form-control" />
+            <input id="address_pincode" name="address_pincode" defaultValue={this.props.select.address_pincode} onChange={this.handleChange} key='address_pincode'  type="text" className="form-control" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="phone" className="col-3 col-form-label">Phone</label>
           <div className="col-9">
-            <input id="address_mobile" name="address_mobile" placeholder={this.props.select.address_mobile} onChange={this.handleChange} key='address_mobile'  type="text" className="form-control" required="required" />
+            <input id="address_mobile" name="address_mobile" defaultValue={this.props.select.address_mobile} onChange={this.handleChange} key='address_mobile'  type="text" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="aadhar" className="col-3 col-form-label">Aadhar</label>
           <div className="col-9">
-            <input id="aadharNum" name="aadharNum" key='aadharNum' placeholder={this.props.select.aadharNum} onChange={this.handleChange}  type="text" className="form-control" />
+            <input id="aadharNum" name="aadharNum" key='aadharNum' defaultValue={this.props.select.aadharNum} onChange={this.handleChange}  type="text" className="form-control" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="sslc" className="col-3 col-form-label">SSLC Mark</label>
           <div className="col-9">
-            <input id="sslcMark" name="sslcMark" key='sslcMark' placeholder={this.props.select.sslcMark} onChange={this.handleChange}  type="text" className="form-control" />
+            <input id="sslcMark" name="sslcMark" key='sslcMark' defaultValue={this.props.select.sslcMark} onChange={this.handleChange}  type="text" className="form-control" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="hsc" className="col-3 col-form-label">HSC Mark</label>
           <div className="col-9">
-            <input id="hscMark" name="hscMark" key='hscMark' placeholder={this.props.select.hscMark} onChange={this.handleChange} placeholder="HSC Mark" type="text" className="form-control" />
+            <input id="hscMark" name="hscMark" key='hscMark' defaultValue={this.props.select.hscMark} onChange={this.handleChange} defaultValue="HSC Mark" type="text" className="form-control" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="community" className="col-3 col-form-label">Community</label>
           <div className="col-9">
-            <input id="community" name="community" key='community' placeholder={this.props.select.community} onChange={this.handleChange} placeholder="community" type="text" className="form-control" />
+            <input id="community" name="community" key='community' defaultValue={this.props.select.community} onChange={this.handleChange} defaultValue="community" type="text" className="form-control" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="admission" className="col-3 col-form-label">Admission No.</label>
           <div className="col-9">
-            <input id="admissionNumber" name="admissionNumber" placeholder={this.props.select.admissionNumber} key='admissionNumber' onChange={this.handleChange} placeholder="Admission No." type="text" className="form-control" required="required" />
+            <input id="admissionNumber" name="admissionNumber" defaultValue={this.props.select.admissionNumber} key='admissionNumber' onChange={this.handleChange} defaultValue="Admission No." type="text" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="Category" className="col-4 col-form-label">Category</label>
           <div className="col-8">
-            <select id='category' name='category' key='category' placeholder={this.props.select.category} onChange={this.handleChange} required='required' className="custom-select">
+            <select id='category' name='category' key='category' defaultValue={this.props.select.category} onChange={this.handleChange} required='required' className="custom-select">
               {this.props.option.category}
             </select>
           </div>
@@ -352,7 +352,7 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="Batch" className="col-4 col-form-label">Batch</label>
           <div className="col-8">
-            <select id='batch' name='batch' key='batch' placeholder={this.props.select.batch} onChange={this.handleChange} required='required' className="custom-select">
+            <select id='batch' name='batch' key='batch' defaultValue={this.props.select.batch} onChange={this.handleChange} required='required' className="custom-select">
               {this.props.option.batch}
             </select>
           </div>
@@ -360,13 +360,13 @@ export class PutForm extends React.Component {
         <div className="form-group row">
           <label htmlFor="register" className="col-3 col-form-label">Register No.</label>
           <div className="col-9">
-            <input id="registerNumber" name="registerNumber" key='registerNumber' placeholder={this.props.select.registerNumber} onChange={this.handleChange}  type="text" className="form-control" required="required" />
+            <input id="registerNumber" name="registerNumber" key='registerNumber' defaultValue={this.props.select.registerNumber} onChange={this.handleChange}  type="text" className="form-control" required="required" />
           </div>
         </div>
         <div className="form-group row">
           <label htmlFor="roll" className="col-3 col-form-label">Roll No.</label>
           <div className="col-9">
-            <input id="rollNum" name="rollNum" key='rollNum' placeholder={this.props.select.rollNum} onChange={this.handleChange}  type="text" className="form-control" />
+            <input id="rollNum" name="rollNum" key='rollNum' defaultValue={this.props.select.rollNum} onChange={this.handleChange}  type="text" className="form-control" />
           </div>
         </div>
         <div className="form-group row">
