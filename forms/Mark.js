@@ -109,6 +109,11 @@ export class PutForm extends React.Component {
         console.log('PUT STATE=>', this.state.put_data)
     }
     render() {
+        return(
+            <div class="alert alert-danger" role="alert">
+                You can not update attendence
+            </div>
+        )
         return (
             <div>
                 <div className="form-group row">

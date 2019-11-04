@@ -16,7 +16,7 @@ export default class Designation extends React.Component {
         }
     }
     async componentDidMount() {
-        await fetch('http://'+SERVER_URL+'/api/attendence/', {
+        await fetch('http://'+SERVER_URL+'/api/attendence', {//?populate=absentees
             method: 'GET',
             credentials: 'include',
             headers: {

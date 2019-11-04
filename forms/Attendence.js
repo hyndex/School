@@ -185,10 +185,44 @@ export class PutForm extends React.Component {
                 absentees: []
 
             },
+            flag:0,
+            questions: [],
+            student:[]
         }
         this.handleChange = this.handleChange.bind(this)
-        this.Delete = this.Delete.bind(this)
         this.Update = this.Update.bind(this)
+        this.Delete = this.Delete.bind(this)
+        this.handleText = this.handleText.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
+        this.addQuestion = this.addQuestion.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+    }
+    //////////////////////////////////////////////////////////////
+    handleText = i => e => {
+        let questions = [...this.state.questions]
+        questions[i] = e.target.value
+        this.setState({
+            questions
+        })
+    }
+
+    handleDelete = i => e => {
+        e.preventDefault()
+        let questions = [
+            ...this.state.questions.slice(0, i),
+            ...this.state.questions.slice(i + 1)
+        ]
+        this.setState({
+            questions
+        })
+    }
+
+    addQuestion = e => {
+        e.preventDefault()
+        let questions = this.state.questions.concat([''])
+        this.setState({
+            questions
+        })
     }
     Update = (e) => {
         e.preventDefault()
@@ -226,7 +260,21 @@ export class PutForm extends React.Component {
 
         console.log('PUT STATE=>', this.state.put_data)
     }
+    flagUpdate = () => {
+        if(this.props.select._id==undefined && this.state.flag==0){
+            this.setState({
+                questions:this.props.select.absentees,
+                flag:1
+            })
+            
+        }
+    }
     render() {
+        return(
+            <div class="alert alert-danger" role="alert">
+                You can not update attendence
+            </div>
+        )
         return (
             <div>
                 <div className="form-group row">
@@ -255,12 +303,22 @@ export class PutForm extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="form-group row">
-                    <label htmlFor="batch" className="col-4 col-form-label">Batch</label>
-                    <div className="col-8">
-                        <input id="absentees" name="absentees" key='absentees' value={this.props.select.absentees} onChange={this.handleChange} placeholder="absentees" type="text" className="form-control" />
-                    </div>
-                </div>
+                <Fragment>
+                    {this.state.questions.map((question, index) => (
+                        <span key={index}>
+                            <div className="form-group row">
+                                <label htmlFor="student" className="col-4 col-form-label">student</label>
+                                <div className="col-8">
+                                    <select id='student' defaultValue={this.state.questions[index] || ''} class="form-control selectpicker" data-live-search="true" name='student' key='student' onChange={this.handleText(index)} required='required' className="custom-select">
+                                        {this.state.student}
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="btn btn-danger" onClick={this.handleDelete(index)}>delete</button>
+                        </span>
+                    ))}
+                    <button class="btn btn-success mx-1 my-1" onClick={this.addQuestion}>Add New Absentee</button>
+                </Fragment>
                 <div className="form-group row">
                     <div className="offset-4 col-8">
                         <button name="submit" onClick={this.Update} type="submit" className="btn btn-primary">Submit</button>
