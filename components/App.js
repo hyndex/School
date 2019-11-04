@@ -46,9 +46,9 @@ export default class App extends React.Component {
             })
             .catch((err) => {
                 console.log('ERRRRRR', err.message)
-                // if (err.message == '401') {
-                //     window.location.replace("./Login");
-                // }
+                if (err.message == '401') {
+                     window.location.replace("./Login");
+                 }
             })
 
     }
