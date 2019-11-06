@@ -1,5 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
+import {withRouter} from 'next/router';
+import store from '../Reducers/Reducer'
+import UpdateNav from '../Actions/NavAction'
 
 
 export default class Navbar extends React.Component {
@@ -16,8 +19,15 @@ export default class Navbar extends React.Component {
                         <li className="nav-item active">
                             <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="./Login" onClick={this.logout}>Logout</a>
+						<li className="nav-item">
+                            <Link href="./Logout" key='0'> 
+								<a className="nav-link">Logout</a>
+							</Link>
+                        </li>
+						<li className="nav-item">
+                            <Link href="./Register" key='0'> 
+								<a className="nav-link">Register</a>
+							</Link>
                         </li>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -25,7 +35,7 @@ export default class Navbar extends React.Component {
                         </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                             <Link href='/AttendenceReport' key='1'><a className="dropdown-item">Attendence</a></Link>
-                            <Link href='/DepartmentAllocation' key='2'><a className="dropdown-item">Department</a></Link>
+     
                             <Link href='/FailListReport' key='3'><a className="dropdown-item">Fail-List</a></Link>
                             <Link href='/MarkReport' key='4'><a className="dropdown-item">Mark</a></Link>
                             <Link href='/PlacementReport' key='5'><a className="dropdown-item">Placement</a></Link>
@@ -37,10 +47,7 @@ export default class Navbar extends React.Component {
                         </li>
                     </ul>
                 </div>
-                <form className="form-inline my-2 my-lg-0">
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+         
             </nav>
         )
     }

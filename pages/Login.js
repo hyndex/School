@@ -20,6 +20,7 @@ export default class Login extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.Login = this.Login.bind(this)
+        this.AutoLog = this.AutoLog.bind(this)
     }
 
     handleChange(event) {
@@ -38,25 +39,23 @@ export default class Login extends React.Component {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
             }
-        }).then(async (res) => {
-            try {
-                this.setState({status:res.status})
-            } catch (error) { console.error(error) }
-            return res
-        }).then(()=>{
-                var cookies = new Cookies();
-                var logged = false
-                console.log('response',this.state.status)
-                if (this.state.status == 200) {
-                    logged = true
-                }
-                console.log(this.state.status)
-                cookies.set('logged', logged);
-                console.log(cookies.get('logged'));
-                store.dispatch(UpdateUser(cookies.get('logged')))
-                this.setState({ logged: cookies.get('logged') })
-            })
-        .catch(err => { console.error(err) })
+        })
+		.then(response => response.status)
+		.then((data)=>{
+			if(data<300){
+				console.log('status',data)
+				var logged = true
+				var cookies = new Cookies
+				cookies.set('logged', logged);
+				store.dispatch(UpdateUser(cookies.get('logged')))
+				this.setState({ logged: logged })
+				this.setState({ AutoLog: true })
+				window.location.replace("./Student")
+			}
+			else{
+				alert('Login Failed')
+			}
+		})	
     }
     AutoLog() {
         fetch('http://' + SERVER_URL + '/api/staff/', {
@@ -66,30 +65,40 @@ export default class Login extends React.Component {
                 "Content-type": "application/json",
                 'Accept': 'application/json',
             }
-        }).then(async (res) => {
-            try {
-                const cookies = new Cookies();
-                var logged = true
-                if (await res.status == '401') {
-                    logged = false
-                }
-                cookies.set('logged', logged);
-                store.dispatch(UpdateUser(cookies.get('logged')))
-                this.setState({ logged: logged })
-                this.setState({ AutoLog: true })
-            } catch (error) { console.error(error) }
-        }).catch(err => { console.error(err) })
+        })
+		.then(response => response.status)
+		.then((data)=>{
+			if(data<300){
+				console.log('status',data)
+				var logged = true
+				var cookies = new Cookies
+				cookies.set('logged', logged);
+				store.dispatch(UpdateUser(cookies.get('logged')))
+				this.setState({ logged: logged })
+				this.setState({ AutoLog: true })
+				window.location.replace("./Student")
+			}
+			else{
+				this.setState({ AutoLog: true })
+			}
+		})		
     }
     componentDidMount() {
-        if (this.state.AutoLog == false) {
-            this.AutoLog()
-        }
+        this.AutoLog()
+		console.log('STSS',this.state)
     }
     render() {
-        if(new Cookies().get('logged') == 'true'){
+		if (this.state.AutoLog == false) {
+            this.AutoLog()
+			
+        }
+        //if(new Cookies().get('logged') == 'true'){
+        //    window.location.replace("./Student");
+        //}
+		if(this.state.logged == true){
             window.location.replace("./Student");
         }
-        console.log(this.state)
+		console.log('STS ',this.state)
         return (
             <div>
                 <div className="container margin-centre card w-25 my-5">
@@ -102,10 +111,6 @@ export default class Login extends React.Component {
                             <div className="form-group">
                                 <label htmlFor=    "Password">Password</label>
                                 <input type="password" autoComplete="current-password" className="form-control" id="Password" name="password" placeholder="Password" onChange={this.handleChange} />
-                            </div>
-                            <div className="form-check">
-                                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                                <label className="form-check-label" htmlFor=    "exampleCheck1">Check me out</label>
                             </div>
                             <button type="button" className="btn btn-primary" onClick={this.Login}>Submit</button>
                         </form>

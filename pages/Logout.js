@@ -40,16 +40,9 @@ export default class App extends React.Component {
                 'Accept': 'application/json',
             }
         })
-            .then(response => {
-                if (!response.ok) throw new Error(response.status);
-                return response
-            })
-            .catch((err) => {
-                console.log('ERRRRRR', err.message)
-                if (err.message == '401') {
-                     window.location.replace("./Login");
-                 }
-            })
+		.then(response => response.status)
+        .then(async (data) => await (data < 300) ? window.location.replace("./Login") : window.location.replace("./Login"))
+
 
     }
 

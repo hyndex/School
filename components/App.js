@@ -89,7 +89,7 @@ export default class App extends React.Component {
                                             data={this.props.fields_data}
                                             filterable
                                             defaultPageSize={10}
-                                            noDataText={'Please wait....'}
+                                            //noDataText={'Please wait....'}
                                             getTrProps={(state, rowInfo) => {
                                                 if (rowInfo && rowInfo.row) {
                                                     return {

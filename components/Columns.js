@@ -239,6 +239,21 @@ export const SubjectColumns=[
         accessor:'subjecttype',
     },
 ]
+export const MarkColumns=[
+    
+    {
+        Header:'code',
+        accessor:'code',
+    },
+    {
+        Header:'name',
+        accessor:'name',
+    },
+    {
+        Header:'subject type',
+        accessor:'subjecttype',
+    },
+]
 
 export const RankReportColumns=[
     

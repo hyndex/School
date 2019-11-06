@@ -214,7 +214,7 @@ export class PutForm extends React.Component {
 		questions: [],
 		datetime:[],
 		description:[],
-		flag=0,
+		flag:0,
       },
     }
     this.handleChange = this.handleChange.bind(this)
